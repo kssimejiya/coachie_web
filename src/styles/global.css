@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================ */
+/* CRITICAL CSS - Above the fold               */
+/* ============================================ */
+*,*::before,*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+#root, html, body { min-height: 100vh; }
+img, video { max-width: 100%; height: auto; }
+
+/* ============================================ */
+/* SCROLL ANIMATION SYSTEM (~500 bytes)        */
+/* IntersectionObserver-based, GPU-only         */
+/* ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  /* Base hidden state for all scroll-animated elements */
+  [data-animate] {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* Fade In */
+  [data-animate="fade-in"] {
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Slide Up */
+  [data-animate="slide-up"] {
+    transform: translateY(40px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Slide Left */
+  [data-animate="slide-left"] {
+    transform: translateX(40px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Slide Right */
+  [data-animate="slide-right"] {
+    transform: translateX(-40px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Scale In */
+  [data-animate="scale-in"] {
+    transform: scale(0.85);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Visible state */
+  [data-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+
+  /* Stagger children support */
+  [data-stagger] > [data-animate] {
+    transition-delay: calc(var(--stagger-index, 0) * var(--stagger-delay, 100ms));
+  }
+}
+
+/* Reduced motion: just show everything */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================ */
+/* HOVER MICRO-INTERACTIONS                    */
+/* CSS-only, GPU-composited (transform+opacity)*/
+/* ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  /* Button hover: scale + shadow lift */
+  .btn-hover {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-hover:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  .btn-hover:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  /* Card hover: lift + deeper shadow */
+  .card-hover {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+  }
+
+  /* Link hover: subtle shift */
+  .link-hover {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .link-hover:hover {
+    transform: translateY(-1px);
+    opacity: 0.85;
+  }
+
+  /* Social icon hover: pop */
+  .social-hover {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .social-hover:hover {
+    transform: scale(1.12);
+  }
+  .social-hover:active {
+    transform: scale(0.92);
+  }
+
+  /* Image float effect for hero */
+  .hero-float {
+    animation: heroFloat 6s ease-in-out infinite;
+  }
+
+  /* Hero image parallax-like subtle motion */
+  .hero-parallax {
+    will-change: transform;
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ============================================ */
+/* PERFORMANCE CSS                             */
+/* ============================================ */
+.product-section-image {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.product-section-image img {
+  will-change: auto;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.product-section-wrapper {
+  contain: layout style;
+}
+
+.product-section-image-container {
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .product-section-image {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .product-section-image:hover {
+    transform: translate3d(0, -5px, 0) scale(1.03);
+  }
+}
+
+.product-section-shadow {
+  will-change: box-shadow;
+  transition: box-shadow 0.3s ease-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.product-section-shadow:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  left: 0;
+  z-index: 9999;
+  padding: 1rem;
+  background: white;
+  color: black;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}

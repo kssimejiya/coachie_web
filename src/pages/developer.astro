@@ -1,0 +1,436 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Footer from '../components/astro/Footer.astro';
+import { Image } from 'astro:assets';
+
+// Remote screenshots
+import remote_1 from '../assets/images/remote_1.webp';
+import remote_2 from '../assets/images/remote_2.webp';
+import remote_3 from '../assets/images/remote_3.webp';
+import remote_4 from '../assets/images/remote_4.webp';
+
+// Coachie screenshots
+import coachie_1 from '../assets/images/coachie_1.webp';
+import coachie_2 from '../assets/images/coachie_2.webp';
+import coachie_3 from '../assets/images/coachie_3.webp';
+import coachie_4 from '../assets/images/coachie_4.webp';
+import coachie_5 from '../assets/images/coachie_5.webp';
+import coachie_6 from '../assets/images/coachie_6.webp';
+import coachie_7 from '../assets/images/coachie_7.webp';
+
+// Foodzapp screenshots
+import foodz_1 from '../assets/images/foodz_1.webp';
+import foodz_2 from '../assets/images/foodz_2.webp';
+import foodz_3 from '../assets/images/foodz_3.webp';
+import foodz_4 from '../assets/images/foodz_4.webp';
+import foodz_5 from '../assets/images/foodz_5.webp';
+
+// ESS screenshots
+import ess_1 from '../assets/images/ess_1.webp';
+import ess_2 from '../assets/images/ess_2.webp';
+import ess_3 from '../assets/images/ess_3.webp';
+import ess_4 from '../assets/images/ess_4.webp';
+import ess_5 from '../assets/images/ess_5.webp';
+
+// Runhorse screenshots
+import run_1 from '../assets/images/run_1.webp';
+import run_2 from '../assets/images/run_2.webp';
+import run_3 from '../assets/images/run_3.webp';
+import run_4 from '../assets/images/run_4.webp';
+import run_5 from '../assets/images/run_5.webp';
+
+// PerfectStay screenshots
+import stay_1 from '../assets/images/stay_1.webp';
+import stay_2 from '../assets/images/stay_2.webp';
+import stay_3 from '../assets/images/stay_3.webp';
+import stay_4 from '../assets/images/stay_4.webp';
+import stay_5 from '../assets/images/stay_5.webp';
+
+// Aunest screenshots
+import aunest_1 from '../assets/images/aunest_1.webp';
+import aunest_2 from '../assets/images/aunest_2.webp';
+import aunest_3 from '../assets/images/aunest_3.webp';
+import aunest_4 from '../assets/images/aunest_4.webp';
+import aunest_5 from '../assets/images/aunest_5.webp';
+import aunest_6 from '../assets/images/aunest_6.webp';
+import aunest_7 from '../assets/images/aunest_7.webp';
+
+const items = [
+  {
+    id: 1,
+    title: "Remote for Samsung TV Smart",
+    desc: "Move over the old Smart TV remote! Control your Samsung TV with your phone and say goodbye \u{1F44B} to your old bulky remote",
+    tag: "10M+ Downloads",
+    tagType: "downloads",
+    screenshots: [remote_1, remote_2, remote_3, remote_4],
+    appStoreLink: "https://apps.apple.com/in/app/remote-for-samsung-tv-smart/id6474010687",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.controlla.remoteapp",
+  },
+  {
+    id: 2,
+    title: "Coachie - Coach | Chef | CBT",
+    desc: "Transform your mind and body with personalised meal plans, AI chef and AI Cognitive Behavioral Therapy (CBT) based mental support.",
+    tag: "10K+ Downloads",
+    tagType: "downloads",
+    screenshots: [coachie_1, coachie_2, coachie_3, coachie_4, coachie_5, coachie_6, coachie_7],
+    appStoreLink: "https://apps.apple.com/in/app/coachie-coach-chef-cbt/id6744700791",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.cc.caloriecoach",
+  },
+  {
+    id: 3,
+    title: "Foodzapp - Food Ordering",
+    desc: "Order food from your favourite restaurants and get it delivered to your doorstep with ease.",
+    tag: "10K+ Downloads",
+    tagType: "downloads",
+    screenshots: [foodz_1, foodz_2, foodz_3, foodz_4, foodz_5],
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.order.spryntz",
+    appStoreLink: "https://apps.apple.com/in/app/foodzapp/id6450407859",
+  },
+  {
+    id: 4,
+    title: "Bavya ESS",
+    desc: "The ESS app empowers employees to manage their work life efficiently with modern HR tools.",
+    tag: "10K+ Downloads",
+    tagType: "downloads",
+    screenshots: [ess_1, ess_2, ess_3, ess_4, ess_5],
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.bavya.ess",
+  },
+  {
+    id: 5,
+    title: "RUNHORSE - AI Photo & Video",
+    desc: "Step into the future of photography with RUNHORSE - the ultimate AI-powered photoshoot experience.",
+    tag: "Featured",
+    tagType: "featured",
+    screenshots: [run_1, run_2, run_3, run_4, run_5],
+    appStoreLink: "https://apps.apple.com/in/app/runhorse-ai-photo-video/id6714452727",
+  },
+  {
+    id: 6,
+    title: "PerfectStay Holiday Rentals",
+    desc: "Rent holiday accommodations and get your perfect stay booked with ease.",
+    tag: "Live Now",
+    tagType: "new",
+    screenshots: [stay_1, stay_2, stay_3, stay_4, stay_5],
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.perfectstay",
+    appStoreLink: "https://apps.apple.com/in/app/perfectstay-holiday-rentals/id6444202919",
+  },
+  {
+    id: 7,
+    title: "Aunest",
+    desc: "One stop solution for gold - includes gold funds, gold loans, digital gold and gold e-commerce.",
+    tag: "FEB 2026",
+    tagType: "coming-soon",
+    screenshots: [aunest_1, aunest_2, aunest_3, aunest_4, aunest_5, aunest_6, aunest_7],
+  },
+];
+
+const jsonLd = [
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Coachie",
+      "jobTitle": "Experience Developer"
+    }
+  }),
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Mobile App Portfolio",
+    "numberOfItems": items.length,
+    "itemListElement": items.map((item, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": { "@type": "MobileApplication", "name": item.title, "description": item.desc }
+    }))
+  }),
+];
+---
+
+<MainLayout
+  title="Experience Developer | Mobile App Portfolio"
+  description="Expert React Native developer with 10M+ app downloads. View portfolio of published iOS & Android apps."
+  canonical="https://coachie-ai.com/developer"
+  ogTitle="Coachie | Experience developer"
+  ogDescription="Expert React Native developer with 10M+ app downloads."
+  showFooter={false}
+  jsonLd={jsonLd}
+>
+  <main id="main-content" class="bg-white min-h-screen">
+    <!-- Portfolio Items -->
+    <section class="pt-28 pb-16 md:pt-32 md:pb-24">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-20 md:space-y-28">
+
+        {items.map((item, index) => {
+          const isEven = index % 2 === 0;
+          const isComingSoon = !item.appStoreLink && !item.playStoreLink;
+
+          return (
+            <div
+              class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+              data-animate="fade-in"
+            >
+              {/* Phone Mockup */}
+              <div class={`flex justify-center ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div
+                  class="w-[180px] sm:w-[200px] md:w-[220px] dev-float"
+                  data-carousel
+                  data-screenshots={JSON.stringify(item.screenshots.map(s => s.src))}
+                  data-title={item.title}
+                >
+                  {/* Device Mockup */}
+                  <div class="relative">
+                    {/* Shadow */}
+                    <div
+                      class="absolute inset-0 rounded-[2.5rem] translate-y-4 opacity-20 blur-2xl"
+                      style="background-color: #495057;"
+                    />
+
+                    {/* Phone frame */}
+                    <div
+                      class="relative rounded-[2rem] md:rounded-[2.5rem] p-[3px] shadow-xl"
+                      style="background: linear-gradient(160deg, #6C757D 0%, #495057 50%, #343A40 100%);"
+                    >
+                      {/* Screen */}
+                      <div class="relative bg-black rounded-[1.875rem] md:rounded-[2.25rem] overflow-hidden">
+                        <div class="relative aspect-[9/19.5] bg-gray-900">
+                          {/* Carousel container */}
+                          <div class="absolute inset-0 overflow-hidden bg-gray-900">
+                            {/* Loading skeleton */}
+                            <div class="carousel-skeleton absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 transition-opacity duration-400" />
+
+                            {/* All images stacked - only opacity changes */}
+                            {item.screenshots.map((src, i) => (
+                              <div
+                                class="carousel-slide absolute inset-0"
+                                style={`opacity: ${i === 0 ? 1 : 0}; transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1); z-index: ${i === 0 ? 2 : 1}; will-change: opacity;`}
+                                data-slide-index={i}
+                              >
+                                <Image
+                                  src={src}
+                                  alt={`${item.title} screenshot ${i + 1}`}
+                                  class="w-full h-full object-cover"
+                                  loading={index < 2 ? "eager" : "lazy"}
+                                  widths={[180, 200, 220, 440]}
+                                  sizes="(max-width: 640px) 180px, (max-width: 768px) 200px, 220px"
+                                />
+                              </div>
+                            ))}
+
+                            {/* Indicators */}
+                            {item.screenshots.length > 1 && (
+                              <div
+                                class="absolute bottom-3 left-1/2 flex gap-1.5 z-10"
+                                style="transform: translateX(-50%);"
+                              >
+                                {item.screenshots.map((_, i) => (
+                                  <button
+                                    class="carousel-dot h-1 rounded-full transition-all duration-400"
+                                    style={`width: ${i === 0 ? '16px' : '6px'}; background-color: ${i === 0 ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.4)'};`}
+                                    data-dot-index={i}
+                                    aria-label={`Go to screenshot ${i + 1}`}
+                                  />
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Dynamic Island */}
+                        <div class="absolute top-2 left-1/2 -translate-x-1/2 w-20 md:w-24 h-5 md:h-6 bg-black rounded-full z-20" />
+
+                        {/* Home Indicator */}
+                        <div class="absolute bottom-1.5 md:bottom-2 left-1/2 -translate-x-1/2 w-20 md:w-24 h-1 bg-white/20 rounded-full z-20" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div class={`${isEven ? 'lg:order-1' : 'lg:order-2'} text-center lg:text-left`}>
+                {/* Tag Badge */}
+                <div
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border"
+                  style="background-color: #ADB5BD20; color: #495057; border-color: #ADB5BD50;"
+                >
+                  {item.tagType === "downloads" && (
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                  )}
+                  {item.tagType === "featured" && (
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  )}
+                  {item.tagType === "coming-soon" && (
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                  {item.tagType === "new" && (
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                    </svg>
+                  )}
+                  <span>{item.tag}</span>
+                  {item.tagType === "coming-soon" && (
+                    <span class="relative flex h-1.5 w-1.5 ml-0.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: #ADB5BD;" />
+                      <span class="relative inline-flex rounded-full h-1.5 w-1.5" style="background-color: #495057;" />
+                    </span>
+                  )}
+                </div>
+
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-4">
+                  {item.title}
+                </h2>
+
+                <p class="text-gray-600 text-base md:text-lg mb-6 max-w-lg mx-auto lg:mx-0">
+                  {item.desc}
+                </p>
+
+                <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                  {item.appStoreLink && (
+                    <a
+                      href={item.appStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors"
+                    >
+                      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                      </svg>
+                      App Store
+                    </a>
+                  )}
+                  {item.playStoreLink && (
+                    <a
+                      href={item.playStoreLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-gray-800 border border-gray-300 rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors"
+                    >
+                      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                      </svg>
+                      Play Store
+                    </a>
+                  )}
+                  {isComingSoon && (
+                    <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-100 text-gray-500 rounded-xl text-sm font-medium border border-gray-200">
+                      <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75" />
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-gray-500" />
+                      </span>
+                      Coming Soon
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</MainLayout>
+
+<style>
+  /* Subtle floating animation for phone mockups */
+  @media (min-width: 768px) {
+    .dev-float {
+      animation: dev-float 4s ease-in-out infinite;
+    }
+  }
+
+  @keyframes dev-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+</style>
+
+<script>
+  // Screenshot carousel auto-advance
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('[data-carousel]');
+
+    carousels.forEach((carousel) => {
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+      const skeleton = carousel.querySelector('.carousel-skeleton');
+      const total = slides.length;
+
+      if (total <= 1) return;
+
+      let activeIndex = 0;
+      let interval: ReturnType<typeof setInterval>;
+
+      // Hide skeleton once images are loaded
+      const images = carousel.querySelectorAll('img');
+      let loadedCount = 0;
+      images.forEach((img) => {
+        const checkLoaded = () => {
+          loadedCount++;
+          if (loadedCount >= images.length && skeleton) {
+            (skeleton as HTMLElement).style.opacity = '0';
+          }
+        };
+        if ((img as HTMLImageElement).complete) {
+          checkLoaded();
+        } else {
+          img.addEventListener('load', checkLoaded);
+          img.addEventListener('error', checkLoaded);
+        }
+      });
+
+      const goToSlide = (index: number) => {
+        slides.forEach((slide, i) => {
+          const el = slide as HTMLElement;
+          el.style.opacity = i === index ? '1' : '0';
+          el.style.zIndex = i === index ? '2' : '1';
+        });
+        dots.forEach((dot, i) => {
+          const el = dot as HTMLElement;
+          el.style.width = i === index ? '16px' : '6px';
+          el.style.backgroundColor = i === index ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.4)';
+        });
+        activeIndex = index;
+      };
+
+      // Dot click handlers
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          clearInterval(interval);
+          startAutoAdvance();
+        });
+      });
+
+      const startAutoAdvance = () => {
+        interval = setInterval(() => {
+          goToSlide((activeIndex + 1) % total);
+        }, 4000);
+      };
+
+      // IntersectionObserver to only run when visible
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            startAutoAdvance();
+          } else {
+            clearInterval(interval);
+          }
+        },
+        { threshold: 0.1 }
+      );
+
+      observer.observe(carousel);
+    });
+  });
+</script>

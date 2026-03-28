@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/images/ic_hero_image.webp';
+
+const APP_STORE = 'https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791';
+const PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.cc.caloriecoach&pli=1';
+
+const stats = [
+  { metric: '5K+', label: 'Downloads' },
+  { metric: '5.0', label: 'App Rating' },
+  { metric: '100%', label: 'Users Recommend' },
+];
+---
+
+<section id="download" class="relative py-16 sm:py-24 md:py-32" data-gsap-download>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="rounded-3xl p-6 sm:p-8 md:p-16 overflow-hidden shadow-2xl bg-white border border-gray-200 relative">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gray-500"></div>
+
+      <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Content -->
+        <div data-gsap-cta-content>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+            <span class="text-gray-500">Download Coachie</span>
+            <span class="block mt-1 text-gray-800">Begin Your Revolution</span>
+          </h2>
+          <p class="text-lg sm:text-xl mb-6 sm:mb-8 text-gray-600">
+            Experience the world's first truly integrated wellness platform. Your mind, body, and nutrition working in perfect harmony.
+          </p>
+
+          <!-- Store Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href={APP_STORE}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-hover flex items-center justify-center rounded-xl px-4 sm:px-4 py-3 sm:py-4 bg-gray-800 text-white border border-gray-300"
+              data-magnetic="0.15"
+            >
+              <svg class="h-8 w-8 sm:h-9 sm:w-9 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
+              </svg>
+              <div class="flex flex-col items-start">
+                <span class="text-xs text-gray-300">Download on the</span>
+                <span class="text-base sm:text-lg font-semibold">App Store</span>
+              </div>
+            </a>
+            <a
+              href={PLAY_STORE}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-hover flex items-center justify-center rounded-xl px-4 sm:px-6 py-3 sm:py-4 bg-gray-800 text-white border border-gray-300"
+              data-magnetic="0.15"
+            >
+              <svg class="h-6 w-6 sm:h-8 sm:w-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3,20.5V3.5C3,2.91,3.34,2.39,3.84,2.15L13.69,12L3.84,21.85C3.34,21.6,3,21.09,3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08,20.75,11.5,20.75,12C20.75,12.5,20.53,12.9,20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+              </svg>
+              <div class="flex flex-col items-start">
+                <span class="text-xs text-gray-300">GET IT ON</span>
+                <span class="text-base sm:text-lg font-semibold">Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Stats -->
+          <div class="mt-6 sm:mt-8 pt-6 sm:pt-8 grid grid-cols-3 gap-4 sm:gap-6 border-t border-gray-200">
+            {stats.map((stat) => (
+              <div data-gsap-cta-stat>
+                <div class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-500">{stat.metric}</div>
+                <div class="text-xs sm:text-sm text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div class="flex justify-center md:justify-end relative" data-gsap-cta-image>
+          <div class="relative w-full max-w-sm md:max-w-md lg:max-w-lg">
+            <Image
+              src={heroImg}
+              alt="Coachie App Download"
+              width={500}
+              height={500}
+              loading="lazy"
+              class="w-full h-auto object-contain"
+              style="filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

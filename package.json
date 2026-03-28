@@ -1,0 +1,26 @@
+{
+  "name": "coachie_web",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.7.10",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.18",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.3.5"
+  }
+}

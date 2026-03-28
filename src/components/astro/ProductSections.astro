@@ -1,0 +1,116 @@
+---
+import { Image } from 'astro:assets';
+import nutritionImg from '../../assets/images/ic_nutrition.webp';
+import recipeImg from '../../assets/images/ic_recipe.webp';
+import fitnessImg from '../../assets/images/ic_fitness.webp';
+import therapyImg from '../../assets/images/ic_therapy.webp';
+
+const sections = [
+  {
+    title: 'NUTRITION THAT KNOWS YOU',
+    subtitle: 'Smart Nutrition',
+    content: [
+      'Beyond Basic Tracking: Discover not just calories, but how specific foods are impacting your unique body chemistry',
+      'Pattern Recognition: Uncover hidden connections between what you eat and how you feel',
+      'Personal Insights: "Your energy dips after high-carb lunches" or "Protein-rich breakfasts improve your afternoon mood"',
+    ],
+    image: nutritionImg,
+    imageAlt: 'Smart Nutrition tracking feature',
+    reverse: false,
+  },
+  {
+    title: 'RECIPE CREATION THAT READS YOUR MIND',
+    subtitle: 'AI Chef',
+    content: [
+      "Instantly find delicious recipes based on what's in your fridge or what your body needs today.",
+      'Complete our immersive nutrition profile and receive recipes tailored to your unique body, goals, and preferences.',
+      "Are you a diabetic person? No worries, we'll provide you a list of ingredients which suits you and on selecting your favorites we will craft recipes.",
+    ],
+    image: recipeImg,
+    imageAlt: 'AI Chef recipe creation feature',
+    reverse: true,
+  },
+  {
+    title: 'FITNESS THAT FOLLOWS YOUR LEAD',
+    subtitle: 'Smart Movement',
+    content: [
+      'Real-Time Feedback: "This pace is optimal for your fat-burning zone" or "Consider more recovery time based on your exertion patterns"',
+      'Progress Visualization: Watch your journey unfold in vibrant, motivating visuals that celebrate every victory',
+      'Adaptive Challenges: Experience workouts that evolve as you do—never too easy, never too hard',
+    ],
+    image: fitnessImg,
+    imageAlt: 'Smart Movement fitness feature',
+    reverse: false,
+  },
+  {
+    title: 'THERAPY THAT TRULY LISTENS',
+    subtitle: 'Mental Wellness',
+    content: [
+      'Evidence-Based CBT: Access powerful therapeutic techniques through conversations that feel human',
+      'Emotional-Physical Connection: "We noticed you feel anxious after high-sugar meals" or "Your mood improves significantly after morning walks"',
+      "In-the-Moment Support: Receive guidance precisely when you need it most—not during next week's appointment",
+    ],
+    image: therapyImg,
+    imageAlt: 'Mental Wellness CBT therapy feature',
+    reverse: true,
+  },
+];
+---
+
+<div>
+  {sections.map((section, index) => (
+    <section
+      class="relative py-16 sm:py-24 md:py-32 overflow-hidden product-section-wrapper"
+      style={`background-color: ${index % 2 === 0 ? 'rgba(248, 249, 250, 0.5)' : 'transparent'}`}
+      data-gsap-product
+      data-gsap-reversed={section.reverse ? 'true' : 'false'}
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class={`flex flex-col ${section.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-12`}>
+          <!-- Image -->
+          <div class="w-full lg:w-1/2 mb-8 lg:mb-0 flex justify-center" data-gsap-product-image>
+            <div class="relative w-full max-w-md lg:max-w-2xl h-64 sm:h-80 lg:h-[500px] mx-auto product-section-image-container">
+              <div class="product-section-shadow rounded-3xl absolute inset-0"></div>
+              <div class="product-section-image relative w-full h-full rounded-3xl overflow-hidden bg-white border border-gray-300">
+                <Image
+                  src={section.image}
+                  alt={section.imageAlt}
+                  width={600}
+                  height={500}
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="w-full lg:w-1/2" data-gsap-product-text>
+            <div class="inline-block mb-3 px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-white/80 backdrop-blur-sm border border-gray-300" data-gsap-product-tag>
+              <span class="text-gray-500">{section.subtitle}</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6" data-gsap-product-title>
+              <span class="text-gray-800">{section.title}</span>
+            </h2>
+            <p class="text-lg sm:text-xl mb-6 sm:mb-8 text-gray-600" data-gsap-product-desc>
+              Your {section.subtitle.toLowerCase()} becomes a data-driven experience that adapts to your changing needs:
+            </p>
+
+            <ul class="space-y-4 sm:space-y-6">
+              {section.content.map((item) => (
+                <li class="flex items-start" data-gsap-product-item>
+                  <span class="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 sm:mt-1 bg-gray-500">
+                    <svg class="h-3 w-3 sm:h-4 sm:w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <span class="text-gray-600 text-sm sm:text-base leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+</div>

@@ -1,0 +1,379 @@
+---
+import TranslateNowLayout from '../../layouts/TranslateNowLayout.astro';
+import { Image } from 'astro:assets';
+import translateIcon from '../../assets/images/translate_icon.webp';
+import translateRobot from '../../assets/images/translate_robot.webp';
+import translateSs1 from '../../assets/images/translate_ss_1.png';
+import translateSs2 from '../../assets/images/translate_ss_2.png';
+import translateSs3 from '../../assets/images/translate_ss_3.png';
+import translateSs4 from '../../assets/images/translate_ss_4.png';
+import translateSs5 from '../../assets/images/translate_ss_5.png';
+import translateSs6 from '../../assets/images/translate_ss_6.png';
+import translateSs7 from '../../assets/images/translate_ss_7.png';
+import translateSs8 from '../../assets/images/translate_ss_8.png';
+import translateSs9 from '../../assets/images/translate_ss_9.png';
+import translateSs10 from '../../assets/images/translate_ss_10.png';
+import translateSs11 from '../../assets/images/translate_ss_11.png';
+
+const APP_STORE_URL = 'https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185';
+const PRIVACY_URL = 'https://coachie-ai.com/privacy-policy-translation-app';
+const TERMS_URL = 'https://coachie-ai.com/terms-of-use-translation-app';
+const SUPPORT_EMAIL = 'contact@coachie-ai.com';
+
+const LANGUAGE_LINKS = [
+  { href: '/translate-now', label: 'English' },
+  { href: '/translate-now/hi', label: 'Hindi' },
+  { href: '/translate-now/es', label: 'Spanish' },
+  { href: '/translate-now/fr', label: 'French' },
+  { href: '/translate-now/de', label: 'German' },
+  { href: '/translate-now/ru', label: 'Russian' },
+  { href: '/translate-now/vi', label: 'Vietnamese' },
+  { href: '/translate-now/ar', label: 'Arabic' },
+  { href: '/translate-now/ja', label: 'Japanese' },
+  { href: '/translate-now/pt', label: 'Portuguese' },
+  { href: '/translate-now/it', label: 'Italian' },
+  { href: '/translate-now/tr', label: 'Turkish' },
+  { href: '/translate-now/th', label: 'Thai' },
+  { href: '/translate-now/zh', label: 'Chinese' },
+];
+
+const HREFLANG_LINKS = [
+  { lang: 'en', href: 'https://coachie-ai.com/translate-now' },
+  { lang: 'hi', href: 'https://coachie-ai.com/translate-now/hi' },
+  { lang: 'es', href: 'https://coachie-ai.com/translate-now/es' },
+  { lang: 'fr', href: 'https://coachie-ai.com/translate-now/fr' },
+  { lang: 'de', href: 'https://coachie-ai.com/translate-now/de' },
+  { lang: 'ru', href: 'https://coachie-ai.com/translate-now/ru' },
+  { lang: 'vi', href: 'https://coachie-ai.com/translate-now/vi' },
+  { lang: 'ar', href: 'https://coachie-ai.com/translate-now/ar' },
+  { lang: 'ja', href: 'https://coachie-ai.com/translate-now/ja' },
+  { lang: 'ko', href: 'https://coachie-ai.com/translate-now/ko' },
+  { lang: 'pt', href: 'https://coachie-ai.com/translate-now/pt' },
+  { lang: 'it', href: 'https://coachie-ai.com/translate-now/it' },
+  { lang: 'tr', href: 'https://coachie-ai.com/translate-now/tr' },
+  { lang: 'th', href: 'https://coachie-ai.com/translate-now/th' },
+  { lang: 'zh', href: 'https://coachie-ai.com/translate-now/zh' },
+  { lang: 'x-default', href: 'https://coachie-ai.com/translate-now' },
+];
+
+const SOCIAL_PROOF = [
+  { label: '135개 이상 언어', icon: 'M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802' },
+  { label: '앱 30개 언어 지원', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' },
+  { label: '온디바이스 AI', icon: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z' },
+  { label: '음성 복제', icon: 'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z' },
+  { label: '오프라인 프라이버시', icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' },
+];
+
+const FEATURES = [
+  { title: '실시간 AI 대화', desc: 'OpenAI Realtime API 기반 양방향 음성 번역. 언어를 자동 감지하고 번역하고 응답합니다. 7개 뉴럴 음성. .m4a 녹음 및 내보내기.', icon: 'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z' },
+  { title: '음성 복제', desc: '10초만 녹음하세요. ElevenLabs가 당신의 음성 뉴럴 클론을 만들어 135개 이상 언어로 번역을 말합니다. 속도 0.5x-2x. 남성 또는 여성 선택.', icon: 'M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z' },
+  { title: '5가지 AI 작문 도구', desc: '번역 전 텍스트 수정 — 문법 교정, 톤 조정(5가지 옵션), 길이 변경, 글머리기호/요약으로 재구성 또는 스타일 변경.', icon: 'M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125' },
+  { title: '카메라 OCR 번역', desc: '간판, 메뉴, 라벨, 문서에 카메라를 대세요. Vision OCR과 비라틴 문자용 GPT-4o 하이브리드 라우팅. 라이브 카메라 또는 사진 업로드.', icon: 'M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z' },
+  { title: '실시간 AR 번역', desc: 'ARKit 기반 현실 세계에 고정된 3D 번역 카드. 글라스모피즘 오버레이, 햅틱 피드백, TTS, 탭하여 복사. 라틴 문자 지원.', icon: 'M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+  { title: '문서 번역', desc: 'PDF, DOCX, TXT 또는 사진을 가져오세요. AI가 각 텍스트 블록을 번역하고 원본 레이아웃을 유지하며 문서를 재구성. 아랍어, 히브리어, 우르두어 RTL 완전 지원.', icon: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z' },
+  { title: '내장 번역 키보드', desc: 'iMessage, WhatsApp, Instagram, Telegram, 이메일 — iPhone의 모든 텍스트 필드에서 작동하는 iOS 키보드 확장. 내 언어로 입력, 상대 언어로 전송.', icon: 'M3.75 9h16.5m-16.5 6.75h16.5' },
+  { title: '오프라인 온디바이스 번역', desc: 'ML Kit 기반 온디바이스 59개 언어. 언어 팩 1회 다운로드(5-50MB). 서버 연결 제로. 모든 처리가 iPhone에서 완료.', icon: 'M3 3l8.735 8.735m0 0a.374.374 0 11.53.53m-.53-.53l.53.53m0 0L21 21M14.652 9.348a3.75 3.75 0 010 5.304m2.121-7.425a6.75 6.75 0 010 9.546m2.121-11.667C21.583 7.792 23.25 9.77 23.25 12c0 2.23-1.667 4.208-4.356 6.894' },
+  { title: '기본 시스템 번역기', desc: 'iOS 18.4+: TranslateNow를 iPhone 기본 시스템 번역기로 설정. Safari, Mail, 메시지에서 텍스트 선택 — "번역"이 TranslateNow를 통해 작동.', icon: 'M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3' },
+];
+
+const STEPS = [
+  { num: '01', title: '말하기, 입력, 촬영 또는 비추기', desc: '음성 입력, 텍스트, 카메라 OCR, AR 오버레이, 문서 가져오기 또는 키보드 — 6가지 입력 모드, 복잡함 제로.', icon: 'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z' },
+  { num: '02', title: 'AI가 행간을 읽다', desc: 'GPT-4o가 톤, 의도, 문화적 뉘앙스를 분석. 9가지 톤과 5가지 작문 도구 중 선택하여 번역.', icon: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z' },
+  { num: '03', title: '현지인처럼 소통하기', desc: '135개 이상 언어. 온라인 또는 오프라인. 당신의 복제된 목소리로 — 발음, 예문, 동의어 포함.', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' },
+];
+
+const SCREENSHOTS = [
+  { image: translateSs1, label: '위젯', alt: 'TranslateNow 홈 화면 위젯 오늘의 단어' },
+  { image: translateSs2, label: 'AI 번역', alt: 'TranslateNow AI 번역 문맥·예문·동의어' },
+  { image: translateSs3, label: '문서', alt: 'TranslateNow PDF 문서 번역' },
+  { image: translateSs4, label: '키보드', alt: 'TranslateNow 키보드 확장 설정' },
+  { image: translateSs5, label: '기록', alt: 'TranslateNow 번역 기록 검색 기능' },
+  { image: translateSs6, label: '음성 복제', alt: 'TranslateNow 음성 복제 설정' },
+  { image: translateSs7, label: 'AI 음성', alt: 'TranslateNow AI 음성 선택' },
+  { image: translateSs8, label: '설정', alt: 'TranslateNow 설정 오프라인 모드' },
+  { image: translateSs9, label: 'AR 번역', alt: 'TranslateNow AR 번역 3D 오버레이' },
+  { image: translateSs10, label: '카메라', alt: 'TranslateNow 카메라 번역' },
+  { image: translateSs11, label: 'AI 대화', alt: 'TranslateNow AI 대화 로봇 어시스턴트' },
+];
+
+const DEEP_DIVES = [
+  { tag: '음성 복제', title: '당신의 목소리. 모든 언어로.', desc: 'ElevenLabs 뉴럴 음성 합성이 당신의 AI 음성 복제본을 생성합니다. 10초 샘플 녹음. 재생 속도 0.5x~2x. 남성 또는 여성 음성 선택. 라이브 대화용 스트리밍 PCM(~75ms 지연) — 기록 재생용 비스트리밍 MP3.',
+    bullets: ['ElevenLabs 기반 자연스러운 억양의 뉴럴 음성 합성', '재생 속도 0.5x~2x 조절', '남성 및 여성 음성 옵션', '라이브 대화용 스트리밍 PCM(~75ms 지연)'],
+    image: translateSs6, imageAlt: 'TranslateNow 음성 복제 설정 속도 조절 및 음성 유형 선택' },
+  { tag: '카메라 + AR 번역', title: '비추고. 찍고. 이해하기.', desc: '하나의 화면에 두 가지 모드 — 즉석 스냅을 위한 카메라 OCR과 라이브 3D 오버레이를 위한 AR 모드. 카메라는 Apple Vision으로 텍스트 인식, 비라틴 문자(힌디어, 아랍어, CJK)에는 GPT-4o 하이브리드 라우팅. AR 모드는 ARKit SceneKit으로 글라스모피즘 번역 카드 오버레이.',
+    bullets: ['라이브 카메라 + 사진 업로드 + AR 스캔 모드', '월드 스페이스에 고정된 ARKit 3D 글라스모피즘 카드', '비라틴 문자용 Vision + GPT-4o 하이브리드 라우팅', '간판, 메뉴, 문서, 약 라벨, 영수증'],
+    image: translateSs10, imageAlt: 'TranslateNow 카메라 OCR 및 실시간 AR 번역 떠다니는 3D 오버레이' },
+  { tag: 'AR 번역', title: '현실 세계에서 번역을 보세요.', desc: '카메라를 텍스트에 비추면 번역이 3D로 떠다닙니다. ARKit SceneKit이 실제 표면에 고정된 글라스모피즘 번역 카드를 렌더링. 이동해도 번역이 고정된 상태 유지. 135개 이상 언어로 간판, 메뉴, 라벨, 문서 지원.',
+    bullets: ['ARKit SceneKit 기반 실시간 AR 오버레이', '월드 스페이스 고정 글라스모피즘 3D 카드', '카메라 이동 시에도 번역 유지', '간판, 메뉴, 약 라벨, 매장 앞면 지원'],
+    image: translateSs9, imageAlt: 'TranslateNow AR 번역 현실 세계 텍스트에 고정된 떠다니는 3D 오버레이' },
+  { tag: '문서 번역', title: '문서 전체 번역. 레이아웃 그대로.', desc: 'PDF, DOCX, TXT 또는 사진 가져오기. 문서 파서가 각 텍스트 블록 추출. GPT-4o가 각 블록 번역. 리컨스트럭터가 포맷, 글꼴, 레이아웃을 유지하며 문서 재구성 — RTL 언어 포함.',
+    bullets: ['PDF, DOCX, TXT 및 사진 문서 지원', '레이아웃 보존 리컨스트럭션 엔진', 'RTL 완전 지원 — 아랍어, 히브리어, 우르두어', '페이지별 진행률 추적 배치 처리', '썸네일 및 재내보내기 포함 문서 기록'],
+    image: translateSs3, imageAlt: 'TranslateNow PDF DOCX 문서 번역 레이아웃 보존' },
+];
+
+const WRITING_TOOLS = [
+  { title: '문법', desc: '맞춤법, 시제, 일치 자동 교정' },
+  { title: '톤', desc: '친근한 · 전문적 · 유머러스 · 캐주얼 · 간단한' },
+  { title: '길이', desc: '간결(40-60%) 또는 확장(150-200%)' },
+  { title: '형식', desc: '요약 · 핵심 포인트 · 글머리기호 목록' },
+  { title: '스타일', desc: '학술적 · 창의적 · 시적 · 설득력 있는' },
+];
+
+const AI_FEATURES = [
+  { title: 'AI 문맥화', desc: '모든 번역이 GPT-4o 기반 사용 예시, 동의어, 톤 변형을 반환합니다.' },
+  { title: '9가지 번역 톤', desc: '표준, 격식, 일상, 친근, 비즈니스, 간단, 문학적, 유머, 캐주얼.' },
+  { title: '음역 엔진', desc: '모든 비라틴 문자의 로마자 발음 — 일본어, 한국어, 중국어, 아랍어, 힌디어, 러시아어, 태국어, 그리스어, 히브리어.' },
+  { title: '7개 뉴럴 AI 음성', desc: 'Coral, Alloy, Echo, Fable, Onyx, Nova, Shimmer — OpenAI 기반 7개 고유한 음성 개성.' },
+  { title: '음성-텍스트 입력', desc: '온디바이스 음성 인식이 번역 파이프라인에 직접 입력. 구두점과 쉼표 처리.' },
+  { title: '대화 녹음 및 내보내기', desc: 'AI 대화 세션을 녹음하고 .m4a 오디오로 내보내기. 사용자 음성 + AI 음성을 시간순으로 기록.' },
+  { title: '앱 30개 언어 지원', desc: '힌디어, 스페인어, 프랑스어, 독일어, 일본어, 한국어, 중국어, 아랍어, 히브리어 등 30개 언어로 현지화.' },
+  { title: '속도 조절(0.5x – 2x)', desc: '복제 음성과 시스템 TTS의 재생 속도 조절. 학습 시 느리게, 참고 시 빠르게.' },
+];
+
+const IOS_FEATURES = [
+  { title: '홈 화면 위젯', desc: '빠른 번역, 최근 번역, 오늘의 단어 — 홈 화면에서 바로 번역하는 3가지 위젯.' },
+  { title: '제어 센터(iOS 18+)', desc: '카메라, 음성, 텍스트 번역 컨트롤이 iOS 18 제어 센터에 추가. 어떤 화면에서든 원탭 접근.' },
+  { title: '라이브 액티비티 및 Dynamic Island', desc: '활성 AI 대화 및 문서 번역 세션이 잠금 화면과 Dynamic Island에 실시간 진행률로 표시.' },
+  { title: 'Siri 단축어(5개 액션)', desc: '"시리야, TranslateNow로 번역해." 5가지 음성 인텐트: 텍스트 번역, 클립보드, 대화, 카메라, 다운로드.' },
+  { title: 'Spotlight 인덱스', desc: '최근 50개 번역이 CoreSpotlight에 인덱싱. 시스템 전체에서 과거 번역 검색 가능.' },
+  { title: '오늘의 단어', desc: 'AI 생성 일일 어휘 발음과 번역 포함. 홈 화면 위젯으로 제공, GPT-4o-mini 기반.' },
+  { title: '기본 시스템 번역기(iOS 18.4+)', desc: 'TranslateNow를 iPhone 기본 번역 엔진으로 설정. Safari, Mail, 메시지에서 시스템 메뉴로 번역.' },
+  { title: '유니버설 딥링크', desc: 'lingualink:// URL 스킴이 위젯, Siri, Spotlight, 제어 센터를 올바른 기능에 직접 연결.' },
+];
+
+const USE_CASES = [
+  { title: '해외 여행자', desc: 'AR로 간판, 카메라로 메뉴, 음성으로 대화를 번역 — 인터넷 유무 관계없이.', icon: 'M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5' },
+  { title: '비즈니스 전문가', desc: '계약서와 PDF를 포맷 유지하며 번역. 이메일용 전문적 톤 조정. 프레젠테이션용 음성 복제.', icon: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0' },
+  { title: '언어 학습자', desc: 'AI 문맥화가 예문과 동의어를 제공 — 교과서식 출력이 아닌. 비라틴 문자 음역. 오늘의 단어 위젯.', icon: 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5' },
+  { title: '다국어 메시지', desc: '키보드 확장이 WhatsApp, iMessage, Instagram, Telegram — 텍스트 필드가 있는 모든 iOS 앱에서 입력 중 번역.', icon: 'M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z' },
+  { title: '프라이버시 중시 사용자', desc: '오프라인 모드로 59개 언어를 완전히 디바이스에서 번역. 서버 연결 없음, 클라우드 저장 없음, 데이터 수집 없음.', icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' },
+  { title: '다국어 가족', desc: '세대 간 언어의 다리를 놓으세요. 가족 구성원의 음성을 복제하여 조부모가 익숙한 목소리로 번역을 들을 수 있도록.', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3' },
+];
+
+const STATS = [
+  { value: '135', suffix: '+', label: '지원 언어' },
+  { value: '30', suffix: '', label: '앱 언어' },
+  { value: '9', suffix: '', label: '번역 톤' },
+  { value: '59', suffix: '', label: '오프라인 언어' },
+];
+
+const TESTIMONIALS = [
+  { name: 'Sarah K.', role: '잦은 여행자', text: '음성 복제에 놀랐습니다. 한 번 녹음했을 뿐인데 이제 제 목소리로 일본어를 합니다. 도쿄 호스트가 믿을 수 없다는 표정이었어요.' },
+  { name: 'Marco R.', role: '국제 비즈니스', text: '번역 키보드는 LinkedIn과 이메일의 혁명입니다. 앱 전환 없이 이탈리아어로 답장합니다. 문서 번역으로 계약서 번역 시간을 몇 시간이나 절약 — 레이아웃 완벽 보존.' },
+  { name: 'Priya M.', role: '학생', text: '드디어 교과서처럼 들리지 않는 번역기. 작문 도구로 번역 전에 톤을 조정할 수 있어요 — 프랑스어 에세이가 자연스럽게 들립니다. AI 예문이 정말 놀라워요.' },
+];
+
+const COMPARISON = [
+  { feature: '음성 복제(내 목소리)', tn: true, gt: false, dl: false },
+  { feature: '실시간 AR 번역(ARKit)', tn: true, gt: false, dl: false },
+  { feature: '문서 번역(PDF/DOCX/TXT)', tn: true, gt: false, dl: true },
+  { feature: 'AI 작문 도구(5개 내장)', tn: true, gt: false, dl: false },
+  { feature: '번역 키보드(모든 앱)', tn: true, gt: false, dl: false },
+  { feature: '시스템 번역기(iOS 18.4+)', tn: true, gt: false, dl: false },
+  { feature: 'iOS 위젯(3종류)', tn: true, gt: false, dl: false },
+  { feature: '제어 센터(iOS 18)', tn: true, gt: false, dl: false },
+  { feature: 'Siri 단축어(5개 액션)', tn: true, gt: false, dl: false },
+  { feature: '라이브 액티비티 / Dynamic Island', tn: true, gt: false, dl: false },
+  { feature: 'Spotlight 인덱스', tn: true, gt: false, dl: false },
+  { feature: 'AI 문맥 + 예문 + 동의어', tn: true, gt: false, dl: false },
+  { feature: '음역(비라틴 문자)', tn: true, gt: false, dl: false },
+  { feature: '9가지 번역 톤', tn: true, gt: false, dl: false },
+  { feature: '7개 뉴럴 AI 음성', tn: true, gt: false, dl: false },
+  { feature: '대화 녹음(.m4a)', tn: true, gt: false, dl: false },
+  { feature: '속도 조절(0.5x-2x)', tn: true, gt: false, dl: false },
+  { feature: '오늘의 단어 위젯', tn: true, gt: false, dl: false },
+  { feature: 'AI 대화(Realtime API)', tn: true, gt: true, dl: false },
+  { feature: '카메라 OCR 번역', tn: true, gt: true, dl: false },
+  { feature: '오프라인 온디바이스 번역', tn: true, gt: true, dl: true },
+  { feature: '135개 이상 언어', tn: true, gt: true, dl: '30+' },
+];
+
+const FAQ_ITEMS = [
+  { q: 'TranslateNow란?', a: 'TranslateNow는 음성 복제, AR 번역, 문서 번역, 카메라 OCR, 키보드 확장, AI 작문 도구, 오프라인 모드로 135개 이상 언어를 지원하는 iOS AI 번역 앱입니다. Siri 단축어, 홈 화면 위젯, 제어 센터, 라이브 액티비티, Dynamic Island, Spotlight 검색, iOS 18.4+ 시스템 번역기 API와도 통합됩니다. Coachie AI 개발.' },
+  { q: 'TranslateNow의 음성 복제는 어떻게 작동하나요?', a: '음성 복제는 10초 음성 샘플을 녹음하면 ElevenLabs가 135개 이상 언어로 번역을 말하는 AI 음성 복제본을 만듭니다. 오디오 파일 업로드도 가능합니다. 남성 또는 여성 음성 선택, 속도 0.5x~2x 조절, 자연스러운 억양으로 자신의 목소리 번역을 들을 수 있습니다. 음성 복제는 Pro 기능입니다.' },
+  { q: '실시간 AR 번역이란?', a: 'AR 번역은 ARKit으로 iPhone 카메라를 통해 텍스트를 감지하고 SceneKit으로 실제 공간에 고정된 3D 글라스모피즘 번역 카드를 오버레이합니다. 간판, 메뉴, 문서에 카메라를 비추면 — 번역이 3D로 떠다닙니다. 카드를 탭하여 텍스트 복사, TTS 발음 듣기, 햅틱 피드백 받기.' },
+  { q: 'TranslateNow로 PDF, Word, 텍스트 문서를 번역할 수 있나요?', a: '네, TranslateNow는 PDF, DOCX, TXT, 사진 문서를 레이아웃 보존으로 번역합니다. 파서가 각 텍스트 블록을 추출하고, GPT-4o가 번역하고, 리컨스트럭션 엔진이 원본 포맷, 글꼴, 레이아웃을 유지하며 문서를 재구성합니다. 아랍어, 히브리어, 우르두어 RTL 완전 지원.' },
+  { q: 'iPhone에서 인터넷 없이 오프라인 번역이 가능한가요?', a: '네, 59개 언어가 Google ML Kit 기반 완전 오프라인 온디바이스 번역으로 이용 가능합니다. WiFi로 언어 팩을 1회 다운로드(각 5-50MB)하면 인터넷 없이 어디서든 번역합니다. 데이터 전송 제로 — 모든 처리가 iPhone에서 완료.' },
+  { q: '번역 키보드는 어떻게 작동하나요?', a: '번역 키보드는 텍스트 필드가 있는 모든 앱에서 작동하는 iOS 내장 키보드 확장입니다 — iMessage, WhatsApp, Instagram, Telegram, LinkedIn, Gmail, Slack 등. 내 언어로 입력하면 키보드가 번역하여 대상 언어로 전송합니다. 앱 전환 불필요.' },
+  { q: '어떤 AI 작문 도구가 포함되어 있나요?', a: 'TranslateNow에는 번역 전 텍스트를 수정하는 5가지 AI 작문 도구가 포함됩니다: 문법(자동 교정), 톤(친근, 전문적, 유머, 캐주얼, 간단), 길이(간결 40-60% 또는 확장 150-200%), 형식(요약, 핵심 포인트, 목록), 스타일(학술적, 창의적, 시적, 설득력). 다른 번역 앱에는 내장 작문 도구가 없습니다.' },
+  { q: 'TranslateNow는 Siri, 위젯, 제어 센터, 라이브 액티비티를 지원하나요?', a: '네, TranslateNow는 깊은 iOS 통합을 갖추고 있습니다. 5개 Siri 단축어, 3종 홈 화면 위젯(빠른 번역, 최근 번역, 오늘의 단어), iOS 18 제어 센터 3개 컨트롤(카메라, 음성, 텍스트), 활성 세션 중 잠금 화면 라이브 액티비티와 Dynamic Island, 최근 50개 번역 Spotlight 인덱싱을 포함합니다.' },
+  { q: 'TranslateNow를 iPhone 기본 번역기로 설정할 수 있나요?', a: '네, iOS 18.4 이상에서 TranslateNow는 시스템 번역 공급자로 등록됩니다. Safari, Mail, 메시지에서 텍스트를 선택하고 컨텍스트 메뉴에서 "번역"을 탭하면 Apple 내장 번역기 대신 TranslateNow를 통해 번역됩니다.' },
+  { q: 'TranslateNow 가격은?', a: 'TranslateNow는 기본 번역 기능으로 무료 다운로드. 프리미엄 플랜: 주간 $9.99/주(3일 무료 체험)와 월간 $29.99/월(최고 가치, 25% 절약). 두 플랜 모두 음성 복제, AI 작문 도구, 문서 번역, AR 번역, 모든 프리미엄 기능 잠금 해제. Apple 구독 관리에서 언제든 취소 가능.' },
+  { q: 'TranslateNow가 Google Translate와 DeepL보다 나은 점은?', a: 'TranslateNow에는 Google Translate에도 DeepL에도 없는 22가지 기능이 있습니다. AI 음성 복제, ARKit 실시간 AR 번역, 내장 5가지 작문 도구, 모든 앱용 번역 키보드, 레이아웃 재구성 문서 번역, 시스템 번역기(iOS 18.4+), Siri 단축어, 홈 화면 위젯 3종, 제어 센터 컨트롤, Dynamic Island 라이브 액티비티, .m4a 대화 녹음, 예문·동의어 AI 문맥, 음역, 9가지 톤, 7개 뉴럴 AI 음성, 속도 조절.' },
+  { q: 'TranslateNow는 WhatsApp, iMessage, Instagram에서 사용 가능한가요?', a: '네. 내장 키보드 확장이 텍스트 필드가 있는 모든 iOS 앱에서 작동합니다 — WhatsApp, iMessage, Instagram, Telegram, LinkedIn, Gmail, Slack 등. 설정 → 일반 → 키보드 → 키보드 → 새 키보드 추가 → TranslateNow에서 활성화.' },
+  { q: 'TranslateNow는 몇 개 언어를 지원하나요?', a: 'TranslateNow는 GPT-4o 기반 클라우드 번역 135개 이상 언어, Google ML Kit 기반 오프라인 온디바이스 번역 59개 언어를 지원하며, 앱 인터페이스는 힌디어, 스페인어, 프랑스어, 독일어, 일본어, 한국어, 중국어, 아랍어, 히브리어 등 30개 언어로 현지화.' },
+  { q: 'TranslateNow는 프라이빗 번역에 안전한가요?', a: '오프라인 모드에서 모든 번역 처리가 ML Kit을 통해 iPhone에서 완전히 이루어지며 데이터 전송은 제로. 클라우드 기능의 경우 텍스트는 OpenAI 및 ElevenLabs API에서 표준 암호화로 처리됩니다. Coachie AI 서버에는 번역 데이터가 저장되지 않습니다.' },
+  { q: 'iPhone에서 WhatsApp 메시지를 번역하는 방법은?', a: 'iPhone에서 WhatsApp 메시지를 번역하려면 설정 → 일반 → 키보드 → 키보드 → 새 키보드 추가 → TranslateNow에서 키보드 확장을 활성화하세요. WhatsApp을 열고 키보드의 지구본 아이콘을 탭하여 TranslateNow로 전환, 내 언어로 메시지를 입력하면 전송 전 자동 번역됩니다.' },
+  { q: 'iPhone에서 PDF 문서를 번역하는 방법은?', a: 'iPhone에서 PDF를 번역하려면 TranslateNow를 열고 문서 번역 기능을 탭한 후 파일, iCloud 또는 이메일에서 PDF를 가져오세요. 앱이 모든 텍스트 블록을 추출하고 GPT-4o로 각 블록을 번역하고 원본 포맷, 글꼴, 페이지 레이아웃을 유지하며 문서를 재구성합니다.' },
+  { q: '번역에 음성 복제를 사용하는 방법은?', a: 'TranslateNow에서 음성 복제를 사용하려면 설정 → 음성 복제에서 10초 음성 샘플을 녹음(또는 오디오 파일 업로드)하면 ElevenLabs AI 엔진이 뉴럴 음성 클론을 생성합니다. 생성 후 클론 음성이 135개 이상 언어로 모든 번역을 발음합니다. 속도 0.5x~2x 조절, 남성 또는 여성 음성 선택 가능. 음성 복제에는 Pro 구독이 필요합니다.' },
+  { q: 'iPhone iOS 18.4에서 기본 번역기를 설정하는 방법은?', a: 'iOS 18.4 이상에서 TranslateNow를 기본 번역기로 설정하려면 설정 → 앱 → TranslateNow에서 번역 공급자 옵션을 활성화하세요. 활성화 후 Safari, Mail, 메시지에서 텍스트를 선택하고 컨텍스트 메뉴에서 "번역"을 탭할 때마다 Apple 내장 번역기 대신 TranslateNow를 통해 번역됩니다.' },
+  { q: 'iPhone에서 인터넷 없이 오프라인으로 텍스트를 번역하는 방법은?', a: 'iPhone에서 오프라인 번역하려면 TranslateNow를 열고 설정 → 오프라인 언어에서 필요한 언어 팩을 다운로드(각 5-50MB)하세요. 다운로드 후 인터넷 연결 없이 번역 작동. 59개 언어가 ML Kit 온디바이스 번역으로 이용 가능. 모든 처리가 iPhone에서 완료되며 데이터 전송 없음.' },
+  { q: 'TranslateNow가 Google Translate보다 나은가요?', a: 'TranslateNow는 Google Translate에 없는 22가지 기능을 제공합니다. 음성 복제, ARKit 실시간 AR 번역, WhatsApp·iMessage용 키보드 확장, 5가지 AI 작문 도구, 레이아웃 보존 문서 번역, 9가지 톤, iOS 18.4+ 시스템 번역기, Siri·위젯·제어 센터·Dynamic Island iOS 깊은 통합. Google Translate는 오프라인 언어가 더 많고 구독 없이 무료입니다.' },
+  { q: 'TranslateNow가 DeepL보다 나은가요?', a: 'TranslateNow는 iOS 사용자를 위해 DeepL보다 훨씬 많은 기능을 제공합니다. 음성 복제, AR 번역, 카메라 OCR, 키보드 확장, 5가지 AI 작문 도구, 59개 언어 오프라인 모드, iOS 깊은 통합. TranslateNow는 135개 이상 언어 지원 대 DeepL의 30개 이상. DeepL은 유럽 언어의 높은 번역 품질과 텍스트 번역 무료 요금제로 유명합니다.' },
+];
+
+const faqSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_ITEMS.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) });
+
+const appSD = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'MobileApplication', '@id': 'https://coachie-ai.com/translate-now/ko/#app',
+  name: 'TranslateNow: AI Translator', alternateName: ['TranslateNow', 'Translate Now AI Translator'],
+  description: '음성 복제, AR 번역, 문서 번역, AI 대화, 5가지 작문 도구, 9가지 톤, 카메라 OCR, 번역 키보드, Siri, 위젯, 제어 센터, Dynamic Island, 시스템 번역기, ML Kit 오프라인, 135개 이상 언어 지원 AI 번역 앱.',
+  applicationCategory: 'UtilitiesApplication', operatingSystem: 'iOS 16.0+', url: 'https://coachie-ai.com/translate-now/ko', downloadUrl: APP_STORE_URL,
+  image: 'https://coachie-ai.com/translate_icon.png', softwareVersion: '1.0', datePublished: '2025-01-01', dateModified: '2026-03-14', inLanguage: 'ko',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '150', bestRating: '5', worstRating: '1' },
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'USD', lowPrice: '0', highPrice: '29.99', offerCount: 3, offers: [
+    { '@type': 'Offer', name: '무료', price: '0', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: '주간 프리미엄', price: '9.99', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: '월간 프리미엄', price: '29.99', priceCurrency: 'USD' },
+  ]},
+  author: { '@type': 'Organization', name: 'Coachie AI', url: 'https://coachie-ai.com', email: SUPPORT_EMAIL },
+});
+
+const breadcrumbSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: '홈', item: 'https://coachie-ai.com' },
+  { '@type': 'ListItem', position: 2, name: 'TranslateNow', item: 'https://coachie-ai.com/translate-now' },
+  { '@type': 'ListItem', position: 3, name: '한국어', item: 'https://coachie-ai.com/translate-now/ko' },
+]});
+
+const howToSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'HowTo', name: 'TranslateNow로 번역하는 방법', description: 'iOS용 TranslateNow AI Translator로 3단계로 번역하세요.', totalTime: 'PT10S', step: [
+  { '@type': 'HowToStep', position: 1, name: '말하기, 입력, 촬영 또는 비추기', text: '입력 모드 선택: 음성, 텍스트, 카메라 OCR, AR 오버레이, 문서 가져오기 또는 키보드 확장. TranslateNow는 6가지 방법을 지원합니다.' },
+  { '@type': 'HowToStep', position: 2, name: 'AI가 행간을 읽다', text: 'GPT-4o가 톤, 의도, 문화적 뉘앙스를 분석합니다. 9가지 톤과 5가지 AI 작문 도구에서 선택하세요.' },
+  { '@type': 'HowToStep', position: 3, name: '현지인처럼 소통', text: '135개 이상 언어로 번역을 받으세요. 온라인 또는 오프라인, 복제된 목소리로 — 발음 가이드, 예문, 동의어 포함.' },
+]});
+
+const orgSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Coachie AI', url: 'https://coachie-ai.com', email: SUPPORT_EMAIL,
+  description: 'Coachie AI는 iOS 및 Android용 AI 모바일 앱을 개발합니다. TranslateNow: AI Translator와 웰니스 앱 Coachie 포함.',
+  sameAs: ['https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185', 'https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791'],
+});
+---
+
+<TranslateNowLayout
+  title="TranslateNow: AI 번역 앱 | 음성 복제, AR 번역, 문서 번역 & 135개 이상 언어"
+  description="iPhone용 AI 번역 앱. 음성 복제, 실시간 AR 번역, 문서 번역(PDF/DOCX), 카메라 OCR, WhatsApp·iMessage용 키보드 확장, 5가지 작문 도구, 9가지 톤, 시스템 번역기(iOS 18.4+), Siri, 위젯, 오프라인 모드 & 135개 이상 언어. 무료 다운로드."
+  canonical="https://coachie-ai.com/translate-now/ko"
+  lang="ko"
+  keywords="AI 번역 앱, 음성 복제 번역, AR 번역 앱, PDF 번역 iPhone, 오프라인 번역 iOS, 카메라 번역 OCR, 키보드 번역 iPhone, WhatsApp 메시지 번역, TranslateNow, 최고의 번역 앱 iPhone, 한국어 번역 앱"
+  hreflangLinks={HREFLANG_LINKS}
+  structuredData={[appSD, faqSD, breadcrumbSD, howToSD, orgSD]}
+>
+  <noscript><style>{`[data-gsap],[data-gsap="fade-up"],.tn-glass-card,.tn-faq-item,[data-gsap-writing-card],[data-gsap-stat-item],[data-gsap-plan],[data-gsap-shot],[data-gsap-social-item],[data-gsap-footer]>*,[data-gsap-hero-title],[data-gsap-hero-sub],[data-gsap-hero-desc],[data-gsap-hero-cta],[data-gsap-hero-phone],[data-gsap-badge],[data-gsap-trust],[data-gsap-dd-text],[data-gsap-dd-phone],[data-gsap-robot-img],[data-gsap-robot-text],[data-gsap-cta-icon],[data-gsap-cta-glow],[data-gsap-cta-btn],[data-gsap-step],[data-gsap-step-icon],[data-gsap-step-label],[data-gsap-how-line],.tn-section-tag{opacity:1!important;visibility:visible!important;transform:none!important}`}</style></noscript>
+
+  <nav class="tn-nav" aria-label="메인 내비게이션">
+    <div class="max-w-6xl mx-auto h-full flex items-center justify-between px-5 sm:px-6 lg:px-8">
+      <a href="/translate-now" class="flex items-center gap-2.5 no-underline group"><Image src={translateIcon} alt="TranslateNow 아이콘" class="w-8 h-8 rounded-xl object-cover" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);" width={96} height={96} /><span class="font-bold text-[15px] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">TranslateNow</span></a>
+<div class="hidden sm:flex items-center gap-3">
+        <div class="relative tn-lang-dropdown">
+          <button type="button" class="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all duration-200 hover:bg-white/5 tn-lang-toggle" style="color: var(--tn-text-muted); border: 1px solid rgba(255,255,255,0.08);" aria-expanded="false" aria-haspopup="true">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+            <span>Korean</span>
+            <svg class="w-3 h-3 transition-transform tn-lang-chevron" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+          </button>
+          <div class="absolute right-0 top-full mt-2 py-2 rounded-xl opacity-0 invisible transition-all duration-200 tn-lang-menu" style="background: rgba(30,30,35,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); min-width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 100;">
+            <a href="/translate-now/ko" class="px-3 py-1.5 text-xs no-underline transition-colors hover:bg-white/5" style="color: var(--tn-soft-coral); font-weight: 500;">Korean</a>
+            {LANGUAGE_LINKS.map((link) => (
+              <a href={link.href} class="px-3 py-1.5 text-xs no-underline transition-colors hover:bg-white/5" style="color: var(--tn-text-muted);">{link.label}</a>
+            ))}
+          </div>
+        </div>
+        <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn">다운로드</a>
+      </div>
+      <button class="sm:hidden p-2 rounded-lg transition-colors hover:bg-white/5 tn-mobile-toggle" aria-label="메뉴 토글" style="color: var(--tn-text-primary);"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg></button>
+    </div>
+    <div class="tn-mobile-menu sm:hidden">
+      {LANGUAGE_LINKS.map((link) => (<a href={link.href} class="text-sm text-center px-4 py-2.5 rounded-xl no-underline transition-colors hover:bg-white/5" style="color: var(--tn-text-muted);">{link.label}</a>))}
+      <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn w-full text-center mt-1">다운로드</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="relative min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 pt-20 pb-12 overflow-hidden" style="background: var(--tn-bg-primary);" data-gsap-hero>
+      <div class="absolute top-1/2 left-1/2 pointer-events-none" data-gsap-hero-glow style="width: 900px; height: 900px; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255,107,74,0.12) 0%, rgba(255,107,74,0.04) 40%, transparent 70%);"></div>
+      <p class="sr-only">TranslateNow AI Translator — 음성 복제, AR 카메라 번역, 문서 번역, 오프라인 모드로 135개 이상 언어를 번역하는 iPhone 앱.</p>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
+          <div class="flex-1 text-center lg:text-left max-w-xl">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6" style="background: var(--tn-coral-bg); color: var(--tn-soft-coral); border: 1px solid rgba(255,107,74,0.12);" data-gsap-trust>
+              <div class="flex -space-x-0.5">{[...Array(5)].map(() => (<svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="var(--tn-coral-fire)" stroke="var(--tn-coral-fire)"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>))}</div>
+              <span>최고 평점 AI 번역 앱</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-[58px] font-extrabold leading-[1.08] mb-6 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">음성 복제 AI 번역기. <span class="tn-gradient-text">내 목소리로 말하기.</span></h1>
+            <h2 class="text-lg sm:text-xl font-medium mb-4 leading-relaxed max-w-lg mx-auto lg:mx-0" style="color: var(--tn-text-tertiary); font-family: var(--font-body);" data-gsap-hero-sub>AR 번역, 문서, 작문 도구, 시스템 번역기 & 오프라인 모드로 135개 이상 언어 번역</h2>
+            <p class="text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed" style="color: var(--tn-text-secondary); font-family: var(--font-body);" data-gsap-hero-desc>TranslateNow는 음성 복제, 실시간 AR 오버레이(ARKit), 문서 번역(PDF/DOCX/TXT), 실시간 AI 대화, 5가지 작문 도구, 9가지 톤, 카메라 OCR, 모든 앱용 키보드, Siri, 위젯, 오프라인 번역으로 135개 이상 언어를 번역합니다.</p>
+            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start" data-gsap-hero-cta>
+              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn tn-coral-btn-large" data-magnetic="0.25">App Store에서 무료 다운로드<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></a>
+            </div>
+          </div>
+          <div class="relative flex-shrink-0" data-gsap-hero-phone>
+            <div class="tn-phone-glow" style="width: 400px; height: 700px;"></div>
+            <div class="tn-phone-frame tn-phone-frame-large relative mx-auto"><div class="tn-phone-notch"></div><Image src={translateSs2} alt="TranslateNow AI 번역 문맥·예문·동의어 표시" class="w-full h-full object-cover" width={280} height={580} /><div class="tn-phone-reflection"></div></div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="top: 8%; right: -30%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>135+ 언어</div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="top: 42%; left: -38%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>음성 복제</div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="bottom: 12%; right: -28%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>오프라인 대응</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-6 px-5 sm:px-6 lg:px-8 overflow-hidden" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle); border-bottom: 1px solid var(--tn-bg-border-subtle);" data-gsap-social><div class="max-w-6xl mx-auto flex items-center justify-center gap-8 sm:gap-14 flex-wrap">{SOCIAL_PROOF.map((item) => (<div class="flex items-center gap-2 text-xs font-medium" style="color: var(--tn-text-muted);" data-gsap-social-item><svg class="w-4 h-4" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={item.icon} /></svg><span>{item.label}</span></div>))}</div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>핵심 기능</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">9가지 AI 번역 모드</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">음성, 텍스트, 카메라, AR, 문서, 키보드, 시스템 번역기, Siri, 오프라인. Google Translate와 DeepL에 없는 기능.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-gsap-card-grid>{FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><div class="tn-icon-box mb-4 transition-transform duration-300 group-hover:scale-110"><svg class="w-[22px] h-[22px]" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={f.icon} /></svg></div><h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <section class="py-20 sm:py-24 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>사용 방법</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">TranslateNow로 3단계 번역</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">생각에서 번역된 말까지 2초 이내 — GPT-4o와 온디바이스 ML이 구동.</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative" data-gsap-how><div class="hidden md:block absolute top-10 left-[20%] right-[20%] h-px" data-gsap-how-line style="background: linear-gradient(90deg, transparent, rgba(255,107,74,0.25), rgba(255,107,74,0.25), transparent);"></div>{STEPS.map((s) => (<div class="relative text-center group" data-gsap-step><div class="relative z-10 inline-flex flex-col items-center"><div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-105" data-gsap-step-icon style="background: linear-gradient(135deg, rgba(255,107,74,0.15), rgba(255,107,74,0.05)); border: 1px solid rgba(255,107,74,0.2);"><svg class="w-[26px] h-[26px]" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={s.icon} /></svg></div><span class="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" data-gsap-step-label style="color: var(--tn-soft-coral); font-family: var(--font-display);">스텝 {s.num}</span></div><h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{s.title}</h3><p class="text-sm leading-relaxed max-w-[280px] mx-auto" style="color: var(--tn-text-secondary);">{s.desc}</p></div>))}</div></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8 overflow-hidden" style="background: var(--tn-bg-primary);" data-gsap-gallery><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>앱 미리보기</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">TranslateNow 체험하기</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">강력한 AI 번역 도구 — 음성 복제, 카메라, AR, 문서 — 프리미엄 다크 UI로.</p></div><div class="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide justify-start" data-gsap-gallery-track>{SCREENSHOTS.map((s) => (<div class="flex-shrink-0 snap-center flex flex-col items-center gap-3 group" data-gsap-shot><div class="tn-phone-frame transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl" style="width: 200px; height: 420px;"><div class="tn-phone-notch"></div><Image src={s.image} alt={s.alt} class="w-full h-full object-cover" loading="lazy" width={400} height={840} /></div><span class="text-xs font-medium" style="color: var(--tn-text-muted);">{s.label}</span></div>))}</div></div></section>
+
+    <section class="px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto">{DEEP_DIVES.map((f, idx) => (<div class={`min-h-screen flex flex-col justify-center ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-center gap-12 lg:gap-20 py-12`} data-gsap-deepdive data-gsap-reversed={idx % 2 === 1 ? 'true' : 'false'}><div class="flex-1 max-w-lg" data-gsap-dd-text><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);" data-gsap-dd-tag>{f.tag}</span><h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-base leading-relaxed mb-6" style="color: var(--tn-text-secondary);">{f.desc}</p><ul class="space-y-3">{f.bullets.map((b) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{b}</span></li>))}</ul></div><div class="flex-shrink-0" data-gsap-dd-phone><div class="relative"><div class="tn-phone-glow" style="width: 380px; height: 660px;"></div><div class="tn-phone-frame relative mx-auto"><div class="tn-phone-notch"></div><Image src={f.image} alt={f.imageAlt} class="w-full h-full object-cover" loading="lazy" width={260} height={540} /><div class="tn-phone-reflection"></div></div></div></div></div>))}</div></section>
+
+    <section class="min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="flex flex-col lg:flex-row-reverse items-center gap-14 lg:gap-20" data-gsap-robot><div class="flex-shrink-0 relative" data-gsap-robot-img><div class="relative w-[260px] h-[320px] sm:w-[300px] sm:h-[360px]"><div class="absolute inset-0 rounded-full" style="background: radial-gradient(circle, rgba(255,107,74,0.15), transparent 70%); filter: blur(50px);"></div><Image src={translateRobot} alt="TranslateNow AI 대화 어시스턴트 실시간 음성 번역" class="w-full h-full object-contain relative z-10" style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));" width={300} height={360} /></div></div>
+      <div class="flex-1 max-w-lg" data-gsap-robot-text><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);">실시간 AI 대화</span><h2 class="text-3xl sm:text-4xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">자연스럽게 말하세요. <span class="tn-gradient-text">AI가 즉시 번역.</span></h2><p class="text-base mb-8 leading-relaxed" style="color: var(--tn-text-secondary);">WebSocket 기반 OpenAI Realtime API — 자동 언어 감지 양방향 음성 번역. 135개 이상 언어로 말하면 AI가 언어를 감지, 즉시 번역, 뉴럴 스트리밍 오디오로 응답. 세션 녹음 후 .m4a 내보내기.</p>
+        <ul class="space-y-3">{['135개 이상 언어 양방향 음성 번역', '사용 중인 언어 자동 감지 — 설정 불필요', '7개 뉴럴 AI 음성: Coral, Alloy, Echo, Fable, Onyx, Nova, Shimmer', '대화 녹음 및 .m4a 오디오 내보내기', '세션 중 잠금 화면 라이브 액티비티 및 Dynamic Island', '깨끗한 번역을 위한 에코 방지 및 노이즈 감지'].map((item) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{item}</span></li>))}</ul></div></div></div></section>
+
+    <section class="py-20 sm:py-24 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>AI 작문 도구</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">번역 전에 다듬기</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">5가지 AI 작문 도구가 번역 전에 텍스트를 수정 — 문법 교정, 톤 조정, 길이 변경, 재구성 또는 스타일 변경. 다른 번역기에는 없는 기능.</p></div><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" data-gsap-writing>{WRITING_TOOLS.map((t) => (<div class="rounded-2xl p-5 h-full text-center transition-all duration-300 hover:-translate-y-1 group cursor-default" style="background: rgba(18,18,28,0.65); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(16px);" data-gsap-writing-card><div class="w-11 h-11 rounded-xl flex items-center justify-center mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, rgba(255,107,74,0.14), rgba(255,143,107,0.06)); border: 1px solid rgba(255,107,74,0.12);"><svg class="w-5 h-5" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg></div><h4 class="text-sm font-bold mb-1" style="color: var(--tn-text-primary); font-family: var(--font-display);">{t.title}</h4><p class="text-xs leading-relaxed" style="color: var(--tn-text-muted);">{t.desc}</p><div class="mt-3 mx-auto h-0.5 w-0 group-hover:w-8 transition-all duration-300 rounded-full" style="background: var(--tn-gradient-coral);"></div></div>))}</div></div></section>
+
+    <section class="min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20"><div class="flex-1 max-w-lg" data-gsap="fade-up"><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);">프라이버시 & 오프라인</span><h2 class="text-3xl sm:text-4xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">오프라인으로 번역. <span class="tn-gradient-text">데이터는 디바이스 밖으로 나가지 않습니다.</span></h2><p class="text-base mb-8 leading-relaxed" style="color: var(--tn-text-secondary);">WiFi로 언어 팩 1회 다운로드(각 5-50MB). 이후 ML Kit으로 완전 온디바이스 번역 — 서버 연결 없음, 데이터 전송 없음, 클라우드 처리 없음. 59개 언어 오프라인 이용 가능.</p><ul class="space-y-3">{['ML Kit 온디바이스 번역 59개 언어 이용 가능', '언어 팩 각 5-50MB — 1회 다운로드, 영구 사용', '오프라인 모드 데이터 전송 제로 — 완전 로컬 처리', '연결 끊길 시 오프라인 모드 자동 전환', '전체 언어 일괄 다운로드 또는 개별 선택'].map((item) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{item}</span></li>))}</ul></div><div class="flex-shrink-0" data-gsap="fade-up"><div class="relative"><div class="tn-phone-glow" style="width: 380px; height: 660px;"></div><div class="tn-phone-frame relative mx-auto"><div class="tn-phone-notch"></div><Image src={translateSs8} alt="TranslateNow 오프라인 번역 설정 다운로드 가능한 언어 팩" class="w-full h-full object-cover" loading="lazy" width={260} height={540} /><div class="tn-phone-reflection"></div></div></div></div></div></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>AI 인텔리전스</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">문맥, 톤, 문화를 이해하는 AI</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">GPT-4o가 모든 번역을 컨텍스트 인텔리전스로 지원 — 예문, 동의어, 9가지 톤, 음역, 7개 고유한 뉴럴 음성.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-gsap-card-grid>{AI_FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><h3 class="text-base font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>플랫폼 통합</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">깊은 iOS 통합 — 단순한 앱이 아닙니다</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">위젯, Siri, 제어 센터, Dynamic Island, Spotlight, 시스템 번역기. TranslateNow는 iOS의 모든 레이어에 녹아들어 있습니다.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-gsap-card-grid>{IOS_FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><h3 class="text-base font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>사용 사례</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">실생활을 위해 설계</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">공항에서 교실까지, 회의실에서 가족 저녁식사까지 — 모든 상황에서 작동하는 번역.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-gsap-card-grid>{USE_CASES.map((uc) => (<div class="tn-glass-card flex items-start gap-4 group" data-gsap="fade-up"><div class="tn-icon-box transition-transform duration-300 group-hover:scale-110"><svg class="w-5 h-5" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={uc.icon} /></svg></div><div><h4 class="text-base font-bold mb-1.5 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{uc.title}</h4><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{uc.desc}</p></div></div>))}</div></div></section>
+
+    <section class="py-16 px-5 sm:px-6 lg:px-8 relative" style="background: var(--tn-bg-surface);"><div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(255,107,74,0.04) 0%, transparent 60%);"></div><div class="max-w-5xl mx-auto relative z-10"><div class="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="background: var(--tn-bg-border-subtle);" data-gsap-stats>{STATS.map((s) => (<div class="flex flex-col items-center justify-center py-8 px-5 text-center" style="background: rgba(18,18,28,0.8);" data-gsap-stat-item><span class="text-3xl sm:text-4xl font-extrabold tracking-tight" style="color: var(--tn-coral-fire); font-family: var(--font-display);" data-gsap-stat data-gsap-target={s.value} data-gsap-suffix={s.suffix || ''}>0{s.suffix}</span><span class="text-xs mt-2 font-medium" style="color: var(--tn-text-muted);">{s.label}</span></div>))}</div></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>리뷰</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">전 세계 사용자에게 사랑받는</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">매일 TranslateNow를 사용하는 실제 사용자의 진짜 리뷰.</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-gsap-testimonials>{TESTIMONIALS.map((t) => (<div class="tn-glass-card" data-gsap="fade-up"><div class="flex gap-0.5 mb-4">{[...Array(5)].map(() => (<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="var(--tn-coral-fire)" stroke="var(--tn-coral-fire)"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>))}</div><p class="text-sm leading-relaxed mb-5" style="color: var(--tn-text-tertiary);">"{t.text}"</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: var(--tn-coral-bg); color: var(--tn-coral-fire); font-family: var(--font-display);">{t.name.charAt(0)}</div><div><span class="text-sm font-semibold block" style="color: var(--tn-text-primary);">{t.name}</span><span class="text-xs" style="color: var(--tn-text-muted);">{t.role}</span></div></div></div>))}</div></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-4xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>기능 비교</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">TranslateNow vs Google Translate vs DeepL</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">22가지 기능 나란히 비교 — 기본 번역기에 부족한 것을 확인하세요.</p></div>
+      <div class="tn-glass-card !p-0 overflow-hidden" style="cursor: default; transform: none !important;" data-gsap-comparison><div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr><th class="text-left py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">기능</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-coral-fire); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display); background: rgba(255,107,74,0.04);">TranslateNow</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">Google Translate</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">DeepL</th></tr></thead><tbody>{COMPARISON.map((r, i) => (<tr style={i < COMPARISON.length - 1 ? `border-bottom: 1px solid var(--tn-bg-border-subtle);` : ''}><td class="py-3.5 px-4 text-sm" style="color: var(--tn-text-secondary);">{r.feature}</td><td class="text-center py-3.5 px-4" style="background: rgba(255,107,74,0.02);">{r.tn === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: var(--tn-coral-bg);"><svg class="w-3.5 h-3.5" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.tn}</span>}</td><td class="text-center py-3.5 px-4">{r.gt === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.05);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-muted);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : r.gt === false ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.03);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-hint);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.gt}</span>}</td><td class="text-center py-3.5 px-4">{r.dl === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.05);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-muted);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : r.dl === false ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.03);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-hint);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.dl}</span>}</td></tr>))}</tbody></table></div></div></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-3xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>FAQ</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">자주 묻는 질문</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">TranslateNow에 대해 알아야 할 모든 것 — 기능, 가격, 프라이버시, iOS 통합.</p></div>
+      <div class="space-y-2.5" data-gsap-faq-list>{FAQ_ITEMS.map((faq) => (<div class="tn-faq-item rounded-xl overflow-hidden transition-all duration-300" style="background: var(--tn-bg-surface); border: 1px solid var(--tn-bg-border-subtle);" data-gsap="fade-up"><button class="tn-faq-btn w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-white/[0.02]"><h3 class="text-sm sm:text-[15px] font-semibold pr-4 leading-snug" style="color: var(--tn-text-primary); font-family: var(--font-display);">{faq.q}</h3><svg class="w-[18px] h-[18px] flex-shrink-0 tn-faq-chevron" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button><div class="tn-faq-content"><div class="px-5 pb-5"><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{faq.a}</p></div></div></div>))}</div></div></section>
+
+    <section class="py-16 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle);"><div class="max-w-3xl mx-auto text-center" data-gsap="fade-up"><h2 class="text-2xl sm:text-3xl font-extrabold mb-4 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">Coachie AI가 만들었습니다</h2><p class="text-base leading-relaxed mb-4" style="color: var(--tn-text-secondary);">TranslateNow는 AI 기반 iOS 및 Android 앱 전문 모바일 개발 스튜디오 Coachie AI가 개발했습니다. App Store와 Google Play에 여러 앱을 출시하였으며 온디바이스 머신러닝, 클라우드 AI 서비스(OpenAI GPT-4o, ElevenLabs), 깊은 플랫폼 통합(ARKit, Siri, WidgetKit, Live Activities, Jetpack Compose, ML Kit)을 결합하여 실제 커뮤니케이션 과제를 해결하는 도구를 만듭니다.</p><p class="text-sm leading-relaxed" style="color: var(--tn-text-muted);">질문이나 파트너십은 <a href={`mailto:${SUPPORT_EMAIL}`} class="underline transition-colors hover:text-white/60" style="color: var(--tn-soft-coral);">{SUPPORT_EMAIL}</a></p></div></section>
+
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8 text-center relative overflow-hidden" id="download" style="background: var(--tn-bg-primary);" data-gsap-final-cta><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none" style="background: radial-gradient(circle, rgba(255,107,74,0.15) 0%, transparent 60%);" data-gsap-cta-glow></div><div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,107,74,0.2), transparent);"></div><div class="max-w-3xl mx-auto relative z-10"><Image src={translateIcon} alt="TranslateNow 아이콘" class="w-16 h-16 rounded-2xl mx-auto mb-8" style="box-shadow: 0 8px 32px rgba(255,107,74,0.2), 0 0 0 1px rgba(255,255,255,0.08);" width={192} height={192} data-gsap-cta-icon /><h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">오늘부터 모든 언어로 말하기 시작하세요</h2><p class="text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--tn-text-secondary);">App Store에서 TranslateNow를 무료로 다운로드하세요. 음성 복제, AR 번역, 문서, 작문 도구, 오프라인 & 135개 이상 언어.</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4" data-gsap-cta-btn><a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn tn-coral-btn-large">무료 다운로드<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></a></div></div></section>
+
+    <footer class="py-10 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle);" data-gsap-footer><div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"><a href="/translate-now" class="flex items-center gap-2.5 no-underline group"><Image src={translateIcon} alt="TranslateNow 아이콘" class="w-8 h-8 rounded-xl object-cover" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);" width={96} height={96} /><div><span class="font-bold text-sm block" style="color: var(--tn-text-primary); font-family: var(--font-display);">TranslateNow</span><span class="text-xs" style="color: var(--tn-text-muted);">by Coachie AI</span></div></a><div class="flex items-center gap-4 text-xs flex-wrap justify-center" style="color: var(--tn-text-muted);"><a href={PRIVACY_URL} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">개인정보 보호정책</a><span style="color: var(--tn-bg-border-subtle);">·</span><a href={TERMS_URL} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">이용약관</a><span style="color: var(--tn-bg-border-subtle);">·</span><a href={`mailto:${SUPPORT_EMAIL}`} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">지원</a>{LANGUAGE_LINKS.map((link) => (<><span style="color: var(--tn-bg-border-subtle);">·</span><a href={link.href} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">{link.label}</a></>))}</div><div class="flex flex-col items-center md:items-end gap-1"><a href={`mailto:${SUPPORT_EMAIL}`} class="text-xs hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">{SUPPORT_EMAIL}</a><span class="text-[11px]" style="color: var(--tn-text-hint);">최종 업데이트: 2026년 3월</span></div></div></footer>
+  </main>
+
+  <style is:inline>
+    .tn-faq-content { height: auto !important; max-height: 0 !important; overflow: hidden !important; transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease !important; opacity: 0 !important; }
+    .tn-faq-item.faq-active .tn-faq-content { max-height: 2000px !important; opacity: 1 !important; }
+    .tn-faq-item.faq-active .tn-faq-chevron { transform: rotate(180deg); }
+  </style>
+  <script is:inline>
+    window.addEventListener('load', function() {
+      document.querySelectorAll('.tn-faq-content').forEach(function(c) { c.style.removeProperty('height'); c.style.removeProperty('overflow'); });
+      document.querySelectorAll('.tn-faq-btn').forEach(function(oldBtn) {
+        var newBtn = oldBtn.cloneNode(true); oldBtn.parentNode.replaceChild(newBtn, oldBtn);
+        newBtn.addEventListener('click', function(e) {
+          e.preventDefault(); e.stopPropagation();
+          var item = newBtn.closest('.tn-faq-item'); if (!item) return;
+          var wasActive = item.classList.contains('faq-active');
+          document.querySelectorAll('.tn-faq-item').forEach(function(el) { el.classList.remove('faq-active', 'open', 'is-open'); var content = el.querySelector('.tn-faq-content'); if (content) { content.style.removeProperty('height'); content.style.removeProperty('overflow'); } });
+          if (!wasActive) item.classList.add('faq-active');
+        });
+      });
+    });
+  </script>
+</TranslateNowLayout>

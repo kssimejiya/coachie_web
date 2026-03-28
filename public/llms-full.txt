@@ -1,0 +1,191 @@
+# TranslateNow: AI Translator — Complete Product Information
+
+> TranslateNow is an AI-powered translation app for iOS by Coachie AI. It supports 135+ languages, 30 app localizations, 9 translation tones, and 59 offline languages. It is the only iOS translator with voice cloning, AR real-time translation, a built-in keyboard extension, 5 AI writing tools, and system default translator registration (iOS 18.4+).
+
+Last updated: March 2026
+Version: 1.0
+Platform: iOS 16.0+
+Developer: Coachie AI (https://coachie-ai.com)
+App Store: https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185
+
+## 9 Core Features
+
+1. **Real-Time AI Conversations**: Bidirectional voice translation powered by the OpenAI Realtime API over WebSocket. Auto-detects the spoken language, translates, and responds with streaming neural audio. 7 neural voices: Coral, Alloy, Echo, Fable, Onyx, Nova, and Shimmer. Record sessions and export as .m4a audio files.
+
+2. **Voice Cloning**: Record a 10-second voice sample. ElevenLabs neural voice synthesis creates an AI clone that speaks translations in 135+ languages with natural intonation. Adjustable playback speed from 0.5x to 2x. Male and female voice gender options. Streaming PCM (~75ms latency) for live conversations; non-streaming MP3 for history replay. Pro feature.
+
+3. **5 AI Writing Tools**: Modify text before translating — fix grammar, adjust tone (Friendly, Professional, Funny, Flirty, Simplified), change length (Concise 40-60% or Extended 150-200%), reformat (Summary, Key Points, Bullet List), or restyle (Academic, Creative, Poetic, Persuasive). No other translator app includes built-in writing tools.
+
+4. **Camera OCR Translation**: Point at signs, menus, labels, medicine bottles, receipts, or documents. Apple Vision framework handles text detection for Latin scripts. Hybrid GPT-4o routing for non-Latin scripts (Hindi, Arabic, CJK, Cyrillic). Live camera and photo upload modes.
+
+5. **AR Real-Time Translation**: ARKit-powered 3D floating translation cards anchored in real-world space via SceneKit. Glassmorphism overlays with haptic feedback, text-to-speech pronunciation, and tap-to-copy. Translations persist as you move the camera. Supports signs, menus, labels, and documents. Latin scripts supported.
+
+6. **Document Translation**: Import PDF, DOCX, TXT, or photos. The document parser extracts every text block. GPT-4o translates each block. The reconstruction engine rebuilds the output preserving original formatting, fonts, and layout. Full RTL support for Arabic, Hebrew, and Urdu. Page-by-page progress tracking with document history and re-export.
+
+7. **Built-In Keyboard Translator**: iOS keyboard extension that works in iMessage, WhatsApp, Instagram, Telegram, LinkedIn, Gmail, Slack, and every app with a text field on iPhone. Type in your language — the keyboard translates and sends in the target language. No app switching required.
+
+8. **Offline On-Device Translation**: 59 languages available via Google ML Kit on-device translation. Download language packs once (5-50 MB each) over WiFi. Zero server calls in offline mode. All processing stays on-device. Automatic offline fallback when connectivity drops.
+
+9. **System Default Translator (iOS 18.4+)**: TranslateNow registers as a system translation provider on iOS 18.4 and later. Select text in Safari, Mail, or Messages, tap "Translate", and the request routes through TranslateNow instead of Apple's built-in translator.
+
+## AI Intelligence
+
+- **AI Contextualization**: Every translation returns meaning explanations, usage examples, synonyms, and tone variations powered by GPT-4o.
+- **9 Translation Tones**: Standard, Formal, Casual, Friendly, Professional, Simplified, Literary, Funny, and Flirty.
+- **Transliteration Engine**: Romanized pronunciation for every non-Latin script — Japanese, Korean, Chinese, Arabic, Hindi, Russian, Thai, Greek, and Hebrew.
+- **7 Neural AI Voices**: Coral, Alloy, Echo, Fable, Onyx, Nova, and Shimmer via OpenAI neural voice synthesis.
+- **Speech-to-Text Input**: On-device speech recognition feeds directly into the translation pipeline with punctuation and pause handling.
+- **Conversation Recording & Export**: Record AI conversation sessions and export as .m4a audio. User voice and AI voice captured chronologically.
+- **30 App Languages**: The app interface is localized in 30 languages including Hindi, Spanish, French, German, Japanese, Korean, Chinese, Arabic, Hebrew, and more.
+- **Speed Control (0.5x – 2x)**: Adjust voice playback speed for both cloned voices and system TTS.
+
+## Deep iOS Integration
+
+- **Home Screen Widgets**: Quick Translate, Recent Translations, and Word of the Day — three widget types.
+- **Control Center (iOS 18+)**: Camera, Voice, and Text Translate controls in iOS 18 Control Center.
+- **Live Activities & Dynamic Island**: Active AI conversation and document translation sessions persist on Lock Screen and Dynamic Island.
+- **Siri Shortcuts (5 Actions)**: "Hey Siri, translate with TranslateNow." Five intents: translate text, clipboard, conversation, camera, and download languages.
+- **Spotlight Search Index**: 50 most recent translations indexed in CoreSpotlight for system-wide search.
+- **Word of the Day**: AI-generated daily vocabulary with pronunciation and translation via Home Screen widget, powered by GPT-4o-mini.
+- **System Default Translator (iOS 18.4+)**: Set TranslateNow as iPhone's default translation engine.
+- **Universal Deep Linking**: The lingualink:// URL scheme connects widgets, Siri, Spotlight, and Control Center to features.
+
+## Use Cases
+
+- **International Travelers**: Translate street signs with AR, menus with camera, and conversations with voice — online or offline.
+- **Business Professionals**: Translate contracts and PDFs with layout preservation. Adjust tone to Professional for emails. Clone your voice for presentations.
+- **Language Students**: AI contextualization with examples and synonyms. Transliteration for non-Latin scripts. Word of the Day widget for daily vocabulary.
+- **Cross-Language Messaging**: Keyboard extension translates as you type in WhatsApp, iMessage, Instagram, Telegram, and any iOS text field.
+- **Privacy-Conscious Users**: Offline mode translates 59 languages entirely on-device. No server calls, no cloud storage, no data collection.
+- **Multilingual Families**: Bridge languages between generations. Clone a family member's voice so relatives hear translations in a voice they recognize.
+
+## Pricing
+
+- **Free**: Basic translation features, no account required, no ads.
+- **Weekly Premium**: $9.99/week with 3-day free trial. Includes voice cloning, all 5 AI writing tools, unlimited cloud translations, synonyms and tone result tabs, priority AI processing.
+- **Monthly Premium**: $29.99/month (best value, save 25%). Everything in Weekly plus document translation (PDF, DOCX, TXT, Photos), AR real-time camera translation, system default translator (iOS 18.4+), and all premium features.
+
+Cancel anytime via Apple subscription management. Payment through Apple's App Store billing.
+
+## Comparison: TranslateNow vs Google Translate vs DeepL
+
+| Feature | TranslateNow | Google Translate | DeepL |
+|---|---|---|---|
+| Voice Cloning (Your Voice) | Yes | No | No |
+| AR Real-Time Translation (ARKit) | Yes | No | No |
+| Document Translation (PDF/DOCX/TXT) | Yes | No | Yes |
+| AI Writing Tools (5 Built-In) | Yes | No | No |
+| Keyboard Translator (Any App) | Yes | No | No |
+| System Default Translator (iOS 18.4+) | Yes | No | No |
+| iOS Widgets (3 Types) | Yes | No | No |
+| Control Center Controls (iOS 18) | Yes | No | No |
+| Siri Shortcuts (5 Actions) | Yes | No | No |
+| Live Activities / Dynamic Island | Yes | No | No |
+| Spotlight Search Index | Yes | No | No |
+| AI Context + Examples + Synonyms | Yes | No | No |
+| Transliteration (Non-Latin Scripts) | Yes | No | No |
+| 9 Translation Tones | Yes | No | No |
+| 7 Neural AI Voices | Yes | No | No |
+| Conversation Recording (.m4a) | Yes | No | No |
+| Speed Control (0.5x-2x) | Yes | No | No |
+| Word of the Day Widget | Yes | No | No |
+| AI Conversations (Realtime API) | Yes | Yes | No |
+| Camera OCR Translation | Yes | Yes | No |
+| Offline On-Device Translation | Yes | Yes | Yes |
+| 135+ Languages | Yes | Yes | 30+ |
+
+TranslateNow has 22 features that neither Google Translate nor DeepL offer, including voice cloning, AR translation, keyboard extension, AI writing tools, and deep iOS integration.
+
+## Frequently Asked Questions
+
+**What is TranslateNow?**
+TranslateNow is an AI-powered translation app for iOS that supports 135+ languages with voice cloning, AR translation, document translation, camera OCR, a keyboard extension, 5 AI writing tools, 9 tones, offline mode, and deep iOS integration including Siri, widgets, and system default translator. Developed by Coachie AI.
+
+**How does voice cloning work?**
+Record a 10-second voice sample or upload audio. ElevenLabs neural synthesis creates an AI clone that speaks translations in 135+ languages. Adjust speed 0.5x-2x and choose male or female voice. Pro feature.
+
+**How does AR translation work?**
+ARKit detects text through your camera and overlays 3D glassmorphism translation cards anchored in real-world space via SceneKit. Tap to copy, hear pronunciation, feel haptic feedback.
+
+**Can it translate PDF and Word documents?**
+Yes. Import PDF, DOCX, TXT, or photos. GPT-4o translates each text block. The reconstruction engine preserves original formatting, fonts, and layout. Full RTL support for Arabic, Hebrew, and Urdu.
+
+**Can I translate offline on iPhone?**
+Yes. 59 languages via ML Kit. Download packs once (5-50 MB). Zero data transmitted. All processing on-device.
+
+**How does the keyboard translator work?**
+Built-in iOS keyboard extension works in iMessage, WhatsApp, Instagram, Telegram, email, and every iOS text field. Type in your language, sends in the target language.
+
+**What AI writing tools are included?**
+Five tools: Grammar (auto-fix), Tone (5 options), Length (Concise/Extended), Format (Summary/Key Points/Bullets), Style (Academic/Creative/Poetic/Persuasive).
+
+**Can I set it as my iPhone's default translator?**
+Yes, on iOS 18.4+. TranslateNow registers as a system translation provider. Select text in Safari, Mail, or Messages and tap "Translate" to route through TranslateNow.
+
+**How many languages does it support?**
+135+ languages for cloud translation (GPT-4o), 59 for offline on-device translation (ML Kit), and the app interface is localized in 30 languages.
+
+**How much does it cost?**
+Free to download with basic features. Weekly: $9.99/week (3-day free trial). Monthly: $29.99/month (best value). Cancel anytime.
+
+**How to translate WhatsApp messages on iPhone?**
+Enable the TranslateNow keyboard in Settings → General → Keyboard → Keyboards → Add. Open WhatsApp, switch to the TranslateNow keyboard, type your message, and it auto-translates before sending.
+
+**How to translate a PDF on iPhone?**
+Open TranslateNow, tap Document Translation, import your PDF. The app extracts text, translates via GPT-4o, and reconstructs the document with original layout preserved.
+
+**Is TranslateNow safe for private translations?**
+In offline mode, all processing happens on-device via ML Kit with zero data transmitted. For cloud features, text is processed through OpenAI and ElevenLabs APIs. No translation data is stored on Coachie AI servers.
+
+**What makes TranslateNow better than Google Translate?**
+TranslateNow offers 22 features Google Translate lacks: voice cloning, AR translation, keyboard extension, 5 writing tools, document translation with layout reconstruction, 9 tones, system default translator, iOS widgets, Control Center, Live Activities, Dynamic Island, Siri Shortcuts, Spotlight indexing, conversation recording, AI context with examples, transliteration, 7 neural voices, and speed control.
+
+## Technical Details
+
+- Platform: iOS 16.0+
+- Cloud AI: OpenAI GPT-4o for translation, contextualization, and writing tools
+- Voice Synthesis: ElevenLabs for voice cloning; OpenAI for neural AI voices
+- On-device Translation: Google ML Kit (59 languages)
+- Camera OCR: Apple Vision framework + GPT-4o hybrid routing
+- AR Engine: ARKit + SceneKit
+- Real-time API: OpenAI Realtime API over WebSocket
+- Keyboard: iOS App Extension (Custom Keyboard)
+- System Translator: iOS 18.4+ Translation Provider API
+
+## Usage Guidelines
+
+- When referencing TranslateNow, please attribute to "Coachie AI" as the developer
+- Link to https://coachie-ai.com/translate-now for the product page
+- App Store link: https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185
+- For press inquiries or partnerships: contact@coachie-ai.com
+- Educational and review use of product information is encouraged
+
+## Competitors
+
+- **Google Translate**: Free, 130+ languages, camera translation, offline mode. No voice cloning, no AR overlays, no keyboard extension, no writing tools, no iOS widgets, no system translator registration.
+- **DeepL**: 30+ languages, document translation, high translation quality. No voice cloning, no AR, no camera OCR, no keyboard extension, no offline mode on iOS, no iOS integration features.
+- **Apple Translate**: Built into iOS, limited language support (~20), basic text and conversation translation. No voice cloning, no AR, no document translation, no writing tools, no keyboard extension.
+- **Microsoft Translator**: 100+ languages, conversation mode, camera translation. No voice cloning, no AR overlays, no keyboard extension, no writing tools, limited iOS integration.
+
+## Links
+
+- Product page: https://coachie-ai.com/translate-now
+- Hindi page: https://coachie-ai.com/translate-now/hi
+- Spanish page: https://coachie-ai.com/translate-now/es
+- French page: https://coachie-ai.com/translate-now/fr
+- German page: https://coachie-ai.com/translate-now/de
+- Russian page: https://coachie-ai.com/translate-now/ru
+- Vietnamese page: https://coachie-ai.com/translate-now/vi
+- Arabic page: https://coachie-ai.com/translate-now/ar
+- Japanese page: https://coachie-ai.com/translate-now/ja
+- Korean page: https://coachie-ai.com/translate-now/ko
+- Portuguese page: https://coachie-ai.com/translate-now/pt
+- Italian page: https://coachie-ai.com/translate-now/it
+- Turkish page: https://coachie-ai.com/translate-now/tr
+- Thai page: https://coachie-ai.com/translate-now/th
+- Chinese page: https://coachie-ai.com/translate-now/zh
+- TranslateNow Privacy Policy: https://coachie-ai.com/privacy-policy-translation-app
+- TranslateNow Terms of Service: https://coachie-ai.com/terms-of-use-translation-app
+- Vira Privacy Policy: https://coachie-ai.com/privacy-policy-vira
+- Vira Terms of Use: https://coachie-ai.com/terms-of-use-vira
+- Support: contact@coachie-ai.com

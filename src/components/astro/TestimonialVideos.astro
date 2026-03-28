@@ -1,0 +1,85 @@
+---
+const testimonials = [
+  {
+    id: '0W8T3ODI07o',
+    name: 'Madison Johnson',
+    location: 'Los Angeles, USA',
+    rating: 5,
+    quote: "Coachie transformed my wellness journey completely. It's like having a personal trainer and nutritionist in one app!",
+  },
+  {
+    id: 'UhzGdv806Oc',
+    name: 'Virliou Maria',
+    location: 'London, UK',
+    rating: 5,
+    quote: "The personalized recipes and workouts are amazing. I've never felt more confident about my health goals!",
+  },
+];
+
+const bottomStats = [
+  { metric: '98%', label: 'Satisfaction Rate' },
+  { metric: '5K+', label: 'Success Stories' },
+  { metric: '4.9', label: 'Average Rating' },
+];
+---
+
+<section class="relative py-16 sm:py-24 md:py-32 overflow-hidden" style="background-color: rgba(248, 249, 250, 0.8);" data-gsap-testimonials>
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-50/50 via-white/30 to-gray-100/50"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16 sm:mb-20" data-gsap-section-header>
+      <div class="inline-block mb-3 px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-white/80 backdrop-blur-sm border border-gray-300" data-gsap-section-tag>
+        <span class="text-gray-500">Real Stories, Real Results</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-gsap-section-title>
+        <span class="text-gray-500">What Our Users</span>
+        <span class="block mt-1 text-gray-800">Are Saying</span>
+      </h2>
+
+      <p class="text-lg sm:text-xl max-w-3xl mx-auto text-gray-600" data-gsap-section-desc>
+        Discover how Coachie is transforming lives through personalized wellness experiences that adapt, evolve, and inspire.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+      {testimonials.map((testimonial) => (
+        <div class="flex flex-col space-y-4 sm:space-y-5" data-gsap-testimonial>
+          <div class="text-center space-y-3">
+            <!-- Star Rating -->
+            <div class="flex justify-center space-x-1">
+              {Array.from({ length: testimonial.rating }).map(() => (
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              ))}
+            </div>
+
+            <!-- Quote -->
+            <blockquote class="text-sm sm:text-base lg:text-lg text-gray-600 italic leading-relaxed max-w-xs sm:max-w-sm mx-auto">
+              "{testimonial.quote}"
+            </blockquote>
+
+            <!-- Name -->
+            <div class="space-y-1">
+              <h4 class="text-lg sm:text-xl font-bold text-gray-800">{testimonial.name}</h4>
+              <p class="text-xs sm:text-sm text-gray-500">{testimonial.location}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom Stats -->
+    <div class="mt-16 sm:mt-20 pt-8 sm:pt-12 border-t border-gray-200 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+      {bottomStats.map((stat) => (
+        <div class="text-center" data-gsap-testimonial-stat>
+          <div class="text-2xl sm:text-3xl font-bold text-gray-500 mb-1">{stat.metric}</div>
+          <div class="text-xs sm:text-sm text-gray-400">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

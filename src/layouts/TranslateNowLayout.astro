@@ -1,0 +1,637 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  lang?: string;
+  keywords?: string;
+  hreflangLinks?: { lang: string; href: string }[];
+  structuredData?: string[];
+}
+
+const {
+  title = 'TranslateNow: AI Translator | Voice Cloning, AR Translation, Document Translation & 135+ Languages',
+  description = 'AI translator with voice cloning, AR real-time translation, document translation (PDF/DOCX), 5 writing tools, 9 tones, keyboard translator, system default translator (iOS 18.4+), Siri, widgets, Dynamic Island, offline mode & 135+ languages. Download on the App Store.',
+  canonical = 'https://coachie-ai.com/translate-now',
+  lang = 'en',
+  keywords = '',
+  hreflangLinks = [],
+  structuredData = [],
+} = Astro.props;
+
+const APP_STORE_URL = 'https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185';
+---
+
+<!doctype html>
+<html lang={lang} class="tn-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content="Coachie AI" />
+    <meta name="publisher" content="Coachie AI" />
+    <meta name="theme-color" content="#0A0A10" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="msapplication-TileColor" content="#0A0A10" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TranslateNow: AI Translator" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://coachie-ai.com/translate_icon.png" />
+    <meta property="og:image:alt" content="TranslateNow AI Translator App Icon" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://coachie-ai.com/translate_icon.png" />
+
+    <!-- App Meta -->
+    <meta name="apple-itunes-app" content="app-id=6759827185" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="TranslateNow" />
+    <meta name="application-name" content="TranslateNow: AI Translator" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/translate_icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/translate_icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/translate_icon.png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Hreflang -->
+    {hreflangLinks.map((link) => (
+      <link rel="alternate" hreflang={link.lang} href={link.href} />
+    ))}
+
+    <!-- Fonts (non-blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+
+    <!-- DNS prefetch for deferred analytics -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.clarity.ms" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+    <!-- Structured Data -->
+    {structuredData.map((sd) => (
+      <script type="application/ld+json" set:html={sd} />
+    ))}
+
+    <!-- TranslateNow Dark Theme CSS -->
+    <style is:inline>
+      :root {
+        --tn-bg-primary: #0A0A10;
+        --tn-bg-surface: #12121C;
+        --tn-bg-elevated: #1C1C2A;
+        --tn-bg-border: #2A2A3C;
+        --tn-bg-border-subtle: rgba(255,255,255,0.06);
+        --tn-coral-fire: #FF6B4A;
+        --tn-soft-coral: #FF8F6B;
+        --tn-peach-glow: #FFB89A;
+        --tn-coral-dim: #CC5538;
+        --tn-coral-bg: rgba(255,107,74,0.08);
+        --tn-coral-bg-hover: rgba(255,107,74,0.14);
+        --tn-text-primary: #F5F5F7;
+        --tn-text-secondary: rgba(255,255,255,0.55);
+        --tn-text-tertiary: rgba(255,255,255,0.75);
+        --tn-text-hint: rgba(255,255,255,0.3);
+        --tn-text-muted: #8A8A96;
+        --tn-gradient-coral: linear-gradient(135deg, #FF6B4A 0%, #FF8F6B 50%, #FFB89A 100%);
+        --tn-gradient-coral-btn: linear-gradient(135deg, #FF6B4A 0%, #FF7F5C 100%);
+        --tn-gradient-dark: linear-gradient(180deg, #12121C 0%, #0A0A10 100%);
+        --font-display: 'Plus Jakarta Sans', sans-serif;
+        --font-body: 'DM Sans', sans-serif;
+      }
+
+      .tn-page {
+        scroll-behavior: smooth;
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: var(--tn-bg-primary);
+        color: var(--tn-text-primary);
+      }
+
+      .tn-page h1, .tn-page h2, .tn-page h3, .tn-page h4 {
+        font-family: var(--font-display);
+      }
+
+      .tn-gradient-text {
+        background: var(--tn-gradient-coral);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tn-glass-card {
+        background: rgba(18,18,28,0.65);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 0 0.5px rgba(255,255,255,0.04) inset;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .tn-glass-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .tn-glass-card::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: linear-gradient(135deg, rgba(255,107,74,0.3), transparent 50%, rgba(255,143,107,0.2));
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .tn-glass-card:hover::before {
+        opacity: 1;
+      }
+
+      [data-gsap-comparison].tn-glass-card:hover {
+        transform: none;
+      }
+
+      [data-gsap-comparison].tn-glass-card::before {
+        display: none;
+      }
+
+      .tn-coral-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        background: var(--tn-gradient-coral-btn);
+        color: #fff;
+        box-shadow: 0 8px 32px rgba(255,107,74,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+        border-radius: 0.75rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        gap: 0.375rem;
+      }
+
+      .tn-coral-btn:hover {
+        transform: scale(1.03);
+      }
+
+      .tn-coral-btn:active {
+        transform: scale(0.98);
+      }
+
+      .tn-coral-btn-large {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border-radius: 1rem;
+        gap: 0.5rem;
+      }
+
+      .tn-coral-btn-ghost {
+        background: transparent;
+        color: var(--tn-soft-coral);
+        border: 1.5px solid var(--tn-coral-fire);
+        box-shadow: none;
+      }
+
+      .tn-icon-box {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--tn-coral-bg);
+        flex-shrink: 0;
+      }
+
+      .tn-section-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.375rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        background: var(--tn-coral-bg);
+        color: var(--tn-soft-coral);
+        border: 1px solid rgba(255,107,74,0.15);
+        width: fit-content;
+        margin: 0 auto 1.25rem;
+      }
+
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.08); }
+      }
+
+      @keyframes tnFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+
+      .tn-float { animation: tnFloat 3s ease-in-out infinite; }
+
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+
+      /* Phone mockup */
+      .tn-phone-frame {
+        position: relative;
+        width: 260px;
+        height: 540px;
+        background: #111118;
+        border: 2.5px solid rgba(255,255,255,0.1);
+        border-radius: 44px;
+        overflow: hidden;
+        box-shadow: 0 0 0 1px rgba(0,0,0,0.8), 0 25px 70px rgba(0,0,0,0.6), 0 0 40px rgba(255,107,74,0.06), inset 0 1px 0 rgba(255,255,255,0.08);
+        padding: 14px 4px 4px;
+      }
+
+      .tn-phone-frame > img,
+      .tn-phone-frame > picture > img {
+        border-radius: 38px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .tn-phone-frame-large {
+        width: 280px;
+        height: 580px;
+      }
+
+      .tn-phone-notch {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 24px;
+        border-radius: 20px;
+        background: #000;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
+        z-index: 10;
+      }
+
+      .tn-phone-reflection {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(165deg, rgba(255,255,255,0.06) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.02) 100%);
+      }
+
+      .tn-phone-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        filter: blur(40px);
+        background: radial-gradient(ellipse, rgba(255,107,74,0.1) 0%, transparent 70%);
+      }
+
+      /* FAQ accordion */
+      .tn-faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+        opacity: 0;
+      }
+
+      .tn-faq-item.open .tn-faq-content {
+        max-height: 500px;
+        opacity: 1;
+      }
+
+      .tn-faq-item.open .tn-faq-chevron {
+        transform: rotate(180deg);
+      }
+
+      .tn-faq-chevron {
+        transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      /* Nav */
+      .tn-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        height: 64px;
+        transition: all 0.5s ease;
+        background: transparent;
+        border-bottom: 1px solid transparent;
+      }
+
+      .tn-nav.scrolled {
+        background: rgba(10,10,16,0.92);
+        backdrop-filter: blur(24px) saturate(1.4);
+        -webkit-backdrop-filter: blur(24px) saturate(1.4);
+        border-bottom-color: rgba(255,255,255,0.06);
+        box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      }
+
+      /* Mobile menu */
+      .tn-mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem 1.25rem;
+        background: rgba(10,10,16,0.98);
+        backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .tn-mobile-menu.open {
+        display: flex;
+      }
+
+      /* Check icon for lists */
+      .tn-check-circle {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: var(--tn-coral-bg);
+      }
+
+      /* GSAP progress bar */
+      .tn-progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--tn-gradient-coral);
+        transform-origin: left center;
+        transform: scaleX(0);
+        z-index: 100;
+        pointer-events: none;
+      }
+
+      /* Cursor glow (desktop only) */
+      .tn-cursor-glow {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255,107,74,0.04) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        will-change: transform;
+      }
+
+      @media (max-width: 768px) {
+        .tn-cursor-glow { display: none; }
+      }
+
+      /* FOUC prevention: hide GSAP-animated elements from first paint.
+         GSAP fromTo(autoAlpha:0→1) overrides via inline styles. */
+      [data-gsap-hero-title],
+      [data-gsap-trust],
+      [data-gsap-hero-sub],
+      [data-gsap-hero-desc],
+      [data-gsap-hero-cta],
+      [data-gsap-badge],
+      [data-gsap-hero-phone] {
+        opacity: 0;
+        visibility: hidden;
+      }
+      /* Non-hero GSAP elements: hidden until gsap.set(autoAlpha) runs */
+      [data-gsap="fade-up"],
+      .tn-glass-card,
+      .tn-faq-item,
+      [data-gsap-writing-card],
+      [data-gsap-stat-item],
+      [data-gsap-plan],
+      [data-gsap-shot],
+      [data-gsap-social-item],
+      [data-gsap-footer] > *,
+      .tn-section-tag {
+        opacity: 0;
+        visibility: hidden;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-gsap-hero-title],
+        [data-gsap-trust],
+        [data-gsap-hero-sub],
+        [data-gsap-hero-desc],
+        [data-gsap-hero-cta],
+        [data-gsap-badge],
+        [data-gsap-hero-phone],
+        [data-gsap="fade-up"],
+        .tn-glass-card,
+        .tn-faq-item,
+        [data-gsap-writing-card],
+        [data-gsap-stat-item],
+        [data-gsap-plan],
+        [data-gsap-shot],
+        [data-gsap-social-item],
+        [data-gsap-footer] > *,
+        .tn-section-tag {
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+      }
+
+      /* 3D tilt perspective */
+      .tn-glass-card {
+        transform-style: preserve-3d;
+      }
+
+      /* Language dropdown */
+      .tn-lang-dropdown.open .tn-lang-menu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .tn-lang-dropdown.open .tn-lang-chevron {
+        transform: rotate(180deg);
+      }
+      .tn-lang-menu {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    </style>
+  </head>
+  <body class="overflow-x-hidden antialiased" style="background: var(--tn-bg-primary);">
+    <!-- Progress bar -->
+    <div class="tn-progress-bar"></div>
+
+    <!-- Cursor glow -->
+    <div class="tn-cursor-glow"></div>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <slot />
+
+    <!-- GSAP Animation Engine -->
+    <script src="../scripts/tn-gsap.js"></script>
+
+    <!-- Mobile menu toggle (non-GSAP) -->
+    <script is:inline>
+      (function() {
+        var toggle = document.querySelector('.tn-mobile-toggle');
+        var menu = document.querySelector('.tn-mobile-menu');
+        if (toggle && menu) {
+          toggle.addEventListener('click', function() {
+            menu.classList.toggle('open');
+          });
+        }
+      })();
+    </script>
+
+    <!-- Language dropdown toggle -->
+    <script is:inline>
+      (function() {
+        var dd = document.querySelector('.tn-lang-dropdown');
+        var btn = dd && dd.querySelector('.tn-lang-toggle');
+        if (dd && btn) {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dd.classList.toggle('open');
+            btn.setAttribute('aria-expanded', dd.classList.contains('open'));
+          });
+          document.addEventListener('click', function(e) {
+            if (!dd.contains(e.target)) {
+              dd.classList.remove('open');
+              btn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+      })();
+    </script>
+
+    <!-- FAQ accordion handler -->
+    <script is:inline>
+      document.querySelectorAll('.tn-faq-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = btn.closest('.tn-faq-item');
+          var wasOpen = item.classList.contains('open');
+          document.querySelectorAll('.tn-faq-item.open').forEach(function(el) {
+            el.classList.remove('open');
+          });
+          if (!wasOpen) item.classList.add('open');
+        });
+      });
+    </script>
+
+    <!-- GA4 Analytics + Microsoft Clarity (deferred until idle) -->
+    <script is:inline>
+      function __tnLoadGA4() {
+        var gs = document.createElement('script');
+        gs.async = true;
+        gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-YTEM11GE2B';
+        document.head.appendChild(gs);
+        gs.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-YTEM11GE2B', {
+            page_title: document.title,
+            page_location: window.location.href,
+            content_group1: 'Translation Apps',
+            content_group2: 'AI Translation',
+            send_page_view: true
+          });
+          document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (!link) return;
+            if (link.href && link.href.includes('apps.apple.com')) {
+              gtag('event', 'app_download_click', {
+                event_category: 'engagement',
+                event_label: 'iOS App Store',
+                platform: 'ios',
+                app_name: 'translate_now'
+              });
+            }
+          });
+          (function() {
+            var scrollDepths = [25, 50, 75, 100];
+            var triggered = [];
+            window.addEventListener('scroll', function() {
+              var percent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+              scrollDepths.forEach(function(depth) {
+                if (percent >= depth && triggered.indexOf(depth) === -1) {
+                  triggered.push(depth);
+                  gtag('event', 'scroll_depth', { event_category: 'engagement', event_label: depth + '%', value: depth });
+                }
+              });
+            });
+          })();
+          [30, 60, 120, 300].forEach(function(seconds) {
+            setTimeout(function() {
+              gtag('event', 'time_on_page', { event_category: 'engagement', event_label: seconds + ' seconds', value: seconds });
+            }, seconds * 1000);
+          });
+        };
+      }
+      function __tnLoadClarity() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "v2rgwq32a0");
+      }
+      function __tnDeferAnalytics() {
+        __tnLoadGA4();
+        __tnLoadClarity();
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(__tnDeferAnalytics, { timeout: 3500 });
+      } else {
+        setTimeout(__tnDeferAnalytics, 3500);
+      }
+    </script>
+
+    <noscript>
+      <div style="padding: 20px; text-align: center; font-family: sans-serif; background: #0A0A10; color: #F5F5F7;">
+        <h1>TranslateNow: AI Translator</h1>
+        <p>Please enable JavaScript to use this application.</p>
+        <p><a href="https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185" style="color: #FF6B4A;">Download on App Store</a></p>
+      </div>
+    </noscript>
+  </body>
+</html>

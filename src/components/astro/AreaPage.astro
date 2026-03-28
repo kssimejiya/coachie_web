@@ -1,0 +1,447 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  city: string;
+  region: string;
+  tier: number;
+  title: string;
+  description: string;
+  canonical: string;
+  geoRegion: string;
+  geoPosition: string;
+}
+
+const {
+  city,
+  region,
+  tier,
+  title,
+  description,
+  canonical,
+  geoRegion,
+  geoPosition,
+} = Astro.props;
+
+const APP_STORE = 'https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791';
+const PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.cc.caloriecoach&pli=1';
+const EMAIL = 'contact@coachie-ai.com';
+const WHATSAPP = '919033804605';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP}`;
+const BASE_URL = 'https://coachie-ai.com';
+
+const [lat, lng] = geoPosition.split(';');
+
+const jsonLd = [
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${BASE_URL}/uk/${city.toLowerCase().replace(/\s+/g, '-')}#business`,
+    "name": `Coachie - White-Label Fitness App ${city}`,
+    "description": `Custom white-label fitness and wellness apps for gyms, studios, and personal trainers in ${city}, ${region}. Powered by Coachie AI.`,
+    "url": canonical,
+    "email": EMAIL,
+    "telephone": `+${WHATSAPP}`,
+    "areaServed": {
+      "@type": "City",
+      "name": city,
+      "containedInPlace": { "@type": "Country", "name": "United Kingdom" }
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": parseFloat(lat),
+      "longitude": parseFloat(lng)
+    },
+    "priceRange": "$$",
+    "sameAs": [APP_STORE, PLAY_STORE],
+    "image": `${BASE_URL}/images/og-image.png`,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "ratingCount": "500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }),
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `What is the white-label fitness app for ${city} gyms?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Coachie offers a fully customisable white-label fitness and wellness app for gyms, studios, and personal trainers in ${city}. You get your own branding, AI coaching, nutrition tracking, recipe generation, and CBT therapy features -- all under your brand name.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `How much does the white-label app cost for ${city} businesses?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer three tiers: Starter (for solo PTs and small studios), Growth (for mid-size gyms), and Enterprise (for gym chains and franchises). Contact us for a personalised quote."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What features are included?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All plans include AI photo food recognition, personalised meal plans, workout tracking, CBT mental wellness coaching, progress analytics, custom branding, and dedicated support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Can I try the app before committing in ${city}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Download the Coachie app from the App Store or Google Play to experience the core features. Then contact us to discuss white-labelling for your business."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to launch my white-label app?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depending on your plan, your branded app can be live in as little as 2-4 weeks. Enterprise clients receive priority onboarding with a dedicated account manager."
+        }
+      }
+    ]
+  }),
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+      { "@type": "ListItem", "position": 2, "name": "UK", "item": `${BASE_URL}/uk` },
+      { "@type": "ListItem", "position": 3, "name": city, "item": canonical }
+    ]
+  })
+];
+
+const extraHead = `
+  <meta name="geo.region" content="${geoRegion}" />
+  <meta name="geo.position" content="${geoPosition}" />
+  <meta name="ICBM" content="${geoPosition}" />
+  <meta name="geo.placename" content="${city}" />
+`;
+
+const features = [
+  { icon: '&#x1F4F1;', title: 'Your Brand, Your App', desc: `Launch a fully branded fitness app for your ${city} gym or studio. Your logo, colours, and identity -- powered by Coachie AI technology.` },
+  { icon: '&#x1F4F7;', title: 'AI Photo Food Tracking', desc: 'Members snap a photo of their meal and instantly get calories, macros, and nutritional insights. No manual logging needed.' },
+  { icon: '&#x1F372;', title: 'AI Recipe Generation', desc: 'Personalised recipe suggestions based on dietary goals, allergies, and preferences. Keep members engaged with fresh meal ideas.' },
+  { icon: '&#x1F3CB;', title: 'Workout Programming', desc: 'Deliver custom workout plans, track exercise progress, and keep members accountable with AI-powered coaching.' },
+  { icon: '&#x1F9E0;', title: 'CBT Mental Wellness', desc: 'Evidence-based cognitive behavioural therapy tools for stress, emotional eating, and mindset. A complete wellness solution.' },
+  { icon: '&#x1F4CA;', title: 'Analytics Dashboard', desc: `Track member engagement, retention, and outcomes. Make data-driven decisions for your ${city} fitness business.` },
+];
+
+const pricingTiers = [
+  {
+    name: 'Starter',
+    subtitle: 'Solo PTs & Small Studios',
+    features: ['Custom branding & logo', 'Up to 50 active members', 'AI food tracking', 'Basic workout plans', 'Email support', 'Monthly analytics report'],
+    cta: 'Get Started',
+    highlight: false,
+  },
+  {
+    name: 'Growth',
+    subtitle: 'Mid-Size Gyms',
+    features: ['Everything in Starter', 'Up to 500 active members', 'AI recipe generation', 'Advanced workout programming', 'CBT mental wellness module', 'Priority support', 'Weekly analytics', 'Member engagement tools'],
+    cta: 'Contact Sales',
+    highlight: true,
+  },
+  {
+    name: 'Enterprise',
+    subtitle: 'Gym Chains & Franchises',
+    features: ['Everything in Growth', 'Unlimited members', 'Multi-location management', 'Dedicated account manager', 'Custom API integrations', 'White-label app store listing', 'SLA guarantee', 'Onboarding & training'],
+    cta: 'Talk to Us',
+    highlight: false,
+  },
+];
+
+const faqs = [
+  { q: `What is the white-label fitness app for ${city} gyms?`, a: `Coachie provides a fully customisable white-label fitness and wellness app for gyms, studios, and personal trainers in ${city}. You get your own branding, AI-powered coaching, nutrition tracking, recipe generation, and CBT therapy features, all under your brand name.` },
+  { q: `How much does the white-label app cost for ${city} businesses?`, a: 'We offer three tiers -- Starter (for solo PTs and small studios), Growth (for mid-size gyms), and Enterprise (for gym chains and franchises). Contact us for a personalised quote tailored to your needs.' },
+  { q: 'What features are included in the app?', a: 'All plans include AI photo food recognition, personalised meal plans, workout tracking, CBT mental wellness coaching, progress analytics, custom branding, and dedicated support.' },
+  { q: `Can I try the app before committing in ${city}?`, a: 'Absolutely! Download the Coachie app from the App Store or Google Play to experience the core features first-hand. Then contact us to discuss white-labelling for your business.' },
+  { q: 'How long does it take to launch my branded app?', a: 'Depending on your plan, your branded app can be live in as little as 2-4 weeks. Enterprise clients receive priority onboarding with a dedicated account manager.' },
+  { q: 'Do you offer ongoing support?', a: 'Yes. All plans include support. Growth and Enterprise plans receive priority and dedicated support respectively, plus regular check-ins and feature updates.' },
+];
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle={`White-Label Fitness App for ${city} Gyms | Coachie`}
+  ogDescription={description}
+  twitterTitle={`White-Label Fitness App for ${city} Gyms | Coachie`}
+  twitterDescription={description}
+  lang="en-GB"
+  hreflangTags={[
+    { lang: 'en-GB', href: canonical },
+    { lang: 'en-US', href: `${BASE_URL}` },
+    { lang: 'x-default', href: `${BASE_URL}` },
+  ]}
+  jsonLd={jsonLd}
+  extraHead={extraHead}
+  showFooter={false}
+>
+  <main id="main-content">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-2">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="/" class="hover:text-gray-800 transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li><a href="/uk" class="hover:text-gray-800 transition-colors">UK</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-gray-800 font-medium">{city}</li>
+      </ol>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 sm:py-24 lg:py-32 overflow-hidden" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+        <span class="inline-block px-4 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full mb-6">
+          Tier {tier} Market &middot; {region}
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight mb-6">
+          White-Label Fitness App<br />
+          <span class="text-gray-500">for {city} Gyms &amp; Studios</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+          Launch your own branded fitness and wellness app in {city}. AI-powered coaching, nutrition tracking, recipe generation, and mental wellness tools -- all under your brand.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href={`mailto:${EMAIL}?subject=White-Label App Enquiry - ${city}`}
+            class="inline-flex items-center px-8 py-3.5 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-700 transition-colors text-base"
+          >
+            Get a Free Quote
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-8 py-3.5 border-2 border-gray-300 text-gray-700 font-semibold rounded-full hover:border-gray-500 transition-colors text-base"
+          >
+            WhatsApp Us
+          </a>
+        </div>
+        <div class="flex items-center justify-center gap-6 mt-8">
+          <a href={APP_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-gray-800 transition-colors underline">
+            App Store
+          </a>
+          <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-gray-800 transition-colors underline">
+            Google Play
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 sm:py-24 bg-gray-50" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+            Everything Your {city} Gym Needs
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            A complete white-label fitness platform built for gyms, studios, and personal trainers in {city} and across {region}.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {features.map((feature) => (
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow" data-animate="fade-up">
+              <div class="text-3xl mb-4" set:html={feature.icon} />
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">{feature.title}</h3>
+              <p class="text-gray-600 text-sm sm:text-base">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why White-Label Section -->
+    <section class="py-16 sm:py-24" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
+              Why {city} Gyms Choose Coachie White-Label
+            </h2>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-bold mt-0.5">1</span>
+                <div>
+                  <h3 class="font-semibold text-gray-800">Increase Member Retention</h3>
+                  <p class="text-gray-600 text-sm">Give members a reason to stay with your gym. A branded app creates loyalty and keeps them engaged between sessions.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-bold mt-0.5">2</span>
+                <div>
+                  <h3 class="font-semibold text-gray-800">New Revenue Streams</h3>
+                  <p class="text-gray-600 text-sm">Offer premium app subscriptions, nutrition plans, and coaching packages. Turn your app into a profit centre.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-bold mt-0.5">3</span>
+                <div>
+                  <h3 class="font-semibold text-gray-800">Stand Out in {city}</h3>
+                  <p class="text-gray-600 text-sm">Differentiate from competitors with a professional, AI-powered app that members love.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-bold mt-0.5">4</span>
+                <div>
+                  <h3 class="font-semibold text-gray-800">No Development Hassle</h3>
+                  <p class="text-gray-600 text-sm">Skip the cost and complexity of building from scratch. Launch in weeks, not months.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-8 sm:p-10">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Ready to Transform Your {city} Gym?</h3>
+            <p class="text-gray-600 mb-6">
+              Join forward-thinking fitness businesses in {city} that are using Coachie to deliver a world-class member experience.
+            </p>
+            <div class="space-y-3">
+              <a
+                href={`mailto:${EMAIL}?subject=White-Label App Enquiry - ${city}`}
+                class="block text-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-700 transition-colors"
+              >
+                Email Us: {EMAIL}
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block text-center px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-full hover:border-gray-500 transition-colors"
+              >
+                WhatsApp: +{WHATSAPP}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-16 sm:py-24 bg-gray-50" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12 sm:mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+            Pricing Plans for {city} Businesses
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Flexible plans designed for fitness businesses of every size in {city}.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {pricingTiers.map((plan) => (
+            <div class:list={[
+              'rounded-2xl p-6 sm:p-8 flex flex-col',
+              plan.highlight ? 'bg-gray-800 text-white ring-2 ring-gray-800 shadow-xl' : 'bg-white shadow-sm',
+            ]} data-animate="fade-up">
+              <h3 class:list={['text-2xl font-bold mb-1', plan.highlight ? 'text-white' : 'text-gray-800']}>
+                {plan.name}
+              </h3>
+              <p class:list={['text-sm mb-6', plan.highlight ? 'text-gray-300' : 'text-gray-500']}>
+                {plan.subtitle}
+              </p>
+              <ul class="space-y-3 mb-8 flex-grow">
+                {plan.features.map((f) => (
+                  <li class="flex items-start gap-2">
+                    <svg class:list={['w-5 h-5 flex-shrink-0 mt-0.5', plan.highlight ? 'text-green-400' : 'text-green-600']} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class:list={['text-sm', plan.highlight ? 'text-gray-200' : 'text-gray-600']}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`mailto:${EMAIL}?subject=${plan.name} Plan Enquiry - ${city}`}
+                class:list={[
+                  'block text-center px-6 py-3 font-semibold rounded-full transition-colors',
+                  plan.highlight ? 'bg-white text-gray-800 hover:bg-gray-100' : 'bg-gray-800 text-white hover:bg-gray-700',
+                ]}
+              >
+                {plan.cta}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 sm:py-24" data-animate="fade-up">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-lg text-gray-600">
+            Common questions from {city} gym owners and personal trainers.
+          </p>
+        </div>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-white rounded-2xl shadow-sm">
+              <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-left">
+                <h3 class="text-base sm:text-lg font-semibold text-gray-800 pr-4">{faq.q}</h3>
+                <svg class="w-5 h-5 text-gray-500 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-6 pb-5">
+                <p class="text-gray-600 text-sm sm:text-base">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <section class="py-16 sm:py-24 bg-gray-800" data-animate="fade-up">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Launch Your Branded Fitness App in {city}
+        </h2>
+        <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+          Get in touch today for a free consultation and demo. We will show you how Coachie can transform your {city} fitness business.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <a
+            href={`mailto:${EMAIL}?subject=White-Label App Enquiry - ${city}`}
+            class="inline-flex items-center px-8 py-3.5 bg-white text-gray-800 font-semibold rounded-full hover:bg-gray-100 transition-colors text-base"
+          >
+            Email: {EMAIL}
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-8 py-3.5 border-2 border-gray-500 text-white font-semibold rounded-full hover:border-gray-300 transition-colors text-base"
+          >
+            WhatsApp: +{WHATSAPP}
+          </a>
+        </div>
+        <div class="flex items-center justify-center gap-6">
+          <a href={APP_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors underline">
+            Download on App Store
+          </a>
+          <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors underline">
+            Download on Google Play
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</MainLayout>

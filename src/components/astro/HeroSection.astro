@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets';
+import bannerImg from '../../assets/images/ic_banner.webp';
+
+const APP_STORE = 'https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791';
+
+const stats = [
+  { metric: '5.0', label: 'App Rating' },
+  { metric: '5K+', label: 'Active Users' },
+  { metric: '94%', label: 'Success Rate' },
+];
+---
+
+<!--
+  CRITICAL: `is:inline` prevents Astro from extracting this into an external CSS file.
+  This CSS is embedded directly in the HTML so it applies BEFORE any content paints.
+  Without is:inline, Astro bundles it into a .css file that loads async → FOUC.
+-->
+<style is:inline>
+  /* Pre-hide all GSAP-animated hero elements BEFORE JS loads */
+  [data-gsap-hero-badge],
+  [data-gsap-hero-sub],
+  [data-gsap-hero-cta],
+  [data-gsap-hero-stat] {
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+  [data-gsap-hero-title] {
+    visibility: hidden;
+    will-change: visibility, opacity;
+  }
+
+  /* Safety: if JS never loads or user prefers reduced motion, show everything */
+  @media (prefers-reduced-motion: reduce) {
+    [data-gsap-hero-badge],
+    [data-gsap-hero-sub],
+    [data-gsap-hero-cta],
+    [data-gsap-hero-stat] {
+      opacity: 1 !important;
+    }
+    [data-gsap-hero-title] {
+      visibility: visible !important;
+    }
+  }
+</style>
+
+<!-- Fallback: if JS is completely disabled, make content visible -->
+<noscript>
+  <style>
+    [data-gsap-hero-badge],
+    [data-gsap-hero-sub],
+    [data-gsap-hero-cta],
+    [data-gsap-hero-stat] { opacity: 1 !important; }
+    [data-gsap-hero-title] { visibility: visible !important; }
+  </style>
+</noscript>
+
+<section class="relative min-h-screen flex items-center overflow-hidden" data-gsap-hero>
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10" data-gsap-hero-inner>
+    <!-- Text Content -->
+    <div class="order-2 md:order-1">
+      <div class="inline-block mb-3 px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-white/80 backdrop-blur-sm border border-gray-300" data-gsap-hero-badge>
+        <span class="text-gray-500">The Future of Wellness is Here</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-4 sm:mb-6" data-gsap-hero-title>
+        <span class="block text-gray-800" data-gsap-hero-title-line>Your</span>
+        <span class="block text-gray-500" data-gsap-hero-title-line>Wellness Revolution</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-lg text-gray-600" data-gsap-hero-sub>
+        The world's first AI-powered Coach, Chef, and CBT based mental support — all in one revolutionary app.
+      </p>
+
+      <div data-gsap-hero-cta>
+        <a
+          href={APP_STORE}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-hover group relative overflow-hidden px-6 sm:px-8 py-3 sm:py-4 inline-flex items-center justify-center space-x-2 rounded-full font-bold bg-gray-800 text-white border border-gray-300"
+          data-magnetic="0.2"
+        >
+          <span class="relative z-10">Experience Coachie</span>
+          <svg class="w-4 h-4 sm:w-5 sm:h-5 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-8 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6">
+        {stats.map((stat) => (
+          <div class="text-center" data-gsap-hero-stat>
+            <div class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-500">{stat.metric}</div>
+            <div class="text-xs sm:text-sm text-gray-400">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="order-1 md:order-2 flex justify-center md:justify-end">
+      <div class="relative w-full max-w-sm sm:max-w-md md:max-w-lg" data-gsap-hero-image>
+        <Image
+          src={bannerImg}
+          alt="Coachie AI wellness app showing coach, chef and CBT therapy features"
+          width={600}
+          height={600}
+          loading="eager"
+          fetchpriority="high"
+          class="w-full h-auto object-contain"
+          style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));"
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,237 @@
+# ============================================
+# robots.txt for Coachie AI
+# https://coachie-ai.com
+# Last Updated: 2026-03-14
+# ============================================
+
+# Default rules for all crawlers
+User-agent: *
+Allow: /
+
+# IMPORTANT: Allow sitemap and AI content files
+Allow: /sitemap.xml
+Allow: /sitemap-*.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Disallow admin, API, and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /dashboard/
+Disallow: /user/
+Disallow: /account/
+
+# Disallow query strings and duplicate content
+Disallow: /*?*
+Disallow: /*&*
+Disallow: /*.json$
+
+# Disallow development/build files
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.map$
+Disallow: /vite.config.*
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /.env*
+
+# Disallow assets that shouldn't be indexed
+Disallow: /assets/*.js$
+Disallow: /assets/*.css$
+
+# ============================================
+# Google Specific Rules
+# ============================================
+User-agent: Googlebot
+Allow: /
+Allow: /sitemap.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /uk/
+Allow: /uk/london
+Allow: /uk/manchester
+Allow: /uk/birmingham
+Allow: /uk/leeds
+Allow: /uk/glasgow
+Allow: /uk/edinburgh
+Allow: /uk/bristol
+Allow: /uk/liverpool
+Allow: /uk/newcastle
+Allow: /uk/sheffield
+Allow: /uk/nottingham
+Allow: /uk/aberdeen
+Allow: /uk/cardiff
+Allow: /uk/swansea
+Allow: /uk/belfast
+Allow: /privacypolicy
+Allow: /developer
+Allow: /portfolio
+Allow: /translate-now
+Allow: /translate-now/hi
+Allow: /translate-now/es
+Allow: /translate-now/fr
+Allow: /translate-now/de
+Allow: /translate-now/ru
+Allow: /translate-now/vi
+Allow: /translate-now/ar
+Allow: /translate-now/ja
+Allow: /translate-now/ko
+Allow: /translate-now/pt
+Allow: /translate-now/it
+Allow: /translate-now/tr
+Allow: /translate-now/th
+Allow: /translate-now/zh
+Allow: /privacy-policy-translation-app
+Allow: /privacy-policy-vira
+Allow: /terms-of-use-translation-app
+Allow: /terms-of-use-vira
+
+# Allow Google to crawl images
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /src/assets/
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# ============================================
+# Bing Specific Rules
+# ============================================
+User-agent: Bingbot
+Allow: /
+Allow: /sitemap.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+# ============================================
+# Other Major Search Engines
+# ============================================
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# ============================================
+# AI Crawlers (Allow for AI search visibility)
+# ============================================
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Applebot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# ============================================
+# Block Bad Bots & Scrapers
+# ============================================
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: SEOkicks
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# ============================================
+# AI Content Files (for LLM consumption)
+# ============================================
+# /llms.txt — Summary of site structure and key pages
+# /llms-full.txt — Complete product information for LLM ingestion
+# Both files follow the llmstxt.org specification
+
+# ============================================
+# Sitemap Locations
+# ============================================
+Sitemap: https://coachie-ai.com/sitemap-index.xml
+
+# ============================================
+# Host Directive (for Yandex & others)
+# ============================================
+Host: https://coachie-ai.com

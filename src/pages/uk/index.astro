@@ -1,0 +1,273 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Footer from '../../components/astro/Footer.astro';
+
+const BASE_URL = 'https://coachie-ai.com';
+const EMAIL = 'contact@coachie-ai.com';
+const WHATSAPP = '919033804605';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP}`;
+const APP_STORE = 'https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791';
+const PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.cc.caloriecoach&pli=1';
+
+const tier1 = [
+  { name: 'London', slug: 'london', region: 'Greater London' },
+  { name: 'Manchester', slug: 'manchester', region: 'Greater Manchester' },
+  { name: 'Birmingham', slug: 'birmingham', region: 'West Midlands' },
+  { name: 'Leeds', slug: 'leeds', region: 'West Yorkshire' },
+];
+
+const tier2 = [
+  { name: 'Bristol', slug: 'bristol', region: 'South West England' },
+  { name: 'Liverpool', slug: 'liverpool', region: 'Merseyside' },
+  { name: 'Glasgow', slug: 'glasgow', region: 'Scotland' },
+  { name: 'Edinburgh', slug: 'edinburgh', region: 'Scotland' },
+];
+
+const tier3 = [
+  { name: 'Newcastle', slug: 'newcastle', region: 'Tyne and Wear' },
+  { name: 'Sheffield', slug: 'sheffield', region: 'South Yorkshire' },
+  { name: 'Nottingham', slug: 'nottingham', region: 'East Midlands' },
+  { name: 'Aberdeen', slug: 'aberdeen', region: 'Scotland' },
+  { name: 'Cardiff', slug: 'cardiff', region: 'Wales' },
+  { name: 'Swansea', slug: 'swansea', region: 'Wales' },
+  { name: 'Belfast', slug: 'belfast', region: 'Northern Ireland' },
+];
+
+const jsonLd = [
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${BASE_URL}/uk#webpage`,
+    "url": `${BASE_URL}/uk`,
+    "name": "White-Label Fitness Apps for UK Gyms & Studios | Coachie",
+    "description": "Custom white-label fitness and wellness apps for gyms, studios, and personal trainers across the United Kingdom. AI-powered coaching, nutrition tracking, and more.",
+    "isPartOf": { "@id": `${BASE_URL}/#website` },
+    "inLanguage": "en-GB"
+  }),
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
+      { "@type": "ListItem", "position": 2, "name": "UK", "item": `${BASE_URL}/uk` }
+    ]
+  }),
+  JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${BASE_URL}/#organization`,
+    "name": "Coachie",
+    "url": BASE_URL,
+    "email": EMAIL,
+    "description": "White-label fitness and wellness app platform for UK gyms, studios, and personal trainers.",
+    "areaServed": { "@type": "Country", "name": "United Kingdom" }
+  })
+];
+
+const extraHead = `
+  <meta name="geo.region" content="GB" />
+  <meta name="geo.country" content="GB" />
+  <meta name="geo.placename" content="United Kingdom" />
+`;
+---
+
+<MainLayout
+  title="White-Label Fitness Apps for UK Gyms & Studios | Coachie"
+  description="Custom white-label fitness and wellness apps for gyms, studios, and personal trainers across the United Kingdom. AI coaching, nutrition tracking, recipe generation, and CBT therapy."
+  canonical={`${BASE_URL}/uk`}
+  ogTitle="White-Label Fitness Apps for UK Gyms & Studios | Coachie"
+  ogDescription="Launch your own branded fitness app for your UK gym or studio. AI-powered coaching, nutrition tracking, and mental wellness tools."
+  twitterTitle="White-Label Fitness Apps for UK Gyms & Studios | Coachie"
+  twitterDescription="Launch your own branded fitness app for your UK gym or studio. AI-powered coaching, nutrition tracking, and mental wellness tools."
+  lang="en-GB"
+  hreflangTags={[
+    { lang: 'en-GB', href: `${BASE_URL}/uk` },
+    { lang: 'en-US', href: BASE_URL },
+    { lang: 'x-default', href: BASE_URL },
+  ]}
+  jsonLd={jsonLd}
+  extraHead={extraHead}
+  showFooter={false}
+>
+  <main id="main-content">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-2">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="/" class="hover:text-gray-800 transition-colors">Home</a></li>
+        <li><span class="mx-1">/</span></li>
+        <li class="text-gray-800 font-medium">UK</li>
+      </ol>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-16 sm:py-24 lg:py-32 overflow-hidden" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+        <span class="inline-block px-4 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full mb-6">
+          15 Cities Across the UK
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight mb-6">
+          White-Label Fitness Apps<br />
+          <span class="text-gray-500">for UK Gyms &amp; Studios</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+          Launch your own branded fitness and wellness app. AI-powered coaching, nutrition tracking, recipe generation, and CBT mental wellness -- all under your brand. Available across the United Kingdom.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href={`mailto:${EMAIL}?subject=White-Label App Enquiry - UK`}
+            class="inline-flex items-center px-8 py-3.5 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-700 transition-colors text-base"
+          >
+            Get a Free Quote
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-8 py-3.5 border-2 border-gray-300 text-gray-700 font-semibold rounded-full hover:border-gray-500 transition-colors text-base"
+          >
+            WhatsApp Us
+          </a>
+        </div>
+        <div class="flex items-center justify-center gap-6 mt-8">
+          <a href={APP_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-gray-800 transition-colors underline">
+            App Store
+          </a>
+          <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-gray-800 transition-colors underline">
+            Google Play
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tier 1 Cities -->
+    <section class="py-16 sm:py-24 bg-gray-50" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <span class="inline-block px-3 py-1 bg-gray-800 text-white text-xs font-bold rounded-full mb-3">TIER 1</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Major Metropolitan Areas</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            The UK's largest fitness markets with the highest demand for white-label gym technology.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tier1.map((city) => (
+            <a
+              href={`/uk/${city.slug}`}
+              class="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
+              data-animate="fade-up"
+            >
+              <h3 class="text-2xl font-bold text-gray-800 group-hover:text-gray-600 transition-colors mb-2">{city.name}</h3>
+              <p class="text-sm text-gray-500 mb-4">{city.region}</p>
+              <span class="inline-flex items-center text-sm font-medium text-gray-800 group-hover:text-gray-600 transition-colors">
+                Explore
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tier 2 Cities -->
+    <section class="py-16 sm:py-24" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <span class="inline-block px-3 py-1 bg-gray-600 text-white text-xs font-bold rounded-full mb-3">TIER 2</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Growing Fitness Markets</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Fast-growing cities with thriving fitness communities and strong demand for gym technology.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tier2.map((city) => (
+            <a
+              href={`/uk/${city.slug}`}
+              class="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
+              data-animate="fade-up"
+            >
+              <h3 class="text-2xl font-bold text-gray-800 group-hover:text-gray-600 transition-colors mb-2">{city.name}</h3>
+              <p class="text-sm text-gray-500 mb-4">{city.region}</p>
+              <span class="inline-flex items-center text-sm font-medium text-gray-800 group-hover:text-gray-600 transition-colors">
+                Explore
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tier 3 Cities -->
+    <section class="py-16 sm:py-24 bg-gray-50" data-animate="fade-up">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-12">
+          <span class="inline-block px-3 py-1 bg-gray-400 text-white text-xs font-bold rounded-full mb-3">TIER 3</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Emerging Markets</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Dynamic cities across the UK with expanding fitness industries and untapped potential.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tier3.map((city) => (
+            <a
+              href={`/uk/${city.slug}`}
+              class="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
+              data-animate="fade-up"
+            >
+              <h3 class="text-2xl font-bold text-gray-800 group-hover:text-gray-600 transition-colors mb-2">{city.name}</h3>
+              <p class="text-sm text-gray-500 mb-4">{city.region}</p>
+              <span class="inline-flex items-center text-sm font-medium text-gray-800 group-hover:text-gray-600 transition-colors">
+                Explore
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 sm:py-24 bg-gray-800" data-animate="fade-up">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Ready to Launch Your Branded Fitness App?
+        </h2>
+        <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+          Whether you are in London, Manchester, Edinburgh, or anywhere in the UK, Coachie can help you launch a world-class fitness app under your own brand.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <a
+            href={`mailto:${EMAIL}?subject=White-Label App Enquiry - UK`}
+            class="inline-flex items-center px-8 py-3.5 bg-white text-gray-800 font-semibold rounded-full hover:bg-gray-100 transition-colors text-base"
+          >
+            Email: {EMAIL}
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-8 py-3.5 border-2 border-gray-500 text-white font-semibold rounded-full hover:border-gray-300 transition-colors text-base"
+          >
+            WhatsApp: +{WHATSAPP}
+          </a>
+        </div>
+        <div class="flex items-center justify-center gap-6">
+          <a href={APP_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors underline">
+            Download on App Store
+          </a>
+          <a href={PLAY_STORE} target="_blank" rel="noopener noreferrer" class="text-sm text-gray-400 hover:text-white transition-colors underline">
+            Download on Google Play
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</MainLayout>

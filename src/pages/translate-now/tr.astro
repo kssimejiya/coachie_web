@@ -1,0 +1,420 @@
+---
+import TranslateNowLayout from '../../layouts/TranslateNowLayout.astro';
+import { Image } from 'astro:assets';
+import translateIcon from '../../assets/images/translate_icon.webp';
+import translateRobot from '../../assets/images/translate_robot.webp';
+import translateSs1 from '../../assets/images/translate_ss_1.png';
+import translateSs2 from '../../assets/images/translate_ss_2.png';
+import translateSs3 from '../../assets/images/translate_ss_3.png';
+import translateSs4 from '../../assets/images/translate_ss_4.png';
+import translateSs5 from '../../assets/images/translate_ss_5.png';
+import translateSs6 from '../../assets/images/translate_ss_6.png';
+import translateSs7 from '../../assets/images/translate_ss_7.png';
+import translateSs8 from '../../assets/images/translate_ss_8.png';
+import translateSs9 from '../../assets/images/translate_ss_9.png';
+import translateSs10 from '../../assets/images/translate_ss_10.png';
+import translateSs11 from '../../assets/images/translate_ss_11.png';
+
+const APP_STORE_URL = 'https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185';
+const PRIVACY_URL = 'https://coachie-ai.com/privacy-policy-translation-app';
+const TERMS_URL = 'https://coachie-ai.com/terms-of-use-translation-app';
+const SUPPORT_EMAIL = 'contact@coachie-ai.com';
+
+const LANGUAGE_LINKS = [
+  { href: '/translate-now', label: 'English' },
+  { href: '/translate-now/hi', label: 'Hindi' },
+  { href: '/translate-now/es', label: 'Spanish' },
+  { href: '/translate-now/fr', label: 'French' },
+  { href: '/translate-now/de', label: 'German' },
+  { href: '/translate-now/ru', label: 'Russian' },
+  { href: '/translate-now/vi', label: 'Vietnamese' },
+  { href: '/translate-now/ar', label: 'Arabic' },
+  { href: '/translate-now/ja', label: 'Japanese' },
+  { href: '/translate-now/ko', label: 'Korean' },
+  { href: '/translate-now/pt', label: 'Portuguese' },
+  { href: '/translate-now/it', label: 'Italian' },
+  { href: '/translate-now/th', label: 'Thai' },
+  { href: '/translate-now/zh', label: 'Chinese' },
+];
+
+const HREFLANG_LINKS = [
+  { lang: 'en', href: 'https://coachie-ai.com/translate-now' },
+  { lang: 'hi', href: 'https://coachie-ai.com/translate-now/hi' },
+  { lang: 'es', href: 'https://coachie-ai.com/translate-now/es' },
+  { lang: 'fr', href: 'https://coachie-ai.com/translate-now/fr' },
+  { lang: 'de', href: 'https://coachie-ai.com/translate-now/de' },
+  { lang: 'ru', href: 'https://coachie-ai.com/translate-now/ru' },
+  { lang: 'vi', href: 'https://coachie-ai.com/translate-now/vi' },
+  { lang: 'ar', href: 'https://coachie-ai.com/translate-now/ar' },
+  { lang: 'ja', href: 'https://coachie-ai.com/translate-now/ja' },
+  { lang: 'ko', href: 'https://coachie-ai.com/translate-now/ko' },
+  { lang: 'pt', href: 'https://coachie-ai.com/translate-now/pt' },
+  { lang: 'it', href: 'https://coachie-ai.com/translate-now/it' },
+  { lang: 'tr', href: 'https://coachie-ai.com/translate-now/tr' },
+  { lang: 'th', href: 'https://coachie-ai.com/translate-now/th' },
+  { lang: 'zh', href: 'https://coachie-ai.com/translate-now/zh' },
+  { lang: 'x-default', href: 'https://coachie-ai.com/translate-now' },
+];
+
+const SOCIAL_PROOF = [
+  { label: '135+ Dil', icon: 'M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802' },
+  { label: '30 Uygulama Dili', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' },
+  { label: 'Cihaz Üstü YZ', icon: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z' },
+  { label: 'Ses Klonlama', icon: 'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z' },
+  { label: 'Çevrimdışı Gizlilik', icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' },
+];
+
+const FEATURES = [
+  { title: 'Gerçek Zamanlı YZ Sohbet', desc: 'OpenAI Realtime API ile çift yönlü sesli çeviri. Dilinizi otomatik algılar, çevirir ve yanıtlar. 7 nöral ses. Kayıt ve .m4a olarak dışa aktarma.', icon: 'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z' },
+  { title: 'Ses Klonlama', desc: '10 saniye kaydedin. ElevenLabs, sesinizin 135+ dilde konuşan nöral klonunu oluşturur. Hız 0,5x-2x ayarlanabilir. Erkek veya kadın ses seçilebilir.', icon: 'M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z' },
+  { title: '5 YZ Yazım Aracı', desc: 'Çevirmeden önce metni düzenleyin — dil bilgisi düzeltme, ton ayarlama (5 seçenek), uzunluk değiştirme, madde/özet formatı veya stil değiştirme.', icon: 'M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125' },
+  { title: 'Kamera OCR Çeviri', desc: 'Tabelaları, menüleri, etiketleri veya belgeleri gösterin. Vision Framework OCR, Latin dışı alfabeler için hibrit GPT-4o yönlendirmesi. Canlı kamera veya fotoğraf yükleme.', icon: 'M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z' },
+  { title: 'Gerçek Zamanlı AR Çeviri', desc: 'ARKit destekli, gerçek dünyaya sabitlenmiş 3D çeviri kartları. Dokunma geri bildirimi, TTS ve dokunarak kopyalama ile Glassmorphism katmanları. Latin alfabeleri desteklenir.', icon: 'M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+  { title: 'Belge Çeviri', desc: 'PDF, DOCX, TXT veya fotoğraf içe aktarın. YZ her metin bloğunu çevirir ve orijinal düzeni koruyarak belgeyi yeniden oluşturur. Arapça, İbranice, Urduca için tam RTL desteği.', icon: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z' },
+  { title: 'Entegre Klavye Çevirmen', desc: 'iMessage, WhatsApp, Instagram, Telegram, e-posta için iOS klavye uzantısı — iPhone\'unuzdaki her metin alanı. Kendi dilinizde yazın, karşı tarafın dilinde gönderin.', icon: 'M3.75 9h16.5m-16.5 6.75h16.5' },
+  { title: 'Cihaz Üstü Çevrimdışı Çeviri', desc: 'ML Kit ile cihaz üstü 59 dil. Paketleri bir kez indirin (5-50 MB). Sıfır sunucu çağrısı. Tüm işlem iPhone\'unuzda kalır.', icon: 'M3 3l8.735 8.735m0 0a.374.374 0 11.53.53m-.53-.53l.53.53m0 0L21 21M14.652 9.348a3.75 3.75 0 010 5.304m2.121-7.425a6.75 6.75 0 010 9.546m2.121-11.667C21.583 7.792 23.25 9.77 23.25 12c0 2.23-1.667 4.208-4.356 6.894' },
+  { title: 'Varsayılan Sistem Çevirmeni', desc: 'iOS 18.4+: TranslateNow\'u iPhone\'unuzun sistem çevirmeni olarak ayarlayın. Safari, Mail, Mesajlar\'da metin seçin — "Çevir" TranslateNow üzerinden çalışır.', icon: 'M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3' },
+];
+
+const STEPS = [
+  { num: '01', title: 'Konuşun, yazın, çekin veya gösterin', desc: 'Ses girişi, metin, kamera OCR, AR katmanı, belge içe aktarma veya klavye — altı giriş modu, sıfır sürtünme.', icon: 'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z' },
+  { num: '02', title: 'YZ satır aralarını okur', desc: 'GPT-4o tonu, niyeti ve kültürel nüansları bağlamlandırır. Çevirmeden önce 9 ton ve 5 yazım aracından seçin.', icon: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z' },
+  { num: '03', title: 'Yerli gibi iletişim kurun', desc: '135+ dil. Çevrimiçi veya çevrimdışı. Kendi klonlanmış sesinizle — telaffuz, örnekler ve eş anlamlılar ile birlikte.', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' },
+];
+
+const SCREENSHOTS = [
+  { image: translateSs1, label: 'Widget', alt: 'TranslateNow ana ekran widget\'ı ve günün kelimesi' },
+  { image: translateSs2, label: 'YZ Çeviri', alt: 'TranslateNow YZ çeviri ile bağlam, örnekler, eş anlamlılar' },
+  { image: translateSs3, label: 'Belgeler', alt: 'TranslateNow PDF belge çevirisi' },
+  { image: translateSs4, label: 'Klavye', alt: 'TranslateNow klavye uzantısı kurulumu' },
+  { image: translateSs5, label: 'Geçmiş', alt: 'TranslateNow çeviri geçmişi ve arama' },
+  { image: translateSs6, label: 'Ses Klonlama', alt: 'TranslateNow ses klonlama kurulumu' },
+  { image: translateSs7, label: 'YZ Sesleri', alt: 'TranslateNow YZ ses seçimi' },
+  { image: translateSs8, label: 'Ayarlar', alt: 'TranslateNow ayarlar ve çevrimdışı mod' },
+  { image: translateSs9, label: 'AR Çeviri', alt: 'TranslateNow AR çeviri ve 3D katmanlar' },
+  { image: translateSs10, label: 'Kamera', alt: 'TranslateNow kamera çevirisi' },
+  { image: translateSs11, label: 'YZ Sohbet', alt: 'TranslateNow YZ sohbet ve robot asistan' },
+];
+
+const DEEP_DIVES = [
+  {
+    tag: 'Ses Klonlama',
+    title: 'Sizin sesiniz. Her dil.',
+    desc: 'ElevenLabs nöral ses sentezi, sesinizin YZ kopyasını oluşturur. 10 saniyelik bir örnek kaydedin. Oynatma hızı 0,5x ile 2x arasında ayarlanabilir. Erkek veya kadın ses cinsiyeti seçilebilir. Canlı sohbetler için streaming PCM (~75ms gecikme) — geçmiş oynatma için streaming olmayan MP3.',
+    bullets: ['ElevenLabs ile doğal tonlama sağlayan nöral ses sentezi', 'Oynatma hızı 0,5x ile 2x arasında kontrol edilebilir', 'Erkek ve kadın ses cinsiyeti seçenekleri', 'Canlı sohbetler için streaming PCM (~75ms gecikme)'],
+    image: translateSs6,
+    imageAlt: 'TranslateNow ses klonlama ayarları, hız kontrolü ve ses cinsiyeti seçimi',
+  },
+  {
+    tag: 'Kamera + AR Çeviri',
+    title: 'Gösterin. Çekin. Anlayın.',
+    desc: 'Tek ekranda iki mod — anında fotoğraflar için kamera OCR ve canlı 3D katmanlar için AR modu. Kamera, metin tanıma için Apple Vision Framework kullanır; Latin dışı alfabeler (Hintçe, Arapça, CJK) için hibrit GPT-4o yönlendirmesi. AR modu, ARKit SceneKit ile Glassmorphism çeviri kartlarını üst üste bindirir.',
+    bullets: ['Canlı kamera + fotoğraf yükleme + AR tarama modları', 'ARKit 3D katmanlar, uzayda sabitlenmiş Glassmorphism kartları', 'Latin dışı alfabeler için hibrit Vision + GPT-4o yönlendirmesi', 'Tabelalar, menüler, belgeler, ilaç etiketleri, fişler'],
+    image: translateSs10,
+    imageAlt: 'TranslateNow kamera OCR ve gerçek zamanlı AR çeviri, havada süzülen 3D katmanlar',
+  },
+  {
+    tag: 'AR Çeviri',
+    title: 'Çevirileri gerçek dünyada görün.',
+    desc: 'Kameranızı herhangi bir metne doğrultun ve çevirilerin 3D olarak havada süzüldüğünü görün. ARKit SceneKit, gerçek yüzeylere sabitlenmiş Glassmorphism çeviri kartları oluşturur. Hareket ettiğinizde çeviriler sabit kalır — döndürün, eğin, etrafında dolaşın. 135+ dilde tabelalar, menüler, etiketler ve belgeler desteklenir.',
+    bullets: ['ARKit SceneKit destekli gerçek zamanlı AR katmanları', 'Uzayda sabitlenmiş Glassmorphism 3D kartlar', 'Kamerayı hareket ettirdiğinizde çeviriler sabit kalır', 'Tabelalar, menüler, ilaç etiketleri, vitrinlerle çalışır'],
+    image: translateSs9,
+    imageAlt: 'TranslateNow AR çeviri, gerçek metne sabitlenmiş havada süzülen 3D katmanlar',
+  },
+  {
+    tag: 'Belge Çeviri',
+    title: 'Belgelerin tamamını çevirin. Düzen bozulmaz.',
+    desc: 'PDF, DOCX, TXT veya fotoğraf içe aktarın. Belge ayrıştırıcı her metin bloğunu çıkarır. GPT-4o her bloğu çevirir. Yeniden yapılandırıcı, biçimlendirme, yazı tipleri ve düzeni koruyarak belgeyi yeniden oluşturur — RTL diller dahil.',
+    bullets: ['PDF, DOCX, TXT ve fotoğraf belge desteği', 'Düzeni koruyan yeniden yapılandırma motoru', 'Tam RTL desteği — Arapça, İbranice, Urduca', 'Sayfa bazlı ilerleme takibli toplu işleme', 'Küçük resimler ve yeniden dışa aktarma ile belge geçmişi'],
+    image: translateSs3,
+    imageAlt: 'TranslateNow PDF DOCX belge çevirisi, düzen korumalı',
+  },
+];
+
+const WRITING_TOOLS = [
+  { title: 'Dil Bilgisi', desc: 'Yazım, zaman ve uyum hatalarını otomatik düzeltme' },
+  { title: 'Ton', desc: 'Samimi · Profesyonel · Komik · Flörtöz · Sadeleştirilmiş' },
+  { title: 'Uzunluk', desc: 'Kısa (40-60%) veya Genişletilmiş (150-200%)' },
+  { title: 'Biçim', desc: 'Özet · Ana Noktalar · Madde İşaretli Liste' },
+  { title: 'Stil', desc: 'Akademik · Yaratıcı · Şiirsel · İkna Edici' },
+];
+
+const AI_FEATURES = [
+  { title: 'YZ Bağlamlandırma', desc: 'Her çeviri kullanım örnekleri, eş anlamlılar ve ton varyasyonları sunar. GPT-4o tarafından desteklenir.' },
+  { title: '9 Çeviri Tonu', desc: 'Standart, Resmi, Günlük, Samimi, Profesyonel, Sadeleştirilmiş, Edebi, Komik ve Flörtöz.' },
+  { title: 'Transliterasyon Motoru', desc: 'Her Latin dışı alfabe için romanize telaffuz — Japonca, Korece, Çince, Arapça, Hintçe, Rusça, Tayca, Yunanca, İbranice.' },
+  { title: '7 Nöral YZ Sesi', desc: 'Coral, Alloy, Echo, Fable, Onyx, Nova ve Shimmer — OpenAI üzerinden yedi farklı ses kişiliği.' },
+  { title: 'Sesten Metne Giriş', desc: 'Cihaz üstü ses tanıma doğrudan çeviri hattına beslenir. Noktalama işaretlerini ve duraklamaları işler.' },
+  { title: 'Sohbet Kaydı ve Dışa Aktarma', desc: 'YZ sohbet oturumlarını kaydedin ve .m4a ses olarak dışa aktarın. Kullanıcı sesi + YZ sesi kronolojik olarak kaydedilir.' },
+  { title: '30 Uygulama Dili', desc: 'Uygulama Hintçe, İspanyolca, Fransızca, Almanca, Japonca, Korece, Çince, Arapça, İbranice dahil 30 dilde yerelleştirilmiştir.' },
+  { title: 'Hız Kontrolü (0,5x – 2x)', desc: 'Klonlanmış sesler ve sistem TTS için oynatma hızını ayarlayın. Öğrenmek için yavaşlatın, referans için hızlandırın.' },
+];
+
+const IOS_FEATURES = [
+  { title: 'Ana Ekran Widget\'ları', desc: 'Hızlı Çeviri, Son Çeviriler ve Günün Kelimesi — ana ekrandan doğrudan çeviri yapan üç widget.' },
+  { title: 'Denetim Merkezi (iOS 18+)', desc: 'iOS 18 Denetim Merkezi\'nde kamera, ses ve metin çeviri kontrolleri. Her ekrandan tek dokunuşla erişim.' },
+  { title: 'Canlı Etkinlikler ve Dynamic Island', desc: 'Aktif YZ sohbet ve belge çeviri oturumları kilit ekranında ve Dynamic Island\'da gerçek zamanlı ilerleme ile görünür.' },
+  { title: 'Siri Kısayolları (5 Eylem)', desc: '"Hey Siri, TranslateNow ile çevir." Sesle kontrol edilen beş niyet: metin çevir, pano, sohbet, kamera, indir.' },
+  { title: 'Spotlight Arama Dizini', desc: 'Son 50 çeviriniz CoreSpotlight\'ta dizinlenir. Geçmiş çevirileri sistem genelinde arayın.' },
+  { title: 'Günün Kelimesi', desc: 'Telaffuz ve çeviri ile YZ tarafından oluşturulan günlük kelime. Ana ekran widget\'ı ile sunulur, GPT-4o-mini tarafından desteklenir.' },
+  { title: 'Varsayılan Sistem Çevirmeni (iOS 18.4+)', desc: 'TranslateNow\'u iPhone\'unuzun varsayılan çeviri motoru olarak ayarlayın. Safari, Mail, Mesajlar\'da sistem menüsünden çevirin.' },
+  { title: 'Evrensel Derin Bağlantılar', desc: 'lingualink:// URL şeması widget\'ları, Siri\'yi, Spotlight\'ı ve Denetim Merkezi\'ni doğrudan ilgili özelliğe bağlar.' },
+];
+
+const USE_CASES = [
+  { title: 'Uluslararası Gezginler', desc: 'Sokak tabelalarını AR ile, menüleri kamera ile, konuşmaları sesle çevirin — internetli veya internetsiz.', icon: 'M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5' },
+  { title: 'İş İnsanları', desc: 'Sözleşmeleri ve PDF\'leri biçimlendirmeyi koruyarak çevirin. E-postalar için tonu Profesyonel yapın. Sunumlar için sesinizi klonlayın.', icon: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0' },
+  { title: 'Dil Öğrencileri', desc: 'YZ bağlamlandırma örnekler ve eş anlamlılar sunar — ders kitabı çıktısı değil. Latin dışı alfabeler için transliterasyon. Günün Kelimesi widget\'ı.', icon: 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5' },
+  { title: 'Çok Dilli Mesajlaşma', desc: 'Klavye uzantısı WhatsApp, iMessage, Instagram, Telegram\'da yazarken çevirir — metin alanı olan her iOS uygulamasında.', icon: 'M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z' },
+  { title: 'Gizlilik Odaklı Kullanıcılar', desc: 'Çevrimdışı mod 59 dili tamamen cihaz üstünde çevirir. Sunucu çağrısı yok, bulut depolama yok, veri toplama yok.', icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' },
+  { title: 'Çok Dilli Aileler', desc: 'Nesiller arasında dil köprüleri kurun. Bir aile üyesinin sesini klonlayın, büyükanne ve büyükbabalar çevirileri tanıdık bir sesle duysun.', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3' },
+];
+
+const STATS = [
+  { value: '135', suffix: '+', label: 'Desteklenen Dil' },
+  { value: '30', suffix: '', label: 'Uygulama Yerelleştirmesi' },
+  { value: '9', suffix: '', label: 'Çeviri Tonu' },
+  { value: '59', suffix: '', label: 'Çevrimdışı Dil' },
+];
+
+const TESTIMONIALS = [
+  { name: 'Sarah K.', role: 'Sık Seyahat Eden', text: 'Ses klonlama beni çok etkiledi. Sesimi bir kez kaydettim ve şimdi benim sesimle Japonca konuşuyor. Tokyo\'daki ev sahiplerim inanamadı.' },
+  { name: 'Marco R.', role: 'Uluslararası İş', text: 'Klavye çevirmen LinkedIn ve e-posta için oyun değiştirici. Uygulama değiştirmeden İtalyanca yanıt veriyorum. Belge çevirisi sözleşmelerde saatlerce zaman kazandırdı — düzen kusursuz korundu.' },
+  { name: 'Priya M.', role: 'Öğrenci', text: 'Sonunda ders kitabı gibi konuşmayan bir çevirmen. Yazım araçları çevirmeden önce tonu ayarlamamı sağlıyor — Fransızca denemelerim artık doğal geliyor. YZ örnekleri inanılmaz.' },
+];
+
+const COMPARISON = [
+  { feature: 'Ses Klonlama (Kendi Sesiniz)', tn: true, gt: false, dl: false },
+  { feature: 'Gerçek Zamanlı AR Çeviri (ARKit)', tn: true, gt: false, dl: false },
+  { feature: 'Belge Çeviri (PDF/DOCX/TXT)', tn: true, gt: false, dl: true },
+  { feature: 'YZ Yazım Araçları (5 Entegre)', tn: true, gt: false, dl: false },
+  { feature: 'Klavye Çevirmen (Her Uygulama)', tn: true, gt: false, dl: false },
+  { feature: 'Varsayılan Sistem Çevirmeni (iOS 18.4+)', tn: true, gt: false, dl: false },
+  { feature: 'iOS Widget\'ları (3 Tür)', tn: true, gt: false, dl: false },
+  { feature: 'Denetim Merkezi Kontrolleri (iOS 18)', tn: true, gt: false, dl: false },
+  { feature: 'Siri Kısayolları (5 Eylem)', tn: true, gt: false, dl: false },
+  { feature: 'Canlı Etkinlikler / Dynamic Island', tn: true, gt: false, dl: false },
+  { feature: 'Spotlight Arama Dizini', tn: true, gt: false, dl: false },
+  { feature: 'YZ Bağlam + Örnekler + Eş Anlamlılar', tn: true, gt: false, dl: false },
+  { feature: 'Transliterasyon (Latin Dışı Alfabeler)', tn: true, gt: false, dl: false },
+  { feature: '9 Çeviri Tonu', tn: true, gt: false, dl: false },
+  { feature: '7 Nöral YZ Sesi', tn: true, gt: false, dl: false },
+  { feature: 'Sohbet Kaydı (.m4a)', tn: true, gt: false, dl: false },
+  { feature: 'Hız Kontrolü (0,5x-2x)', tn: true, gt: false, dl: false },
+  { feature: 'Günün Kelimesi Widget\'ı', tn: true, gt: false, dl: false },
+  { feature: 'YZ Sohbetler (Realtime API)', tn: true, gt: true, dl: false },
+  { feature: 'Kamera OCR Çeviri', tn: true, gt: true, dl: false },
+  { feature: 'Cihaz Üstü Çevrimdışı Çeviri', tn: true, gt: true, dl: true },
+  { feature: '135+ Dil', tn: true, gt: true, dl: '30+' },
+];
+
+const FAQ_ITEMS = [
+  { q: 'TranslateNow nedir?', a: 'TranslateNow, ses klonlama, AR çeviri, belge çevirisi, kamera OCR, klavye uzantısı, YZ yazım araçları ve çevrimdışı mod ile 135+ dili destekleyen iOS için YZ destekli bir çeviri uygulamasıdır. Siri kısayolları, ana ekran widget\'ları, Denetim Merkezi, Canlı Etkinlikler, Dynamic Island, Spotlight araması ve iOS 18.4+ sistem çevirmen API\'si ile entegre olur. Coachie AI tarafından geliştirilmiştir.' },
+  { q: 'TranslateNow\'da ses klonlama nasıl çalışır?', a: 'Ses klonlama, ElevenLabs\'ın 135+ dilde konuşan sesinizin YZ kopyasını oluşturmak için kullandığı 10 saniyelik bir ses örneği kaydetmenizi sağlar. Ses dosyası da yükleyebilirsiniz. Erkek veya kadın ses cinsiyeti seçin, hızı 0,5x ile 2x arasında ayarlayın ve doğal tonlamayla kendi sesinizde çevirileri dinleyin. Ses klonlama Pro özelliğidir.' },
+  { q: 'Gerçek zamanlı AR çeviri nedir?', a: 'AR çeviri, iPhone kameranız aracılığıyla metni tanımak ve SceneKit ile gerçek dünyaya sabitlenmiş havada süzülen 3D Glassmorphism çeviri kartları bindirmek için ARKit kullanır. Kameranızı tabelalara, menülere veya belgelere doğrultun — çeviriler 3D olarak havada belirir. Kopyalamak, TTS telaffuzu duymak veya dokunsal geri bildirim almak için bir karta dokunun.' },
+  { q: 'TranslateNow PDF, Word ve metin belgelerini çevirebilir mi?', a: 'Evet, TranslateNow düzeni koruyarak PDF, DOCX, TXT ve fotoğraf belgelerini çevirir. Ayrıştırıcı her metin bloğunu çıkarır, GPT-4o her birini çevirir ve yeniden yapılandırma motoru biçimlendirme, yazı tipleri ve düzeni koruyarak belgeyi yeniden oluşturur. Arapça, İbranice ve Urduca için tam RTL desteği dahildir.' },
+  { q: 'iPhone\'da internet olmadan çevrimdışı çeviri yapabilir miyim?', a: 'Evet, Google ML Kit ile tamamen çevrimdışı cihaz üstü çeviri için 59 dil mevcuttur. Dil paketlerini WiFi ile bir kez indirin (her biri 5-50 MB), sonra internet olmadan her yerde çeviri yapın. Sıfır veri aktarılır — tüm işlem iPhone\'unuzda kalır.' },
+  { q: 'Klavye çevirmen nasıl çalışır?', a: 'Klavye çevirmen, metin alanı olan her uygulamada çalışan entegre bir iOS klavye uzantısıdır — iMessage, WhatsApp, Instagram, Telegram, LinkedIn, Gmail, Slack ve daha fazlası. Kendi dilinizde yazın, klavye uygulama değiştirmeden hedef dile çevirip gönderir.' },
+  { q: 'Hangi YZ yazım araçları dahildir?', a: 'TranslateNow, çevirmeden önce metni düzenleyen 5 YZ yazım aracı içerir: Dil Bilgisi (otomatik düzeltme), Ton (Samimi, Profesyonel, Komik, Flörtöz, Sadeleştirilmiş), Uzunluk (Kısa %40-60 veya Genişletilmiş %150-200), Biçim (Özet, Ana Noktalar, Madde İşaretli Liste) ve Stil (Akademik, Yaratıcı, Şiirsel, İkna Edici). Başka hiçbir çeviri uygulamasında entegre yazım araçları yoktur.' },
+  { q: 'TranslateNow Siri, Widget\'lar, Denetim Merkezi ve Canlı Etkinlikleri destekliyor mu?', a: 'Evet, TranslateNow derin iOS entegrasyonuna sahiptir. 5 Siri kısayolu, 3 ana ekran widget türü (Hızlı Çeviri, Son Çeviriler, Günün Kelimesi), 3 iOS 18 Denetim Merkezi kontrolü (Kamera, Ses, Metin), kilit ekranında Canlı Etkinlikler ve aktif oturumlar sırasında Dynamic Island, son 50 çeviriniz için Spotlight arama dizinlemesi içerir.' },
+  { q: 'TranslateNow\'u iPhone\'umun varsayılan çevirmeni olarak ayarlayabilir miyim?', a: 'Evet, iOS 18.4 ve üzerinde TranslateNow sistem çeviri sağlayıcısı olarak kaydolur. Safari, Mail veya Mesajlar\'da metin seçip bağlam menüsünde "Çevir"e dokunduğunuzda, çeviri Apple\'ın yerleşik çevirmeni yerine TranslateNow üzerinden yönlendirilir.' },
+  { q: 'TranslateNow ne kadar?', a: 'TranslateNow temel çeviri özellikleriyle ücretsiz indirilebilir. Premium planlar: Haftalık $9,99/hafta (3 günlük ücretsiz deneme) ve Aylık $29,99/ay (en iyi değer, %25 tasarruf). Her iki plan da ses klonlama, YZ yazım araçları, belge çevirisi, AR çeviri ve tüm premium özelliklerin kilidini açar. Apple\'ın abonelik yönetiminden istediğiniz zaman iptal edebilirsiniz.' },
+  { q: 'TranslateNow\'u Google Translate ve DeepL\'den üstün kılan ne?', a: 'TranslateNow\'un Google Translate ve DeepL\'de bulunmayan 22 özelliği var. Bunlar arasında YZ ses klonlama, ARKit ile gerçek zamanlı AR çeviri, 5 entegre yazım aracı, her uygulama için klavye çevirmen, düzen yeniden yapılandırmalı belge çevirisi, varsayılan sistem çevirmen (iOS 18.4+), Siri kısayolları, 3 ana ekran widget\'ı, Denetim Merkezi kontrolleri, Dynamic Island ile Canlı Etkinlikler, .m4a olarak sohbet kaydı, örnekler ve eş anlamlılarla YZ bağlamı, transliterasyon, 9 ton, 7 nöral YZ sesi ve hız kontrolü bulunur.' },
+  { q: 'TranslateNow WhatsApp, iMessage ve Instagram\'da çalışır mı?', a: 'Evet. Entegre klavye uzantısı metin alanı olan her iOS uygulamasında çalışır — WhatsApp, iMessage, Instagram, Telegram, LinkedIn, Gmail, Slack ve diğerleri. Ayarlar → Genel → Klavye → Klavyeler → Yeni Klavye Ekle → TranslateNow yolunu izleyerek etkinleştirin.' },
+  { q: 'TranslateNow kaç dili destekliyor?', a: 'TranslateNow GPT-4o ile bulut çevirisi için 135+ dil, Google ML Kit ile çevrimdışı cihaz üstü çeviri için 59 dil destekler. Uygulama arayüzü Hintçe, İspanyolca, Fransızca, Almanca, Japonca, Korece, Çince, Arapça ve İbranice dahil 30 dilde yerelleştirilmiştir.' },
+  { q: 'TranslateNow özel çeviriler için güvenli mi?', a: 'Çevrimdışı modda tüm çeviri işlemleri tamamen iPhone\'unuzda ML Kit üzerinden gerçekleşir, veri aktarımı olmaz. Bulut özellikleri için metin standart şifreleme ile OpenAI ve ElevenLabs API\'leri üzerinden işlenir. Coachie AI sunucularında hiçbir çeviri verisi saklanmaz.' },
+  { q: 'iPhone\'da WhatsApp mesajlarını nasıl çeviririm?', a: 'iPhone\'da WhatsApp mesajlarını çevirmek için Ayarlar → Genel → Klavye → Klavyeler → Yeni Klavye Ekle → TranslateNow yolunu izleyerek TranslateNow klavye uzantısını etkinleştirin. Ardından WhatsApp\'ı açın, TranslateNow\'a geçmek için klavyenizdeki küre simgesine dokunun, mesajınızı kendi dilinizde yazın — göndermeden önce otomatik olarak çevrilir.' },
+  { q: 'iPhone\'da PDF belgesini nasıl çeviririm?', a: 'iPhone\'da PDF çevirmek için TranslateNow\'u açın, belge çeviri özelliğine dokunun ve PDF\'inizi Dosyalar, iCloud veya e-postadan içe aktarın. Uygulama tüm metin bloklarını çıkarır, her birini GPT-4o ile çevirir ve orijinal biçimi, yazı tiplerini ve sayfa düzenini koruyarak belgeyi yeniden oluşturur.' },
+  { q: 'Çeviri için ses klonlamayı nasıl kullanırım?', a: 'TranslateNow\'da ses klonlamayı kullanmak için Ayarlar → Ses Klonlama\'ya gidin, 10 saniyelik bir ses örneği kaydedin (veya ses dosyası yükleyin) ve ElevenLabs YZ motoru sesinizin nöral klonunu oluşturur. Oluşturulduktan sonra klonlanmış sesiniz 135+ dilde tüm çevirileri konuşur. Hızı 0,5x ile 2x arasında ayarlayın ve erkek veya kadın sesi seçin. Ses klonlama Pro aboneliği gerektirir.' },
+  { q: 'iPhone iOS 18.4\'te varsayılan çevirmen nasıl ayarlanır?', a: 'iOS 18.4 veya üzerinde TranslateNow\'u varsayılan çevirmeniniz olarak ayarlamak için Ayarlar → Uygulamalar → TranslateNow\'a gidin ve Çeviri Sağlayıcı seçeneğini etkinleştirin. Etkinleştirdikten sonra Safari, Mail veya Mesajlar\'da metin seçip bağlam menüsünde "Çevir"e her dokunduğunuzda çeviri Apple\'ın yerleşik çevirmeni yerine TranslateNow üzerinden yönlendirilir.' },
+  { q: 'iPhone\'da internet olmadan çevrimdışı metin nasıl çevrilir?', a: 'iPhone\'da çevrimdışı çeviri yapmak için TranslateNow\'u açın, Ayarlar → Çevrimdışı Diller\'e gidin ve gerekli dil paketlerini indirin (her biri 5-50 MB). İndirdikten sonra çeviri internet bağlantısı olmadan çalışır. ML Kit cihaz üstü çeviri ile 59 dil mevcuttur. Tüm işlem veri aktarımı olmadan iPhone\'unuzda kalır.' },
+  { q: 'TranslateNow Google Translate\'ten daha mı iyi?', a: 'TranslateNow\'un Google Translate\'te bulunmayan 22 özelliği var: ses klonlama, ARKit ile gerçek zamanlı AR çeviri, WhatsApp ve iMessage için klavye uzantısı, 5 YZ yazım aracı, düzen korumalı belge çevirisi, 9 ton, varsayılan sistem çevirmen iOS 18.4+ ve Siri, widget\'lar, Denetim Merkezi ve Dynamic Island ile derin iOS entegrasyonu. Google Translate daha fazla çevrimdışı dile sahiptir ve abonelik olmadan ücretsizdir.' },
+  { q: 'TranslateNow DeepL\'den daha mı iyi?', a: 'TranslateNow iOS kullanıcıları için DeepL\'den önemli ölçüde daha fazla özellik sunar: ses klonlama, AR çeviri, kamera OCR, klavye uzantısı, 5 YZ yazım aracı, 59 dille çevrimdışı mod ve derin iOS entegrasyonu. TranslateNow ayrıca DeepL\'in 30+ diline karşı 135+ dili destekler. DeepL Avrupa dilleri için yüksek çeviri kalitesiyle bilinir ve metin çevirisi için ücretsiz katmana sahiptir.' },
+];
+
+const faqSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_ITEMS.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) });
+
+const appSD = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'MobileApplication', '@id': 'https://coachie-ai.com/translate-now/tr/#app',
+  name: 'TranslateNow: AI Translator', alternateName: ['TranslateNow', 'Translate Now AI Translator'],
+  description: 'Ses klonlama, AR çeviri, belge çevirisi, YZ sohbetler, 5 yazım aracı, 9 ton, kamera OCR, klavye çevirmen, Siri, widget\'lar, Denetim Merkezi, Dynamic Island, sistem çevirmen, çevrimdışı ML Kit ve 135+ dil ile YZ destekli çevirmen.',
+  applicationCategory: 'UtilitiesApplication', operatingSystem: 'iOS 16.0+', url: 'https://coachie-ai.com/translate-now/tr', downloadUrl: APP_STORE_URL,
+  image: 'https://coachie-ai.com/translate_icon.png', softwareVersion: '1.0', datePublished: '2025-01-01', dateModified: '2026-03-14', inLanguage: 'tr',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '150', bestRating: '5', worstRating: '1' },
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'USD', lowPrice: '0', highPrice: '29.99', offerCount: 3, offers: [
+    { '@type': 'Offer', name: 'Ücretsiz', price: '0', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Haftalık Premium', price: '9.99', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Aylık Premium', price: '29.99', priceCurrency: 'USD' },
+  ]},
+  author: { '@type': 'Organization', name: 'Coachie AI', url: 'https://coachie-ai.com', email: SUPPORT_EMAIL },
+});
+
+const breadcrumbSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: 'https://coachie-ai.com' },
+  { '@type': 'ListItem', position: 2, name: 'TranslateNow', item: 'https://coachie-ai.com/translate-now' },
+  { '@type': 'ListItem', position: 3, name: 'Türkçe', item: 'https://coachie-ai.com/translate-now/tr' },
+]});
+
+const howToSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'HowTo', name: 'TranslateNow ile nasıl çeviri yapılır', description: 'iOS için TranslateNow AI Translator ile 3 adımda her dili çevirin.', totalTime: 'PT10S', step: [
+  { '@type': 'HowToStep', position: 1, name: 'Konuşun, yazın, çekin veya gösterin', text: 'Giriş modunuzu seçin: ses, metin, kamera OCR, AR katmanı, belge içe aktarma veya klavye uzantısı. TranslateNow altı yöntemi destekler.' },
+  { '@type': 'HowToStep', position: 2, name: 'YZ satır aralarını okur', text: 'GPT-4o metninizi ton, niyet ve kültürel nüanslar için bağlamlandırır. 9 ton ve 5 YZ yazım aracından seçin.' },
+  { '@type': 'HowToStep', position: 3, name: 'Yerli gibi iletişim kurun', text: 'Çevirinizi 135+ dilde alın, çevrimiçi veya çevrimdışı, klonlanmış sesinizle — telaffuz rehberi, örnekler ve eş anlamlılar.' },
+]});
+
+const orgSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Coachie AI', url: 'https://coachie-ai.com', email: SUPPORT_EMAIL,
+  description: 'Coachie AI, TranslateNow: AI Translator ve Coachie sağlık uygulaması dahil iOS ve Android için YZ destekli mobil uygulamalar geliştirmektedir.',
+  sameAs: ['https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185', 'https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791'],
+});
+---
+
+<TranslateNowLayout
+  title="TranslateNow: YZ Çevirmen | Ses Klonlama, AR Çeviri, Belge Çevirisi & 135+ Dil"
+  description="iPhone için YZ çevirmen uygulaması: ses klonlama, gerçek zamanlı AR çeviri, belge çevirisi (PDF/DOCX), kamera OCR, WhatsApp & iMessage klavye uzantısı, 5 yazım aracı, 9 ton, sistem çevirmen (iOS 18.4+), Siri, widget'lar, çevrimdışı mod & 135+ dil. Ücretsiz indirin."
+  canonical="https://coachie-ai.com/translate-now/tr"
+  lang="tr"
+  keywords="YZ çevirmen uygulama, ses klonlama çevirmen, AR çeviri uygulaması, PDF çeviri iPhone, çevrimdışı çevirmen iOS, kamera çeviri OCR, klavye çevirmen iPhone, WhatsApp mesaj çeviri, TranslateNow, en iyi çevirmen iPhone, Türkçe çeviri uygulaması"
+  hreflangLinks={HREFLANG_LINKS}
+  structuredData={[appSD, faqSD, breadcrumbSD, howToSD, orgSD]}
+>
+  <noscript><style>{`[data-gsap],[data-gsap="fade-up"],.tn-glass-card,.tn-faq-item,[data-gsap-writing-card],[data-gsap-stat-item],[data-gsap-plan],[data-gsap-shot],[data-gsap-social-item],[data-gsap-footer]>*,[data-gsap-hero-title],[data-gsap-hero-sub],[data-gsap-hero-desc],[data-gsap-hero-cta],[data-gsap-hero-phone],[data-gsap-badge],[data-gsap-trust],[data-gsap-dd-text],[data-gsap-dd-phone],[data-gsap-robot-img],[data-gsap-robot-text],[data-gsap-cta-icon],[data-gsap-cta-glow],[data-gsap-cta-btn],[data-gsap-step],[data-gsap-step-icon],[data-gsap-step-label],[data-gsap-how-line],.tn-section-tag{opacity:1!important;visibility:visible!important;transform:none!important}`}</style></noscript>
+
+  <nav class="tn-nav" aria-label="Ana gezinme">
+    <div class="max-w-6xl mx-auto h-full flex items-center justify-between px-5 sm:px-6 lg:px-8">
+      <a href="/translate-now" class="flex items-center gap-2.5 no-underline group"><Image src={translateIcon} alt="TranslateNow uygulama simgesi" class="w-8 h-8 rounded-xl object-cover" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);" width={96} height={96} /><span class="font-bold text-[15px] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">TranslateNow</span></a>
+<div class="hidden sm:flex items-center gap-3">
+        <div class="relative tn-lang-dropdown">
+          <button type="button" class="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all duration-200 hover:bg-white/5 tn-lang-toggle" style="color: var(--tn-text-muted); border: 1px solid rgba(255,255,255,0.08);" aria-expanded="false" aria-haspopup="true">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+            <span>Turkish</span>
+            <svg class="w-3 h-3 transition-transform tn-lang-chevron" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+          </button>
+          <div class="absolute right-0 top-full mt-2 py-2 rounded-xl opacity-0 invisible transition-all duration-200 tn-lang-menu" style="background: rgba(30,30,35,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); min-width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 100;">
+            <a href="/translate-now/tr" class="px-3 py-1.5 text-xs no-underline transition-colors hover:bg-white/5" style="color: var(--tn-soft-coral); font-weight: 500;">Turkish</a>
+            {LANGUAGE_LINKS.map((link) => (
+              <a href={link.href} class="px-3 py-1.5 text-xs no-underline transition-colors hover:bg-white/5" style="color: var(--tn-text-muted);">{link.label}</a>
+            ))}
+          </div>
+        </div>
+        <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn">İndir</a>
+      </div>
+      <button class="sm:hidden p-2 rounded-lg transition-colors hover:bg-white/5 tn-mobile-toggle" aria-label="Menüyü aç/kapat" style="color: var(--tn-text-primary);"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg></button>
+    </div>
+    <div class="tn-mobile-menu sm:hidden">
+      {LANGUAGE_LINKS.map((link) => (<a href={link.href} class="text-sm text-center px-4 py-2.5 rounded-xl no-underline transition-colors hover:bg-white/5" style="color: var(--tn-text-muted);">{link.label}</a>))}
+      <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn w-full text-center mt-1">İndir</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="relative min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 pt-20 pb-12 overflow-hidden" style="background: var(--tn-bg-primary);" data-gsap-hero>
+      <div class="absolute top-1/2 left-1/2 pointer-events-none" data-gsap-hero-glow style="width: 900px; height: 900px; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255,107,74,0.12) 0%, rgba(255,107,74,0.04) 40%, transparent 70%);"></div>
+      <div class="absolute top-1/4 left-1/4 pointer-events-none" data-gsap-parallax-glow data-gsap-parallax-speed="0.4" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,143,107,0.06), transparent 70%); filter: blur(60px);"></div>
+      <p class="sr-only">TranslateNow AI Translator iPhone uygulaması — ses klonlama, AR kamera çevirisi, belge çevirisi ve çevrimdışı mod ile 135+ dili çevirin.</p>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
+          <div class="flex-1 text-center lg:text-left max-w-xl">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6" style="background: var(--tn-coral-bg); color: var(--tn-soft-coral); border: 1px solid rgba(255,107,74,0.12);" data-gsap-trust>
+              <div class="flex -space-x-0.5">{[...Array(5)].map(() => (<svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="var(--tn-coral-fire)" stroke="var(--tn-coral-fire)"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>))}</div>
+              <span>En Çok Beğenilen YZ Çevirmen</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-[58px] font-extrabold leading-[1.08] mb-6 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Ses Klonlamalı YZ Çevirmen. <span class="tn-gradient-text">Kendi sesinizle konuşun.</span></h1>
+            <h2 class="text-lg sm:text-xl font-medium mb-4 leading-relaxed max-w-lg mx-auto lg:mx-0" style="color: var(--tn-text-tertiary); font-family: var(--font-body);" data-gsap-hero-sub>AR çeviri, belgeler, yazım araçları, sistem çevirmen ve çevrimdışı mod ile 135+ dili çevirin</h2>
+            <p class="text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed" style="color: var(--tn-text-secondary); font-family: var(--font-body);" data-gsap-hero-desc>TranslateNow ses klonlama, gerçek zamanlı AR katmanları (ARKit), belge çevirisi (PDF/DOCX/TXT), gerçek zamanlı YZ sohbetler, 5 yazım aracı, 9 ton, kamera OCR, her uygulama için klavye, Siri, widget'lar ve çevrimdışı cihaz üstü çeviri ile 135+ dili çevirir.</p>
+            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start" data-gsap-hero-cta>
+              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn tn-coral-btn-large" data-magnetic="0.25">App Store'dan Ücretsiz İndirin<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></a>
+            </div>
+          </div>
+          <div class="relative flex-shrink-0" data-gsap-hero-phone>
+            <div class="tn-phone-glow" style="width: 400px; height: 700px;"></div>
+            <div class="tn-phone-frame tn-phone-frame-large relative mx-auto"><div class="tn-phone-notch"></div><Image src={translateSs2} alt="TranslateNow YZ çeviri, bağlam, örnekler ve eş anlamlılar" class="w-full h-full object-cover" width={280} height={580} /><div class="tn-phone-reflection"></div></div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="top: 8%; right: -30%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>135+ Dil</div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="top: 42%; left: -38%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>Ses Klonlama</div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="bottom: 12%; right: -28%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>Çevrimdışı hazır</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="py-6 px-5 sm:px-6 lg:px-8 overflow-hidden" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle); border-bottom: 1px solid var(--tn-bg-border-subtle);" data-gsap-social><div class="max-w-6xl mx-auto flex items-center justify-center gap-8 sm:gap-14 flex-wrap">{SOCIAL_PROOF.map((item) => (<div class="flex items-center gap-2 text-xs font-medium" style="color: var(--tn-text-muted);" data-gsap-social-item><svg class="w-4 h-4" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={item.icon} /></svg><span>{item.label}</span></div>))}</div></section>
+
+    <!-- CORE FEATURES -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>Temel Özellikler</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Dokuz YZ Destekli Çeviri Modu</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">Ses, metin, kamera, AR, belgeler, klavye, sistem çevirmen, Siri ve çevrimdışı. Google Translate ve DeepL'de olmayan özellikler.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-gsap-card-grid>{FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><div class="tn-icon-box mb-4 transition-transform duration-300 group-hover:scale-110"><svg class="w-[22px] h-[22px]" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={f.icon} /></svg></div><h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-20 sm:py-24 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>Nasıl Çalışır</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">TranslateNow ile 3 Adımda Çeviri Yapın</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">Düşünceden çevrilmiş dile iki saniyenin altında — GPT-4o ve cihaz üstü ML tarafından desteklenir.</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative" data-gsap-how><div class="hidden md:block absolute top-10 left-[20%] right-[20%] h-px" data-gsap-how-line style="background: linear-gradient(90deg, transparent, rgba(255,107,74,0.25), rgba(255,107,74,0.25), transparent);"></div>{STEPS.map((s) => (<div class="relative text-center group" data-gsap-step><div class="relative z-10 inline-flex flex-col items-center"><div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-105" data-gsap-step-icon style="background: linear-gradient(135deg, rgba(255,107,74,0.15), rgba(255,107,74,0.05)); border: 1px solid rgba(255,107,74,0.2);"><svg class="w-[26px] h-[26px]" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={s.icon} /></svg></div><span class="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" data-gsap-step-label style="color: var(--tn-soft-coral); font-family: var(--font-display);">Adım {s.num}</span></div><h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{s.title}</h3><p class="text-sm leading-relaxed max-w-[280px] mx-auto" style="color: var(--tn-text-secondary);">{s.desc}</p></div>))}</div></div></section>
+
+    <!-- SCREENSHOTS -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8 overflow-hidden" style="background: var(--tn-bg-primary);" data-gsap-gallery><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>Uygulama Önizleme</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">TranslateNow'u İş Başında Görün</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">Ses klonlama, kamera, AR, belgeler — premium koyu arayüzde güçlü YZ çeviri araçları.</p></div><div class="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide justify-start" data-gsap-gallery-track>{SCREENSHOTS.map((s) => (<div class="flex-shrink-0 snap-center flex flex-col items-center gap-3 group" data-gsap-shot><div class="tn-phone-frame transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl" style="width: 200px; height: 420px;"><div class="tn-phone-notch"></div><Image src={s.image} alt={s.alt} class="w-full h-full object-cover" loading="lazy" width={400} height={840} /></div><span class="text-xs font-medium" style="color: var(--tn-text-muted);">{s.label}</span></div>))}</div></div></section>
+
+    <!-- DEEP DIVES -->
+    <section class="px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto">{DEEP_DIVES.map((f, idx) => (<div class={`min-h-screen flex flex-col justify-center ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-center gap-12 lg:gap-20 py-12`} data-gsap-deepdive data-gsap-reversed={idx % 2 === 1 ? 'true' : 'false'}><div class="flex-1 max-w-lg" data-gsap-dd-text><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);" data-gsap-dd-tag>{f.tag}</span><h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-base leading-relaxed mb-6" style="color: var(--tn-text-secondary);">{f.desc}</p><ul class="space-y-3">{f.bullets.map((b) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{b}</span></li>))}</ul></div><div class="flex-shrink-0" data-gsap-dd-phone><div class="relative"><div class="tn-phone-glow" style="width: 380px; height: 660px;"></div><div class="tn-phone-frame relative mx-auto"><div class="tn-phone-notch"></div><Image src={f.image} alt={f.imageAlt} class="w-full h-full object-cover" loading="lazy" width={260} height={540} /><div class="tn-phone-reflection"></div></div></div></div></div>))}</div></section>
+
+    <!-- AI CONVERSATION -->
+    <section class="min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="flex flex-col lg:flex-row-reverse items-center gap-14 lg:gap-20" data-gsap-robot><div class="flex-shrink-0 relative" data-gsap-robot-img><div class="relative w-[260px] h-[320px] sm:w-[300px] sm:h-[360px]"><div class="absolute inset-0 rounded-full" style="background: radial-gradient(circle, rgba(255,107,74,0.15), transparent 70%); filter: blur(50px);"></div><Image src={translateRobot} alt="TranslateNow YZ sohbet asistanı, gerçek zamanlı sesli çeviri" class="w-full h-full object-contain relative z-10" style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));" width={300} height={360} /></div></div>
+      <div class="flex-1 max-w-lg" data-gsap-robot-text><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);">Gerçek Zamanlı YZ Sohbet</span><h2 class="text-3xl sm:text-4xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">Doğal konuşun. <span class="tn-gradient-text">YZ anında çevirir.</span></h2><p class="text-base mb-8 leading-relaxed" style="color: var(--tn-text-secondary);">WebSocket üzerinden OpenAI Realtime API tarafından desteklenir — otomatik dil algılamalı çift yönlü sesli çeviri. 135+ dilde konuşun. YZ dilinizi algılar, anında çevirir ve nöral streaming ses ile yanıtlar. Oturumları kaydedin ve .m4a olarak dışa aktarın.</p>
+        <ul class="space-y-3">{['135+ dilde çift yönlü sesli çeviri', 'Hangi dilin konuşulduğunu otomatik algılar — sıfır kurulum', '7 nöral YZ sesi: Coral, Alloy, Echo, Fable, Onyx, Nova, Shimmer', 'Sohbetleri kaydedin ve ön kayıtlı .m4a ses olarak dışa aktarın', 'Oturumlar sırasında kilit ekranında Canlı Etkinlik ve Dynamic Island', 'Temiz çeviriler için eko önleme ve gürültü algılama'].map((item) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{item}</span></li>))}</ul></div></div></div></section>
+
+    <!-- WRITING TOOLS -->
+    <section class="py-20 sm:py-24 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>YZ Yazım Araçları</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Çevirmeden Önce İyileştirin</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">Beş YZ yazım aracı çevirmeden önce metninizi düzenler — dil bilgisi düzeltme, ton ayarlama, uzunluk değiştirme, yeniden biçimlendirme veya stil değiştirme. Başka hiçbir çevirmen bunu sunmaz.</p></div><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" data-gsap-writing>{WRITING_TOOLS.map((t) => (<div class="rounded-2xl p-5 h-full text-center transition-all duration-300 hover:-translate-y-1 group cursor-default" style="background: rgba(18,18,28,0.65); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(16px);" data-gsap-writing-card><div class="w-11 h-11 rounded-xl flex items-center justify-center mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, rgba(255,107,74,0.14), rgba(255,143,107,0.06)); border: 1px solid rgba(255,107,74,0.12);"><svg class="w-5 h-5" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg></div><h4 class="text-sm font-bold mb-1" style="color: var(--tn-text-primary); font-family: var(--font-display);">{t.title}</h4><p class="text-xs leading-relaxed" style="color: var(--tn-text-muted);">{t.desc}</p><div class="mt-3 mx-auto h-0.5 w-0 group-hover:w-8 transition-all duration-300 rounded-full" style="background: var(--tn-gradient-coral);"></div></div>))}</div></div></section>
+
+    <!-- PRIVACY & OFFLINE -->
+    <section class="min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20"><div class="flex-1 max-w-lg" data-gsap="fade-up"><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);">Gizlilik & Çevrimdışı</span><h2 class="text-3xl sm:text-4xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">Çevrimdışı çevirin. <span class="tn-gradient-text">Hiçbir şey telefonunuzdan çıkmaz.</span></h2><p class="text-base mb-8 leading-relaxed" style="color: var(--tn-text-secondary);">Dil paketlerini WiFi ile bir kez indirin (her biri 5-50 MB). Bundan sonra çeviri ML Kit ile tamamen cihaz üstünde çalışır — sunucu çağrısı yok, veri aktarımı yok, bulut işleme yok. 59 dil çevrimdışı kullanılabilir.</p><ul class="space-y-3">{['Cihaz üstü ML Kit çevirisi için 59 dil mevcut', 'Dil paketleri her biri 5-50 MB — bir kez indirin, sonsuza dek kullanın', 'Çevrimdışı modda sıfır veri aktarımı — tamamen yerel işleme', 'Bağlantı kaybında otomatik çevrimdışı geçiş', 'Tüm dilleri toplu indirin veya tek tek seçin'].map((item) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{item}</span></li>))}</ul></div><div class="flex-shrink-0" data-gsap="fade-up"><div class="relative"><div class="tn-phone-glow" style="width: 380px; height: 660px;"></div><div class="tn-phone-frame relative mx-auto"><div class="tn-phone-notch"></div><Image src={translateSs8} alt="TranslateNow çevrimdışı çeviri ayarları ve indirilebilir dil paketleri" class="w-full h-full object-cover" loading="lazy" width={260} height={540} /><div class="tn-phone-reflection"></div></div></div></div></div></div></section>
+
+    <!-- AI INTELLIGENCE -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>YZ Zekası</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Bağlamı, Tonu ve Kültürü Anlayan YZ</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">GPT-4o her çeviriyi bağlamsal zeka ile destekler — örnekler, eş anlamlılar, 9 ton, transliterasyon ve 7 farklı nöral ses.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-gsap-card-grid>{AI_FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><h3 class="text-base font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <!-- iOS INTEGRATION -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>Platform Entegre</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Derin iOS Entegrasyonu — Sadece Bir Uygulama Değil</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">Widget'lar, Siri, Denetim Merkezi, Dynamic Island, Spotlight, sistem geneli çevirmen. TranslateNow iOS'un her katmanına entegre edilmiştir.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-gsap-card-grid>{IOS_FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><h3 class="text-base font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <!-- USE CASES -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>Kullanım Alanları</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Gerçek Hayat İçin Tasarlandı</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">Havalimanlarından sınıflara, toplantı odalarından aile yemeklerine — her bağlamda işe yarayan çeviri.</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-gsap-card-grid>{USE_CASES.map((uc) => (<div class="tn-glass-card flex items-start gap-4 group" data-gsap="fade-up"><div class="tn-icon-box transition-transform duration-300 group-hover:scale-110"><svg class="w-5 h-5" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={uc.icon} /></svg></div><div><h4 class="text-base font-bold mb-1.5 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{uc.title}</h4><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{uc.desc}</p></div></div>))}</div></div></section>
+
+    <!-- STATS -->
+    <section class="py-16 px-5 sm:px-6 lg:px-8 relative" style="background: var(--tn-bg-surface);"><div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(255,107,74,0.04) 0%, transparent 60%);"></div><div class="max-w-5xl mx-auto relative z-10"><div class="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="background: var(--tn-bg-border-subtle);" data-gsap-stats>{STATS.map((s) => (<div class="flex flex-col items-center justify-center py-8 px-5 text-center" style="background: rgba(18,18,28,0.8);" data-gsap-stat-item><span class="text-3xl sm:text-4xl font-extrabold tracking-tight" style="color: var(--tn-coral-fire); font-family: var(--font-display);" data-gsap-stat data-gsap-target={s.value} data-gsap-suffix={s.suffix || ''}>0{s.suffix}</span><span class="text-xs mt-2 font-medium" style="color: var(--tn-text-muted);">{s.label}</span></div>))}</div></div></section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>Değerlendirmeler</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Dünya Genelinde Kullanıcılar Tarafından Seviliyor</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">TranslateNow'u her gün kullanan gerçek insanlardan gerçek değerlendirmeler.</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-gsap-testimonials>{TESTIMONIALS.map((t) => (<div class="tn-glass-card" data-gsap="fade-up"><div class="flex gap-0.5 mb-4">{[...Array(5)].map(() => (<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="var(--tn-coral-fire)" stroke="var(--tn-coral-fire)"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>))}</div><p class="text-sm leading-relaxed mb-5" style="color: var(--tn-text-tertiary);">„{t.text}"</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: var(--tn-coral-bg); color: var(--tn-coral-fire); font-family: var(--font-display);">{t.name.charAt(0)}</div><div><span class="text-sm font-semibold block" style="color: var(--tn-text-primary);">{t.name}</span><span class="text-xs" style="color: var(--tn-text-muted);">{t.role}</span></div></div></div>))}</div></div></section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-4xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>Özellik Karşılaştırması</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">TranslateNow vs Google Translate vs DeepL</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">22 özellik yan yana — basit çevirmenlerde nelerin eksik olduğunu görün.</p></div>
+      <div class="tn-glass-card !p-0 overflow-hidden" style="cursor: default; transform: none !important;" data-gsap-comparison><div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr><th class="text-left py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">Özellik</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-coral-fire); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display); background: rgba(255,107,74,0.04);">TranslateNow</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">Google Translate</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">DeepL</th></tr></thead><tbody>{COMPARISON.map((r, i) => (<tr style={i < COMPARISON.length - 1 ? `border-bottom: 1px solid var(--tn-bg-border-subtle);` : ''}><td class="py-3.5 px-4 text-sm" style="color: var(--tn-text-secondary);">{r.feature}</td><td class="text-center py-3.5 px-4" style="background: rgba(255,107,74,0.02);">{r.tn === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: var(--tn-coral-bg);"><svg class="w-3.5 h-3.5" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.tn}</span>}</td><td class="text-center py-3.5 px-4">{r.gt === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.05);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-muted);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : r.gt === false ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.03);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-hint);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.gt}</span>}</td><td class="text-center py-3.5 px-4">{r.dl === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.05);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-muted);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : r.dl === false ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.03);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-hint);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.dl}</span>}</td></tr>))}</tbody></table></div></div></div></section>
+
+    <!-- FAQ -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-3xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>FAQ</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">Sık Sorulan Sorular</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">TranslateNow hakkında bilmeniz gereken her şey — özellikler, fiyatlandırma, gizlilik ve iOS entegrasyonu.</p></div>
+      <div class="space-y-2.5" data-gsap-faq-list>{FAQ_ITEMS.map((faq) => (<div class="tn-faq-item rounded-xl overflow-hidden transition-all duration-300" style="background: var(--tn-bg-surface); border: 1px solid var(--tn-bg-border-subtle);" data-gsap="fade-up"><button class="tn-faq-btn w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-white/[0.02]"><h3 class="text-sm sm:text-[15px] font-semibold pr-4 leading-snug" style="color: var(--tn-text-primary); font-family: var(--font-display);">{faq.q}</h3><svg class="w-[18px] h-[18px] flex-shrink-0 tn-faq-chevron" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button><div class="tn-faq-content"><div class="px-5 pb-5"><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{faq.a}</p></div></div></div>))}</div></div></section>
+
+    <!-- E-E-A-T -->
+    <section class="py-16 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle);"><div class="max-w-3xl mx-auto text-center" data-gsap="fade-up"><h2 class="text-2xl sm:text-3xl font-extrabold mb-4 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">Coachie AI Tarafından Geliştirildi</h2><p class="text-base leading-relaxed mb-4" style="color: var(--tn-text-secondary);">TranslateNow, YZ destekli iOS ve Android uygulamaları konusunda uzmanlaşmış bir mobil geliştirme stüdyosu olan Coachie AI tarafından geliştirilmektedir. Ekibimiz App Store ve Google Play'de birden fazla uygulama yayınlamıştır. Cihaz üstü makine öğrenmesi, bulut YZ hizmetleri (OpenAI GPT-4o, ElevenLabs) ve derin platform entegrasyonunu (ARKit, Siri, WidgetKit, Live Activities, Jetpack Compose, ML Kit) birleştirerek gerçek iletişim sorunlarını çözen araçlar geliştiriyoruz.</p><p class="text-sm leading-relaxed" style="color: var(--tn-text-muted);">Sorularınız veya iş birliği teklifleriniz mi var? Bize ulaşın:<a href={`mailto:${SUPPORT_EMAIL}`} class="underline transition-colors hover:text-white/60" style="color: var(--tn-soft-coral);">{SUPPORT_EMAIL}</a></p></div></section>
+
+    <!-- FINAL CTA -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8 text-center relative overflow-hidden" id="download" style="background: var(--tn-bg-primary);" data-gsap-final-cta><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none" style="background: radial-gradient(circle, rgba(255,107,74,0.15) 0%, transparent 60%);" data-gsap-cta-glow></div><div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,107,74,0.2), transparent);"></div><div class="max-w-3xl mx-auto relative z-10"><Image src={translateIcon} alt="TranslateNow uygulama simgesi" class="w-16 h-16 rounded-2xl mx-auto mb-8" style="box-shadow: 0 8px 32px rgba(255,107,74,0.2), 0 0 0 1px rgba(255,255,255,0.08);" width={192} height={192} data-gsap-cta-icon /><h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">Bugün her dili konuşmaya başlayın</h2><p class="text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--tn-text-secondary);">TranslateNow'u App Store'dan ücretsiz indirin. Ses klonlama, AR çeviri, belgeler, yazım araçları, çevrimdışı ve 135+ dil.</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4" data-gsap-cta-btn><a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn tn-coral-btn-large">Ücretsiz İndirin<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></a></div></div></section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle);" data-gsap-footer><div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"><a href="/translate-now" class="flex items-center gap-2.5 no-underline group"><Image src={translateIcon} alt="TranslateNow simgesi" class="w-8 h-8 rounded-xl object-cover" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);" width={96} height={96} /><div><span class="font-bold text-sm block" style="color: var(--tn-text-primary); font-family: var(--font-display);">TranslateNow</span><span class="text-xs" style="color: var(--tn-text-muted);">Coachie AI'dan</span></div></a><div class="flex items-center gap-4 text-xs flex-wrap justify-center" style="color: var(--tn-text-muted);"><a href={PRIVACY_URL} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">Gizlilik Politikası</a><span style="color: var(--tn-bg-border-subtle);">·</span><a href={TERMS_URL} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">Kullanım Koşulları</a><span style="color: var(--tn-bg-border-subtle);">·</span><a href={`mailto:${SUPPORT_EMAIL}`} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">Destek</a>{LANGUAGE_LINKS.map((link) => (<><span style="color: var(--tn-bg-border-subtle);">·</span><a href={link.href} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">{link.label}</a></>))}</div><div class="flex flex-col items-center md:items-end gap-1"><a href={`mailto:${SUPPORT_EMAIL}`} class="text-xs hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">{SUPPORT_EMAIL}</a><span class="text-[11px]" style="color: var(--tn-text-hint);">Son güncelleme: Mart 2026</span></div></div></footer>
+  </main>
+
+  <!-- FAQ Override -->
+  <style is:inline>
+    .tn-faq-content { height: auto !important; max-height: 0 !important; overflow: hidden !important; transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease !important; opacity: 0 !important; }
+    .tn-faq-item.faq-active .tn-faq-content { max-height: 2000px !important; opacity: 1 !important; }
+    .tn-faq-item.faq-active .tn-faq-chevron { transform: rotate(180deg); }
+  </style>
+  <script is:inline>
+    window.addEventListener('load', function() {
+      document.querySelectorAll('.tn-faq-content').forEach(function(c) { c.style.removeProperty('height'); c.style.removeProperty('overflow'); });
+      document.querySelectorAll('.tn-faq-btn').forEach(function(oldBtn) {
+        var newBtn = oldBtn.cloneNode(true); oldBtn.parentNode.replaceChild(newBtn, oldBtn);
+        newBtn.addEventListener('click', function(e) {
+          e.preventDefault(); e.stopPropagation();
+          var item = newBtn.closest('.tn-faq-item'); if (!item) return;
+          var wasActive = item.classList.contains('faq-active');
+          document.querySelectorAll('.tn-faq-item').forEach(function(el) { el.classList.remove('faq-active', 'open', 'is-open'); var content = el.querySelector('.tn-faq-content'); if (content) { content.style.removeProperty('height'); content.style.removeProperty('overflow'); } });
+          if (!wasActive) item.classList.add('faq-active');
+        });
+      });
+    });
+  </script>
+</TranslateNowLayout>

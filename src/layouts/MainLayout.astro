@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/astro/Header.astro';
+import Footer from '../components/astro/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  noIndex?: boolean;
+  lang?: string;
+  hreflangTags?: { lang: string; href: string }[];
+  jsonLd?: string[];
+  extraHead?: string;
+  showFooter?: boolean;
+}
+
+const {
+  showFooter = false,
+  ...layoutProps
+} = Astro.props;
+---
+
+<BaseLayout {...layoutProps}>
+  <!-- Progress Bar -->
+  <div class="main-progress-bar fixed top-0 left-0 w-full h-[3px] bg-gray-500 z-50 origin-left" style="transform: scaleX(0);"></div>
+
+  <!-- Cursor Glow (desktop only) -->
+  <div class="main-cursor-glow fixed top-0 left-0 w-[300px] h-[300px] rounded-full pointer-events-none z-[9] opacity-[0.04]" style="background: radial-gradient(circle, rgba(107,114,128,0.5) 0%, transparent 70%); transform: translate(-50%, -50%);"></div>
+
+  <Header />
+  <slot />
+  {showFooter && <Footer />}
+</BaseLayout>

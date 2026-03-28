@@ -1,0 +1,420 @@
+---
+import TranslateNowLayout from '../../layouts/TranslateNowLayout.astro';
+import { Image } from 'astro:assets';
+import translateIcon from '../../assets/images/translate_icon.webp';
+import translateRobot from '../../assets/images/translate_robot.webp';
+import translateSs1 from '../../assets/images/translate_ss_1.png';
+import translateSs2 from '../../assets/images/translate_ss_2.png';
+import translateSs3 from '../../assets/images/translate_ss_3.png';
+import translateSs4 from '../../assets/images/translate_ss_4.png';
+import translateSs5 from '../../assets/images/translate_ss_5.png';
+import translateSs6 from '../../assets/images/translate_ss_6.png';
+import translateSs7 from '../../assets/images/translate_ss_7.png';
+import translateSs8 from '../../assets/images/translate_ss_8.png';
+import translateSs9 from '../../assets/images/translate_ss_9.png';
+import translateSs10 from '../../assets/images/translate_ss_10.png';
+import translateSs11 from '../../assets/images/translate_ss_11.png';
+
+const APP_STORE_URL = 'https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185';
+const PRIVACY_URL = 'https://coachie-ai.com/privacy-policy-translation-app';
+const TERMS_URL = 'https://coachie-ai.com/terms-of-use-translation-app';
+const SUPPORT_EMAIL = 'contact@coachie-ai.com';
+
+const LANGUAGE_LINKS = [
+  { href: '/translate-now', label: 'English' },
+  { href: '/translate-now/hi', label: 'Hindi' },
+  { href: '/translate-now/es', label: 'Spanish' },
+  { href: '/translate-now/fr', label: 'French' },
+  { href: '/translate-now/de', label: 'German' },
+  { href: '/translate-now/ru', label: 'Russian' },
+  { href: '/translate-now/vi', label: 'Vietnamese' },
+  { href: '/translate-now/ar', label: 'Arabic' },
+  { href: '/translate-now/ja', label: 'Japanese' },
+  { href: '/translate-now/ko', label: 'Korean' },
+  { href: '/translate-now/pt', label: 'Portuguese' },
+  { href: '/translate-now/it', label: 'Italian' },
+  { href: '/translate-now/tr', label: 'Turkish' },
+  { href: '/translate-now/zh', label: 'Chinese' },
+];
+
+const HREFLANG_LINKS = [
+  { lang: 'en', href: 'https://coachie-ai.com/translate-now' },
+  { lang: 'hi', href: 'https://coachie-ai.com/translate-now/hi' },
+  { lang: 'es', href: 'https://coachie-ai.com/translate-now/es' },
+  { lang: 'fr', href: 'https://coachie-ai.com/translate-now/fr' },
+  { lang: 'de', href: 'https://coachie-ai.com/translate-now/de' },
+  { lang: 'ru', href: 'https://coachie-ai.com/translate-now/ru' },
+  { lang: 'vi', href: 'https://coachie-ai.com/translate-now/vi' },
+  { lang: 'ar', href: 'https://coachie-ai.com/translate-now/ar' },
+  { lang: 'ja', href: 'https://coachie-ai.com/translate-now/ja' },
+  { lang: 'ko', href: 'https://coachie-ai.com/translate-now/ko' },
+  { lang: 'pt', href: 'https://coachie-ai.com/translate-now/pt' },
+  { lang: 'it', href: 'https://coachie-ai.com/translate-now/it' },
+  { lang: 'tr', href: 'https://coachie-ai.com/translate-now/tr' },
+  { lang: 'th', href: 'https://coachie-ai.com/translate-now/th' },
+  { lang: 'zh', href: 'https://coachie-ai.com/translate-now/zh' },
+  { lang: 'x-default', href: 'https://coachie-ai.com/translate-now' },
+];
+
+const SOCIAL_PROOF = [
+  { label: '135+ ภาษา', icon: 'M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802' },
+  { label: '30 ภาษาในแอป', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' },
+  { label: 'AI บนเครื่อง', icon: 'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z' },
+  { label: 'โคลนเสียง', icon: 'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z' },
+  { label: 'ออฟไลน์ปลอดภัย', icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' },
+];
+
+const FEATURES = [
+  { title: 'สนทนา AI แบบเรียลไทม์', desc: 'แปลเสียงสองทิศทางผ่าน OpenAI Realtime API ตรวจจับภาษาของคุณโดยอัตโนมัติ แปลและตอบกลับทันที เสียง AI 7 แบบ บันทึกและส่งออกเป็น .m4a', icon: 'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z' },
+  { title: 'โคลนเสียง', desc: 'อัดเสียง 10 วินาที ElevenLabs สร้างเสียงโคลนที่พูดคำแปลใน 135+ ภาษา ปรับความเร็ว 0.5x-2x เลือกเสียงชายหรือหญิง', icon: 'M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z' },
+  { title: '5 เครื่องมือเขียน AI', desc: 'แก้ไขข้อความก่อนแปล — แก้ไวยากรณ์ ปรับโทน (5 ตัวเลือก) เปลี่ยนความยาว จัดรูปแบบเป็นหัวข้อ/สรุป หรือเปลี่ยนสไตล์', icon: 'M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125' },
+  { title: 'แปลจากกล้อง OCR', desc: 'ส่องกล้องไปที่ป้าย เมนู ฉลาก หรือเอกสาร Vision Framework OCR พร้อม GPT-4o สำหรับอักษรที่ไม่ใช่ละติน ใช้กล้องสดหรืออัปโหลดรูป', icon: 'M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z' },
+  { title: 'แปล AR แบบเรียลไทม์', desc: 'การ์ดแปลภาษา 3D ลอยอยู่ในโลกจริงผ่าน ARKit Glassmorphism overlay พร้อมการสั่น TTS และแตะเพื่อคัดลอก รองรับอักษรละติน', icon: 'M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z' },
+  { title: 'แปลเอกสาร', desc: 'นำเข้า PDF, DOCX, TXT หรือรูปภาพ AI แปลทุกบล็อกข้อความและสร้างเอกสารใหม่โดยรักษาเลย์เอาต์เดิม รองรับ RTL สำหรับอาหรับ ฮีบรู อูรดู', icon: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z' },
+  { title: 'คีย์บอร์ดแปลภาษาในตัว', desc: 'ส่วนขยายคีย์บอร์ด iOS สำหรับ iMessage, WhatsApp, Instagram, Telegram, อีเมล — ทุกช่องพิมพ์บน iPhone พิมพ์ภาษาของคุณ ส่งเป็นภาษาเขา', icon: 'M3.75 9h16.5m-16.5 6.75h16.5' },
+  { title: 'แปลออฟไลน์บนเครื่อง', desc: '59 ภาษาผ่าน ML Kit บนเครื่อง ดาวน์โหลดแพ็กครั้งเดียว (5-50 MB) ไม่มีการเรียกเซิร์ฟเวอร์ ทุกอย่างประมวลผลบน iPhone ของคุณ', icon: 'M3 3l8.735 8.735m0 0a.374.374 0 11.53.53m-.53-.53l.53.53m0 0L21 21M14.652 9.348a3.75 3.75 0 010 5.304m2.121-7.425a6.75 6.75 0 010 9.546m2.121-11.667C21.583 7.792 23.25 9.77 23.25 12c0 2.23-1.667 4.208-4.356 6.894' },
+  { title: 'ตัวแปลระบบเริ่มต้น', desc: 'iOS 18.4+: ตั้ง TranslateNow เป็นตัวแปลระบบของ iPhone เลือกข้อความใน Safari, Mail, ข้อความ — กด "แปล" จะทำงานผ่าน TranslateNow', icon: 'M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3' },
+];
+
+const STEPS = [
+  { num: '01', title: 'พูด พิมพ์ ถ่ายรูป หรือส่อง', desc: 'เสียง ข้อความ กล้อง OCR AR overlay นำเข้าเอกสาร หรือคีย์บอร์ด — 6 โหมดป้อนข้อมูล ไม่ยุ่งยาก', icon: 'M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z' },
+  { num: '02', title: 'AI อ่านระหว่างบรรทัด', desc: 'GPT-4o วิเคราะห์น้ำเสียง เจตนา และบริบททางวัฒนธรรม เลือกจาก 9 โทนและ 5 เครื่องมือเขียนก่อนแปล', icon: 'M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z' },
+  { num: '03', title: 'สื่อสารเหมือนคนท้องถิ่น', desc: '135+ ภาษา ออนไลน์หรือออฟไลน์ ด้วยเสียงโคลนของคุณเอง — พร้อมการออกเสียง ตัวอย่าง และคำพ้องความหมาย', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418' },
+];
+
+const SCREENSHOTS = [
+  { image: translateSs1, label: 'วิดเจ็ต', alt: 'TranslateNow วิดเจ็ตหน้าจอหลักพร้อมคำศัพท์ประจำวัน' },
+  { image: translateSs2, label: 'แปล AI', alt: 'TranslateNow แปลด้วย AI พร้อมบริบท ตัวอย่าง คำพ้อง' },
+  { image: translateSs3, label: 'เอกสาร', alt: 'TranslateNow แปลเอกสาร PDF' },
+  { image: translateSs4, label: 'คีย์บอร์ด', alt: 'TranslateNow ตั้งค่าส่วนขยายคีย์บอร์ด' },
+  { image: translateSs5, label: 'ประวัติ', alt: 'TranslateNow ประวัติการแปลพร้อมค้นหา' },
+  { image: translateSs6, label: 'โคลนเสียง', alt: 'TranslateNow ตั้งค่าโคลนเสียง' },
+  { image: translateSs7, label: 'เสียง AI', alt: 'TranslateNow เลือกเสียง AI' },
+  { image: translateSs8, label: 'ตั้งค่า', alt: 'TranslateNow การตั้งค่าพร้อมโหมดออฟไลน์' },
+  { image: translateSs9, label: 'แปล AR', alt: 'TranslateNow แปล AR พร้อม 3D overlay' },
+  { image: translateSs10, label: 'กล้อง', alt: 'TranslateNow แปลจากกล้อง' },
+  { image: translateSs11, label: 'สนทนา AI', alt: 'TranslateNow สนทนา AI กับผู้ช่วยหุ่นยนต์' },
+];
+
+const DEEP_DIVES = [
+  {
+    tag: 'โคลนเสียง',
+    title: 'เสียงของคุณ ทุกภาษา',
+    desc: 'การสังเคราะห์เสียงของ ElevenLabs สร้างเสียงโคลน AI จากตัวอย่างเสียง 10 วินาที ปรับความเร็วเล่นซ้ำได้ตั้งแต่ 0.5x ถึง 2x เลือกเพศเสียงชายหรือหญิง Streaming PCM (~75ms latency) สำหรับสนทนาสด — Non-streaming MP3 สำหรับเล่นซ้ำจากประวัติ',
+    bullets: ['การสังเคราะห์เสียงที่เป็นธรรมชาติผ่าน ElevenLabs', 'ปรับความเร็วเล่นซ้ำ 0.5x ถึง 2x', 'เลือกเสียงชายหรือหญิง', 'Streaming PCM (~75ms latency) สำหรับสนทนาสด'],
+    image: translateSs6,
+    imageAlt: 'TranslateNow ตั้งค่าโคลนเสียงพร้อมปรับความเร็วและเลือกเพศเสียง',
+  },
+  {
+    tag: 'กล้อง + แปล AR',
+    title: 'ส่อง ถ่าย เข้าใจ',
+    desc: '2 โหมดในหน้าจอเดียว — กล้อง OCR สำหรับถ่ายรูปทันทีและโหมด AR สำหรับ 3D overlay สด กล้องใช้ Apple Vision Framework อ่านข้อความพร้อม GPT-4o สำหรับอักษรที่ไม่ใช่ละติน (ฮินดี อาหรับ CJK) โหมด AR วาง Glassmorphism card ผ่าน ARKit SceneKit',
+    bullets: ['กล้องสด + อัปโหลดรูป + โหมดสแกน AR', 'ARKit 3D overlay พร้อม Glassmorphism card ยึดในพื้นที่จริง', 'Vision + GPT-4o แบบไฮบริดสำหรับอักษรที่ไม่ใช่ละติน', 'ป้าย เมนู เอกสาร ฉลากยา ใบเสร็จ'],
+    image: translateSs10,
+    imageAlt: 'TranslateNow กล้อง OCR และแปล AR แบบเรียลไทม์พร้อม 3D overlay ลอย',
+  },
+  {
+    tag: 'แปล AR',
+    title: 'เห็นคำแปลในโลกจริง',
+    desc: 'ส่องกล้องไปที่ข้อความใดก็ได้แล้วเห็นคำแปลลอยเป็น 3D ARKit SceneKit แสดง Glassmorphism card ยึดกับพื้นผิวจริง คำแปลคงอยู่เมื่อคุณเคลื่อนที่ — หมุน เอียง เดินไปรอบๆ รองรับป้าย เมนู ฉลาก และเอกสารใน 135+ ภาษา',
+    bullets: ['AR overlay เรียลไทม์ขับเคลื่อนโดย ARKit SceneKit', 'Glassmorphism 3D card ยึดในพื้นที่จริง', 'คำแปลคงอยู่เมื่อเคลื่อนกล้อง', 'ใช้ได้กับป้าย เมนู ฉลากยา ป้ายหน้าร้าน'],
+    image: translateSs9,
+    imageAlt: 'TranslateNow แปล AR พร้อม 3D overlay ลอยยึดกับข้อความจริง',
+  },
+  {
+    tag: 'แปลเอกสาร',
+    title: 'แปลเอกสารทั้งไฟล์ เลย์เอาต์ไม่เปลี่ยน',
+    desc: 'นำเข้า PDF, DOCX, TXT หรือรูปภาพ ตัวแยกวิเคราะห์เอกสารดึงทุกบล็อกข้อความ GPT-4o แปลทีละบล็อก ตัวสร้างใหม่ประกอบเอกสารโดยรักษาการจัดรูปแบบ ฟอนต์ และเลย์เอาต์ — รวมถึงภาษา RTL',
+    bullets: ['รองรับเอกสาร PDF, DOCX, TXT และรูปถ่าย', 'เอนจินสร้างเอกสารใหม่โดยรักษาเลย์เอาต์', 'รองรับ RTL เต็มรูปแบบ — อาหรับ ฮีบรู อูรดู', 'ประมวลผลเป็นชุดพร้อมติดตามความคืบหน้าทีละหน้า', 'ประวัติเอกสารพร้อมรูปย่อและส่งออกซ้ำ'],
+    image: translateSs3,
+    imageAlt: 'TranslateNow แปลเอกสาร PDF DOCX โดยรักษาเลย์เอาต์',
+  },
+];
+
+const WRITING_TOOLS = [
+  { title: 'ไวยากรณ์', desc: 'แก้ไขการสะกด กาล และความสอดคล้องอัตโนมัติ' },
+  { title: 'โทน', desc: 'เป็นมิตร · มืออาชีพ · ตลก · จีบ · เรียบง่าย' },
+  { title: 'ความยาว', desc: 'กระชับ (40-60%) หรือขยาย (150-200%)' },
+  { title: 'รูปแบบ', desc: 'สรุป · ประเด็นหลัก · หัวข้อย่อย' },
+  { title: 'สไตล์', desc: 'วิชาการ · สร้างสรรค์ · กวี · โน้มน้าว' },
+];
+
+const AI_FEATURES = [
+  { title: 'AI วิเคราะห์บริบท', desc: 'ทุกคำแปลมาพร้อมตัวอย่างการใช้ คำพ้อง และรูปแบบน้ำเสียง ขับเคลื่อนโดย GPT-4o' },
+  { title: '9 โทนการแปล', desc: 'มาตรฐาน ทางการ ลำลอง เป็นมิตร มืออาชีพ เรียบง่าย วรรณกรรม ตลก และจีบ' },
+  { title: 'เอนจินถอดอักษร', desc: 'การออกเสียงแบบโรมันสำหรับอักษรที่ไม่ใช่ละติน — ญี่ปุ่น เกาหลี จีน อาหรับ ฮินดี รัสเซีย ไทย กรีก ฮีบรู' },
+  { title: '7 เสียง AI ระบบประสาท', desc: 'Coral, Alloy, Echo, Fable, Onyx, Nova และ Shimmer — เสียงบุคลิก 7 แบบผ่าน OpenAI' },
+  { title: 'ป้อนข้อมูลด้วยเสียง', desc: 'การรู้จำเสียงบนเครื่องป้อนเข้าท่อแปลโดยตรง ประมวลผลเครื่องหมายวรรคตอนและช่วงหยุด' },
+  { title: 'บันทึกและส่งออกสนทนา', desc: 'บันทึกเซสชันสนทนา AI แล้วส่งออกเป็นไฟล์เสียง .m4a เสียงผู้ใช้ + เสียง AI บันทึกตามลำดับเวลา' },
+  { title: '30 ภาษาในแอป', desc: 'แอปรองรับ 30 ภาษา ได้แก่ ฮินดี สเปน ฝรั่งเศส เยอรมัน ญี่ปุ่น เกาหลี จีน อาหรับ ฮีบรู และอื่นๆ' },
+  { title: 'ปรับความเร็ว (0.5x – 2x)', desc: 'ปรับความเร็วเล่นซ้ำสำหรับเสียงโคลนและ TTS ระบบ ชะลอเพื่อเรียนรู้ เร่งเพื่ออ้างอิง' },
+];
+
+const IOS_FEATURES = [
+  { title: 'วิดเจ็ตหน้าจอหลัก', desc: 'แปลด่วน คำแปลล่าสุด และคำศัพท์ประจำวัน — วิดเจ็ต 3 แบบที่แปลจากหน้าจอหลักได้เลย' },
+  { title: 'ศูนย์ควบคุม (iOS 18+)', desc: 'ปุ่มควบคุมกล้อง เสียง และข้อความในศูนย์ควบคุม iOS 18 แตะครั้งเดียวจากหน้าจอไหนก็ได้' },
+  { title: 'Live Activities และ Dynamic Island', desc: 'เซสชันสนทนา AI และแปลเอกสารที่กำลังทำงานแสดงบนหน้าจอล็อกและ Dynamic Island พร้อมความคืบหน้าแบบเรียลไทม์' },
+  { title: 'คำสั่ง Siri (5 คำสั่ง)', desc: '"หวัดดี Siri แปลด้วย TranslateNow" 5 คำสั่งเสียง: แปลข้อความ คลิปบอร์ด สนทนา กล้อง ดาวน์โหลด' },
+  { title: 'ดัชนีค้นหา Spotlight', desc: 'คำแปล 50 รายการล่าสุดถูกจัดทำดัชนีใน CoreSpotlight ค้นหาคำแปลเก่าได้ทั้งระบบ' },
+  { title: 'คำศัพท์ประจำวัน', desc: 'คำศัพท์รายวันที่สร้างโดย AI พร้อมการออกเสียงและคำแปล แสดงผ่านวิดเจ็ตหน้าจอหลัก ขับเคลื่อนโดย GPT-4o-mini' },
+  { title: 'ตัวแปลระบบเริ่มต้น (iOS 18.4+)', desc: 'ตั้ง TranslateNow เป็นตัวแปลเริ่มต้นของ iPhone แปลใน Safari, Mail, ข้อความ ผ่านเมนูระบบ' },
+  { title: 'Deep Link สากล', desc: 'URL scheme lingualink:// เชื่อมวิดเจ็ต Siri Spotlight และศูนย์ควบคุมไปยังฟีเจอร์ที่ถูกต้องโดยตรง' },
+];
+
+const USE_CASES = [
+  { title: 'นักเดินทางต่างประเทศ', desc: 'แปลป้ายถนนด้วย AR เมนูด้วยกล้อง และสนทนาด้วยเสียง — มีหรือไม่มีอินเทอร์เน็ต', icon: 'M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5' },
+  { title: 'นักธุรกิจ', desc: 'แปลสัญญาและ PDF โดยรักษาการจัดรูปแบบ ปรับโทนเป็นมืออาชีพสำหรับอีเมล โคลนเสียงสำหรับนำเสนอ', icon: 'M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0' },
+  { title: 'นักเรียนภาษา', desc: 'AI วิเคราะห์บริบทให้ตัวอย่างและคำพ้อง — ไม่ใช่ผลลัพธ์แบบตำราเรียน ถอดอักษรสำหรับอักษรที่ไม่ใช่ละติน วิดเจ็ตคำศัพท์ประจำวัน', icon: 'M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5' },
+  { title: 'ส่งข้อความหลายภาษา', desc: 'ส่วนขยายคีย์บอร์ดแปลขณะพิมพ์ใน WhatsApp, iMessage, Instagram, Telegram — ทุกแอป iOS ที่มีช่องพิมพ์', icon: 'M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z' },
+  { title: 'ผู้ใช้ที่ใส่ใจความเป็นส่วนตัว', desc: 'โหมดออฟไลน์แปล 59 ภาษาบนเครื่องทั้งหมด ไม่มีการเรียกเซิร์ฟเวอร์ ไม่มีคลาวด์ ไม่มีการเก็บข้อมูล', icon: 'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z' },
+  { title: 'ครอบครัวหลายภาษา', desc: 'สร้างสะพานภาษาข้ามรุ่น โคลนเสียงสมาชิกในครอบครัวเพื่อให้ปู่ย่าตายายฟังคำแปลด้วยเสียงที่คุ้นเคย', icon: 'M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3' },
+];
+
+const STATS = [
+  { value: '135', suffix: '+', label: 'ภาษาที่รองรับ' },
+  { value: '30', suffix: '', label: 'ภาษาในแอป' },
+  { value: '9', suffix: '', label: 'โทนการแปล' },
+  { value: '59', suffix: '', label: 'ภาษาออฟไลน์' },
+];
+
+const TESTIMONIALS = [
+  { name: 'Sarah K.', role: 'นักเดินทางตัวยง', text: 'ฟีเจอร์โคลนเสียงทำให้ทึ่งมาก อัดเสียงครั้งเดียวแล้วตอนนี้มันพูดภาษาญี่ปุ่นด้วยเสียงของฉัน เจ้าของบ้านที่โตเกียวไม่อยากเชื่อเลย' },
+  { name: 'Marco R.', role: 'ธุรกิจระหว่างประเทศ', text: 'คีย์บอร์ดแปลภาษาเปลี่ยนการทำงานไปเลย ตอบเป็นภาษาอิตาลีได้โดยไม่ต้องสลับแอป แปลเอกสารช่วยประหยัดเวลาหลายชั่วโมงกับสัญญา — เลย์เอาต์สมบูรณ์แบบ' },
+  { name: 'Priya M.', role: 'นักศึกษา', text: 'ในที่สุดก็มีตัวแปลที่ไม่ฟังดูเหมือนตำราเรียน เครื่องมือเขียนให้ปรับโทนก่อนแปลได้ — เรียงความภาษาฝรั่งเศสของฉันฟังดูเป็นธรรมชาติแล้ว ตัวอย่างจาก AI เจ๋งมาก' },
+];
+
+const COMPARISON = [
+  { feature: 'โคลนเสียง (เสียงของคุณ)', tn: true, gt: false, dl: false },
+  { feature: 'แปล AR เรียลไทม์ (ARKit)', tn: true, gt: false, dl: false },
+  { feature: 'แปลเอกสาร (PDF/DOCX/TXT)', tn: true, gt: false, dl: true },
+  { feature: 'เครื่องมือเขียน AI (5 ในตัว)', tn: true, gt: false, dl: false },
+  { feature: 'คีย์บอร์ดแปลภาษา (ทุกแอป)', tn: true, gt: false, dl: false },
+  { feature: 'ตัวแปลระบบเริ่มต้น (iOS 18.4+)', tn: true, gt: false, dl: false },
+  { feature: 'วิดเจ็ต iOS (3 แบบ)', tn: true, gt: false, dl: false },
+  { feature: 'ปุ่มศูนย์ควบคุม (iOS 18)', tn: true, gt: false, dl: false },
+  { feature: 'คำสั่ง Siri (5 คำสั่ง)', tn: true, gt: false, dl: false },
+  { feature: 'Live Activities / Dynamic Island', tn: true, gt: false, dl: false },
+  { feature: 'ดัชนีค้นหา Spotlight', tn: true, gt: false, dl: false },
+  { feature: 'บริบท AI + ตัวอย่าง + คำพ้อง', tn: true, gt: false, dl: false },
+  { feature: 'ถอดอักษร (อักษรที่ไม่ใช่ละติน)', tn: true, gt: false, dl: false },
+  { feature: '9 โทนการแปล', tn: true, gt: false, dl: false },
+  { feature: '7 เสียง AI ระบบประสาท', tn: true, gt: false, dl: false },
+  { feature: 'บันทึกสนทนา (.m4a)', tn: true, gt: false, dl: false },
+  { feature: 'ปรับความเร็ว (0.5x-2x)', tn: true, gt: false, dl: false },
+  { feature: 'วิดเจ็ตคำศัพท์ประจำวัน', tn: true, gt: false, dl: false },
+  { feature: 'สนทนา AI (Realtime API)', tn: true, gt: true, dl: false },
+  { feature: 'แปลจากกล้อง OCR', tn: true, gt: true, dl: false },
+  { feature: 'แปลออฟไลน์บนเครื่อง', tn: true, gt: true, dl: true },
+  { feature: '135+ ภาษา', tn: true, gt: true, dl: '30+' },
+];
+
+const FAQ_ITEMS = [
+  { q: 'TranslateNow คืออะไร?', a: 'TranslateNow เป็นแอปแปลภาษา AI สำหรับ iOS ที่รองรับ 135+ ภาษาพร้อมโคลนเสียง แปล AR แปลเอกสาร กล้อง OCR ส่วนขยายคีย์บอร์ด เครื่องมือเขียน AI และโหมดออฟไลน์ รวมเข้ากับ Siri วิดเจ็ตหน้าจอหลัก ศูนย์ควบคุม Live Activities Dynamic Island ค้นหา Spotlight และ API ตัวแปลระบบ iOS 18.4+ พัฒนาโดย Coachie AI' },
+  { q: 'โคลนเสียงใน TranslateNow ทำงานอย่างไร?', a: 'โคลนเสียงให้คุณอัดตัวอย่างเสียง 10 วินาที จากนั้น ElevenLabs สร้างเสียงโคลน AI ที่พูดคำแปลใน 135+ ภาษา คุณยังอัปโหลดไฟล์เสียงได้ เลือกเพศเสียงชายหรือหญิง ปรับความเร็ว 0.5x ถึง 2x แล้วฟังคำแปลด้วยเสียงของคุณเองอย่างเป็นธรรมชาติ โคลนเสียงเป็นฟีเจอร์ Pro' },
+  { q: 'แปล AR เรียลไทม์คืออะไร?', a: 'แปล AR ใช้ ARKit อ่านข้อความผ่านกล้อง iPhone แล้ววาง Glassmorphism card 3D ลอยที่ยึดในพื้นที่จริงผ่าน SceneKit ส่องกล้องไปที่ป้าย เมนู หรือเอกสาร — คำแปลปรากฏลอยเป็น 3D แตะที่ card เพื่อคัดลอก ฟังการออกเสียง TTS หรือรู้สึกการสั่นตอบสนอง' },
+  { q: 'TranslateNow แปลเอกสาร PDF Word และ Text ได้ไหม?', a: 'ได้ TranslateNow แปลเอกสาร PDF DOCX TXT และรูปถ่ายโดยรักษาเลย์เอาต์ ตัวแยกวิเคราะห์ดึงทุกบล็อกข้อความ GPT-4o แปลทีละบล็อก แล้วเอนจินสร้างเอกสารใหม่โดยรักษาการจัดรูปแบบ ฟอนต์ และเลย์เอาต์ รองรับ RTL เต็มรูปแบบสำหรับอาหรับ ฮีบรู และอูรดู' },
+  { q: 'แปลออฟไลน์โดยไม่ใช้อินเทอร์เน็ตบน iPhone ได้ไหม?', a: 'ได้ 59 ภาษาพร้อมสำหรับแปลออฟไลน์บนเครื่องผ่าน Google ML Kit ดาวน์โหลดแพ็กภาษาครั้งเดียวผ่าน WiFi (แพ็กละ 5-50 MB) แล้วแปลได้ทุกที่โดยไม่ต้องใช้อินเทอร์เน็ต ไม่มีข้อมูลถูกส่ง — ทุกอย่างประมวลผลบน iPhone ของคุณ' },
+  { q: 'คีย์บอร์ดแปลภาษาทำงานอย่างไร?', a: 'คีย์บอร์ดแปลภาษาเป็นส่วนขยายคีย์บอร์ด iOS ในตัวที่ทำงานในทุกแอปที่มีช่องพิมพ์ — iMessage WhatsApp Instagram Telegram LinkedIn Gmail Slack และอื่นๆ พิมพ์ภาษาของคุณ แล้วคีย์บอร์ดจะแปลและส่งเป็นภาษาเป้าหมายโดยไม่ต้องสลับแอป' },
+  { q: 'มีเครื่องมือเขียน AI อะไรบ้าง?', a: 'TranslateNow มีเครื่องมือเขียน AI 5 แบบที่แก้ไขข้อความก่อนแปล: ไวยากรณ์ (แก้อัตโนมัติ) โทน (เป็นมิตร มืออาชีพ ตลก จีบ เรียบง่าย) ความยาว (กระชับ 40-60% หรือขยาย 150-200%) รูปแบบ (สรุป ประเด็นหลัก หัวข้อย่อย) และสไตล์ (วิชาการ สร้างสรรค์ กวี โน้มน้าว) ไม่มีแอปแปลตัวอื่นที่มีเครื่องมือเขียนในตัว' },
+  { q: 'TranslateNow รองรับ Siri วิดเจ็ต ศูนย์ควบคุม และ Live Activities ไหม?', a: 'รองรับ TranslateNow มีการรวม iOS อย่างลึกซึ้ง ประกอบด้วยคำสั่ง Siri 5 คำสั่ง วิดเจ็ตหน้าจอหลัก 3 แบบ (แปลด่วน คำแปลล่าสุด คำศัพท์ประจำวัน) ปุ่มศูนย์ควบคุม iOS 18 3 ปุ่ม (กล้อง เสียง ข้อความ) Live Activities บนหน้าจอล็อกและ Dynamic Island ระหว่างเซสชัน และดัชนี Spotlight สำหรับคำแปล 50 รายการล่าสุด' },
+  { q: 'ตั้ง TranslateNow เป็นตัวแปลเริ่มต้นของ iPhone ได้ไหม?', a: 'ได้ บน iOS 18.4 ขึ้นไป TranslateNow ลงทะเบียนเป็นผู้ให้บริการแปลระบบ เมื่อคุณเลือกข้อความใน Safari Mail หรือข้อความแล้วแตะ "แปล" ในเมนู คำแปลจะผ่าน TranslateNow แทนตัวแปลในตัวของ Apple' },
+  { q: 'TranslateNow ราคาเท่าไร?', a: 'TranslateNow ดาวน์โหลดฟรีพร้อมฟีเจอร์แปลพื้นฐาน แพ็กเกจ Premium: รายสัปดาห์ $9.99/สัปดาห์ (ทดลองฟรี 3 วัน) และรายเดือน $29.99/เดือน (คุ้มที่สุด ประหยัด 25%) ทั้งสองแพ็กเกจปลดล็อกโคลนเสียง เครื่องมือเขียน AI แปลเอกสาร แปล AR และฟีเจอร์ Premium ทั้งหมด ยกเลิกได้ทุกเมื่อผ่านการจัดการสมัครสมาชิกของ Apple' },
+  { q: 'TranslateNow ดีกว่า Google Translate และ DeepL อย่างไร?', a: 'TranslateNow มี 22 ฟีเจอร์ที่ทั้ง Google Translate และ DeepL ไม่มี ได้แก่ โคลนเสียง AI แปล AR เรียลไทม์ด้วย ARKit เครื่องมือเขียน 5 แบบในตัว คีย์บอร์ดแปลภาษาทุกแอป แปลเอกสารพร้อมสร้างเลย์เอาต์ใหม่ ตัวแปลระบบเริ่มต้น (iOS 18.4+) คำสั่ง Siri วิดเจ็ตหน้าจอหลัก 3 แบบ ปุ่มศูนย์ควบคุม Live Activities พร้อม Dynamic Island บันทึกสนทนาเป็น .m4a บริบท AI พร้อมตัวอย่างและคำพ้อง ถอดอักษร 9 โทน เสียง AI 7 แบบ และปรับความเร็ว' },
+  { q: 'TranslateNow ใช้ใน WhatsApp iMessage และ Instagram ได้ไหม?', a: 'ได้ ส่วนขยายคีย์บอร์ดในตัวทำงานในทุกแอป iOS ที่มีช่องพิมพ์ — WhatsApp iMessage Instagram Telegram LinkedIn Gmail Slack และอื่นๆ เปิดใช้ที่ตั้งค่า → ทั่วไป → คีย์บอร์ด → คีย์บอร์ด → เพิ่มคีย์บอร์ดใหม่ → TranslateNow' },
+  { q: 'TranslateNow รองรับกี่ภาษา?', a: 'TranslateNow รองรับ 135+ ภาษาสำหรับแปลคลาวด์ผ่าน GPT-4o 59 ภาษาสำหรับแปลออฟไลน์บนเครื่องผ่าน Google ML Kit และหน้าจอแอปรองรับ 30 ภาษา ได้แก่ ฮินดี สเปน ฝรั่งเศส เยอรมัน ญี่ปุ่น เกาหลี จีน อาหรับ และฮีบรู' },
+  { q: 'TranslateNow ปลอดภัยสำหรับแปลข้อมูลส่วนตัวไหม?', a: 'ในโหมดออฟไลน์ ทุกการประมวลผลแปลทำบน iPhone ของคุณผ่าน ML Kit โดยไม่มีการส่งข้อมูล สำหรับฟีเจอร์คลาวด์ ข้อความประมวลผลผ่าน API ของ OpenAI และ ElevenLabs ด้วยการเข้ารหัสมาตรฐาน ไม่มีข้อมูลแปลเก็บบนเซิร์ฟเวอร์ Coachie AI' },
+  { q: 'แปลข้อความ WhatsApp บน iPhone ทำอย่างไร?', a: 'เปิดใช้ส่วนขยายคีย์บอร์ด TranslateNow ที่ตั้งค่า → ทั่วไป → คีย์บอร์ด → คีย์บอร์ด → เพิ่มคีย์บอร์ดใหม่ → TranslateNow จากนั้นเปิด WhatsApp แตะไอคอนลูกโลกบนคีย์บอร์ดเพื่อสลับไป TranslateNow พิมพ์ข้อความในภาษาของคุณ แล้วข้อความจะถูกแปลอัตโนมัติก่อนส่ง' },
+  { q: 'แปลเอกสาร PDF บน iPhone ทำอย่างไร?', a: 'เปิด TranslateNow แตะฟีเจอร์แปลเอกสาร แล้วนำเข้า PDF จากไฟล์ iCloud หรืออีเมล แอปดึงบล็อกข้อความทั้งหมด แปลแต่ละบล็อกด้วย GPT-4o แล้วสร้างเอกสารใหม่โดยรักษารูปแบบ ฟอนต์ และเลย์เอาต์หน้าเดิม' },
+  { q: 'ใช้โคลนเสียงแปลภาษาทำอย่างไร?', a: 'ไปที่ตั้งค่า → โคลนเสียง อัดตัวอย่างเสียง 10 วินาที (หรืออัปโหลดไฟล์เสียง) แล้ว ElevenLabs AI จะสร้างเสียงโคลนจากเสียงของคุณ หลังจากสร้างเสร็จ เสียงโคลนจะพูดคำแปลทั้งหมดใน 135+ ภาษา ปรับความเร็ว 0.5x ถึง 2x และเลือกเสียงชายหรือหญิง โคลนเสียงต้องใช้สมาชิก Pro' },
+  { q: 'ตั้งตัวแปลเริ่มต้นบน iPhone iOS 18.4 ทำอย่างไร?', a: 'ไปที่ตั้งค่า → แอป → TranslateNow แล้วเปิดตัวเลือกผู้ให้บริการแปล หลังเปิดใช้ ทุกครั้งที่คุณเลือกข้อความใน Safari Mail หรือข้อความแล้วแตะ "แปล" ในเมนู คำแปลจะผ่าน TranslateNow แทนตัวแปลในตัวของ Apple' },
+  { q: 'แปลข้อความออฟไลน์บน iPhone โดยไม่ใช้อินเทอร์เน็ตทำอย่างไร?', a: 'เปิด TranslateNow ไปที่ตั้งค่า → ภาษาออฟไลน์ แล้วดาวน์โหลดแพ็กภาษาที่ต้องการ (แพ็กละ 5-50 MB) หลังดาวน์โหลดแล้วแปลได้โดยไม่ต้องเชื่อมต่ออินเทอร์เน็ต 59 ภาษาพร้อมใช้ผ่าน ML Kit แปลบนเครื่อง ทุกอย่างประมวลผลบน iPhone โดยไม่ส่งข้อมูลใดๆ' },
+  { q: 'TranslateNow ดีกว่า Google Translate ไหม?', a: 'TranslateNow มี 22 ฟีเจอร์ที่ Google Translate ไม่มี ได้แก่ โคลนเสียง แปล AR เรียลไทม์ด้วย ARKit ส่วนขยายคีย์บอร์ดสำหรับ WhatsApp และ iMessage เครื่องมือเขียน AI 5 แบบ แปลเอกสารพร้อมรักษาเลย์เอาต์ 9 โทน ตัวแปลระบบเริ่มต้น iOS 18.4+ และการรวม iOS อย่างลึกกับ Siri วิดเจ็ต ศูนย์ควบคุม และ Dynamic Island Google Translate มีภาษาออฟไลน์มากกว่าและฟรีโดยไม่ต้องสมัครสมาชิก' },
+  { q: 'TranslateNow ดีกว่า DeepL ไหม?', a: 'TranslateNow มีฟีเจอร์มากกว่า DeepL อย่างเห็นได้ชัดสำหรับผู้ใช้ iOS ได้แก่ โคลนเสียง แปล AR กล้อง OCR ส่วนขยายคีย์บอร์ด เครื่องมือเขียน AI 5 แบบ โหมดออฟไลน์ 59 ภาษา และการรวม iOS อย่างลึก TranslateNow รองรับ 135+ ภาษาเทียบกับ 30+ ของ DeepL DeepL ขึ้นชื่อเรื่องคุณภาพการแปลภาษายุโรปและมีแพ็กฟรีสำหรับแปลข้อความ' },
+];
+
+const faqSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_ITEMS.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) });
+
+const appSD = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'MobileApplication', '@id': 'https://coachie-ai.com/translate-now/th/#app',
+  name: 'TranslateNow: AI Translator', alternateName: ['TranslateNow', 'Translate Now AI Translator'],
+  description: 'ตัวแปลภาษา AI พร้อมโคลนเสียง แปล AR แปลเอกสาร สนทนา AI เครื่องมือเขียน 5 แบบ 9 โทน กล้อง OCR คีย์บอร์ดแปลภาษา Siri วิดเจ็ต ศูนย์ควบคุม Dynamic Island ตัวแปลระบบ ออฟไลน์ ML Kit และ 135+ ภาษา',
+  applicationCategory: 'UtilitiesApplication', operatingSystem: 'iOS 16.0+', url: 'https://coachie-ai.com/translate-now/th', downloadUrl: APP_STORE_URL,
+  image: 'https://coachie-ai.com/translate_icon.png', softwareVersion: '1.0', datePublished: '2025-01-01', dateModified: '2026-03-14', inLanguage: 'th',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '150', bestRating: '5', worstRating: '1' },
+  offers: { '@type': 'AggregateOffer', priceCurrency: 'USD', lowPrice: '0', highPrice: '29.99', offerCount: 3, offers: [
+    { '@type': 'Offer', name: 'ฟรี', price: '0', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'พรีเมียมรายสัปดาห์', price: '9.99', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'พรีเมียมรายเดือน', price: '29.99', priceCurrency: 'USD' },
+  ]},
+  author: { '@type': 'Organization', name: 'Coachie AI', url: 'https://coachie-ai.com', email: SUPPORT_EMAIL },
+});
+
+const breadcrumbSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+  { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: 'https://coachie-ai.com' },
+  { '@type': 'ListItem', position: 2, name: 'TranslateNow', item: 'https://coachie-ai.com/translate-now' },
+  { '@type': 'ListItem', position: 3, name: 'ไทย', item: 'https://coachie-ai.com/translate-now/th' },
+]});
+
+const howToSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'HowTo', name: 'วิธีแปลภาษาด้วย TranslateNow', description: 'แปลทุกภาษาใน 3 ขั้นตอนด้วย TranslateNow AI Translator สำหรับ iOS', totalTime: 'PT10S', step: [
+  { '@type': 'HowToStep', position: 1, name: 'พูด พิมพ์ ถ่ายรูป หรือส่อง', text: 'เลือกโหมดป้อนข้อมูล: เสียง ข้อความ กล้อง OCR AR overlay นำเข้าเอกสาร หรือส่วนขยายคีย์บอร์ด TranslateNow รองรับ 6 วิธี' },
+  { '@type': 'HowToStep', position: 2, name: 'AI อ่านระหว่างบรรทัด', text: 'GPT-4o วิเคราะห์บริบทข้อความสำหรับน้ำเสียง เจตนา และวัฒนธรรม เลือกจาก 9 โทนและเครื่องมือเขียน AI 5 แบบ' },
+  { '@type': 'HowToStep', position: 3, name: 'สื่อสารเหมือนคนท้องถิ่น', text: 'รับคำแปลใน 135+ ภาษา ออนไลน์หรือออฟไลน์ ด้วยเสียงโคลนของคุณ — คู่มือการออกเสียง ตัวอย่าง และคำพ้อง' },
+]});
+
+const orgSD = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Coachie AI', url: 'https://coachie-ai.com', email: SUPPORT_EMAIL,
+  description: 'Coachie AI พัฒนาแอปมือถือที่ขับเคลื่อนด้วย AI สำหรับ iOS และ Android ได้แก่ TranslateNow: AI Translator และแอปสุขภาพ Coachie',
+  sameAs: ['https://apps.apple.com/in/app/translate-now-ai-translator/id6759827185', 'https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791'],
+});
+---
+
+<TranslateNowLayout
+  title="TranslateNow: ตัวแปลภาษา AI | โคลนเสียง แปล AR แปลเอกสาร & 135+ ภาษา"
+  description="แอปแปลภาษา AI สำหรับ iPhone พร้อมโคลนเสียง แปล AR เรียลไทม์ แปลเอกสาร (PDF/DOCX) กล้อง OCR ส่วนขยายคีย์บอร์ดสำหรับ WhatsApp & iMessage เครื่องมือเขียน 5 แบบ 9 โทน ตัวแปลระบบ (iOS 18.4+) Siri วิดเจ็ต โหมดออฟไลน์ & 135+ ภาษา ดาวน์โหลดฟรี"
+  canonical="https://coachie-ai.com/translate-now/th"
+  lang="th"
+  keywords="แอปแปลภาษา AI, โคลนเสียงแปลภาษา, แปล AR, แปล PDF iPhone, แปลออฟไลน์ iOS, แปลจากกล้อง OCR, คีย์บอร์ดแปลภาษา iPhone, แปลข้อความ WhatsApp, TranslateNow, แอปแปลภาษาที่ดีที่สุด iPhone, แปลภาษาไทย"
+  hreflangLinks={HREFLANG_LINKS}
+  structuredData={[appSD, faqSD, breadcrumbSD, howToSD, orgSD]}
+>
+  <noscript><style>{`[data-gsap],[data-gsap="fade-up"],.tn-glass-card,.tn-faq-item,[data-gsap-writing-card],[data-gsap-stat-item],[data-gsap-plan],[data-gsap-shot],[data-gsap-social-item],[data-gsap-footer]>*,[data-gsap-hero-title],[data-gsap-hero-sub],[data-gsap-hero-desc],[data-gsap-hero-cta],[data-gsap-hero-phone],[data-gsap-badge],[data-gsap-trust],[data-gsap-dd-text],[data-gsap-dd-phone],[data-gsap-robot-img],[data-gsap-robot-text],[data-gsap-cta-icon],[data-gsap-cta-glow],[data-gsap-cta-btn],[data-gsap-step],[data-gsap-step-icon],[data-gsap-step-label],[data-gsap-how-line],.tn-section-tag{opacity:1!important;visibility:visible!important;transform:none!important}`}</style></noscript>
+
+  <nav class="tn-nav" aria-label="เมนูหลัก">
+    <div class="max-w-6xl mx-auto h-full flex items-center justify-between px-5 sm:px-6 lg:px-8">
+      <a href="/translate-now" class="flex items-center gap-2.5 no-underline group"><Image src={translateIcon} alt="ไอคอนแอป TranslateNow" class="w-8 h-8 rounded-xl object-cover" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);" width={96} height={96} /><span class="font-bold text-[15px] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">TranslateNow</span></a>
+<div class="hidden sm:flex items-center gap-3">
+        <div class="relative tn-lang-dropdown">
+          <button type="button" class="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all duration-200 hover:bg-white/5 tn-lang-toggle" style="color: var(--tn-text-muted); border: 1px solid rgba(255,255,255,0.08);" aria-expanded="false" aria-haspopup="true">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+            <span>Thai</span>
+            <svg class="w-3 h-3 transition-transform tn-lang-chevron" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+          </button>
+          <div class="absolute right-0 top-full mt-2 py-2 rounded-xl opacity-0 invisible transition-all duration-200 tn-lang-menu" style="background: rgba(30,30,35,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); min-width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 100;">
+            <a href="/translate-now/th" class="px-3 py-1.5 text-xs no-underline transition-colors hover:bg-white/5" style="color: var(--tn-soft-coral); font-weight: 500;">Thai</a>
+            {LANGUAGE_LINKS.map((link) => (
+              <a href={link.href} class="px-3 py-1.5 text-xs no-underline transition-colors hover:bg-white/5" style="color: var(--tn-text-muted);">{link.label}</a>
+            ))}
+          </div>
+        </div>
+        <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn">ดาวน์โหลด</a>
+      </div>
+      <button class="sm:hidden p-2 rounded-lg transition-colors hover:bg-white/5 tn-mobile-toggle" aria-label="สลับเมนู" style="color: var(--tn-text-primary);"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg></button>
+    </div>
+    <div class="tn-mobile-menu sm:hidden">
+      {LANGUAGE_LINKS.map((link) => (<a href={link.href} class="text-sm text-center px-4 py-2.5 rounded-xl no-underline transition-colors hover:bg-white/5" style="color: var(--tn-text-muted);">{link.label}</a>))}
+      <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn w-full text-center mt-1">ดาวน์โหลด</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="relative min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 pt-20 pb-12 overflow-hidden" style="background: var(--tn-bg-primary);" data-gsap-hero>
+      <div class="absolute top-1/2 left-1/2 pointer-events-none" data-gsap-hero-glow style="width: 900px; height: 900px; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(255,107,74,0.12) 0%, rgba(255,107,74,0.04) 40%, transparent 70%);"></div>
+      <div class="absolute top-1/4 left-1/4 pointer-events-none" data-gsap-parallax-glow data-gsap-parallax-speed="0.4" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,143,107,0.06), transparent 70%); filter: blur(60px);"></div>
+      <p class="sr-only">TranslateNow AI Translator สำหรับ iPhone — แปล 135+ ภาษาพร้อมโคลนเสียง แปลจากกล้อง AR แปลเอกสาร และโหมดออฟไลน์</p>
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
+          <div class="flex-1 text-center lg:text-left max-w-xl">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6" style="background: var(--tn-coral-bg); color: var(--tn-soft-coral); border: 1px solid rgba(255,107,74,0.12);" data-gsap-trust>
+              <div class="flex -space-x-0.5">{[...Array(5)].map(() => (<svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="var(--tn-coral-fire)" stroke="var(--tn-coral-fire)"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>))}</div>
+              <span>ตัวแปล AI อันดับ 1</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-[58px] font-extrabold leading-[1.08] mb-6 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">ตัวแปลภาษา AI พร้อมโคลนเสียง <span class="tn-gradient-text">พูดด้วยเสียงของคุณเอง</span></h1>
+            <h2 class="text-lg sm:text-xl font-medium mb-4 leading-relaxed max-w-lg mx-auto lg:mx-0" style="color: var(--tn-text-tertiary); font-family: var(--font-body);" data-gsap-hero-sub>แปล 135+ ภาษาด้วยแปล AR เอกสาร เครื่องมือเขียน ตัวแปลระบบ & โหมดออฟไลน์</h2>
+            <p class="text-base sm:text-lg mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed" style="color: var(--tn-text-secondary); font-family: var(--font-body);" data-gsap-hero-desc>TranslateNow แปล 135+ ภาษาพร้อมโคลนเสียง AR overlay เรียลไทม์ (ARKit) แปลเอกสาร (PDF/DOCX/TXT) สนทนา AI เรียลไทม์ เครื่องมือเขียน 5 แบบ 9 โทน กล้อง OCR คีย์บอร์ดทุกแอป Siri วิดเจ็ต และแปลออฟไลน์บนเครื่อง</p>
+            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start" data-gsap-hero-cta>
+              <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn tn-coral-btn-large" data-magnetic="0.25">ดาวน์โหลดฟรีจาก App Store<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></a>
+            </div>
+          </div>
+          <div class="relative flex-shrink-0" data-gsap-hero-phone>
+            <div class="tn-phone-glow" style="width: 400px; height: 700px;"></div>
+            <div class="tn-phone-frame tn-phone-frame-large relative mx-auto"><div class="tn-phone-notch"></div><Image src={translateSs2} alt="TranslateNow แปลด้วย AI พร้อมบริบท ตัวอย่าง และคำพ้อง" class="w-full h-full object-cover" width={280} height={580} /><div class="tn-phone-reflection"></div></div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="top: 8%; right: -30%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>135+ ภาษา</div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="top: 42%; left: -38%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>โคลนเสียง</div>
+            <div class="absolute hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-semibold" data-gsap-badge style="bottom: 12%; right: -28%; background: rgba(18,18,28,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); color: var(--tn-peach-glow); white-space: nowrap; box-shadow: 0 8px 24px rgba(0,0,0,0.3);"><span class="w-2 h-2 rounded-full" style="background: var(--tn-coral-fire); box-shadow: 0 0 6px rgba(255,107,74,0.5);"></span>พร้อมใช้ออฟไลน์</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="py-6 px-5 sm:px-6 lg:px-8 overflow-hidden" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle); border-bottom: 1px solid var(--tn-bg-border-subtle);" data-gsap-social><div class="max-w-6xl mx-auto flex items-center justify-center gap-8 sm:gap-14 flex-wrap">{SOCIAL_PROOF.map((item) => (<div class="flex items-center gap-2 text-xs font-medium" style="color: var(--tn-text-muted);" data-gsap-social-item><svg class="w-4 h-4" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={item.icon} /></svg><span>{item.label}</span></div>))}</div></section>
+
+    <!-- CORE FEATURES -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>ฟีเจอร์หลัก</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">9 โหมดแปลภาษาขับเคลื่อนด้วย AI</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">เสียง ข้อความ กล้อง AR เอกสาร คีย์บอร์ด ตัวแปลระบบ Siri และออฟไลน์ ฟีเจอร์ที่ Google Translate และ DeepL ไม่มี</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-gsap-card-grid>{FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><div class="tn-icon-box mb-4 transition-transform duration-300 group-hover:scale-110"><svg class="w-[22px] h-[22px]" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={f.icon} /></svg></div><h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <!-- HOW IT WORKS -->
+    <section class="py-20 sm:py-24 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>วิธีใช้งาน</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">แปลภาษาด้วย TranslateNow ใน 3 ขั้นตอน</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">จากความคิดถึงคำแปลภายในไม่ถึง 2 วินาที — ขับเคลื่อนโดย GPT-4o และ ML บนเครื่อง</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative" data-gsap-how><div class="hidden md:block absolute top-10 left-[20%] right-[20%] h-px" data-gsap-how-line style="background: linear-gradient(90deg, transparent, rgba(255,107,74,0.25), rgba(255,107,74,0.25), transparent);"></div>{STEPS.map((s) => (<div class="relative text-center group" data-gsap-step><div class="relative z-10 inline-flex flex-col items-center"><div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-105" data-gsap-step-icon style="background: linear-gradient(135deg, rgba(255,107,74,0.15), rgba(255,107,74,0.05)); border: 1px solid rgba(255,107,74,0.2);"><svg class="w-[26px] h-[26px]" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={s.icon} /></svg></div><span class="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" data-gsap-step-label style="color: var(--tn-soft-coral); font-family: var(--font-display);">ขั้นตอน {s.num}</span></div><h3 class="text-lg font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{s.title}</h3><p class="text-sm leading-relaxed max-w-[280px] mx-auto" style="color: var(--tn-text-secondary);">{s.desc}</p></div>))}</div></div></section>
+
+    <!-- SCREENSHOTS -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8 overflow-hidden" style="background: var(--tn-bg-primary);" data-gsap-gallery><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>ตัวอย่างแอป</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">สัมผัส TranslateNow ในการทำงานจริง</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">เครื่องมือแปลภาษา AI อันทรงพลัง — โคลนเสียง กล้อง AR เอกสาร — ในอินเทอร์เฟซ Dark สไตล์พรีเมียม</p></div><div class="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide justify-start" data-gsap-gallery-track>{SCREENSHOTS.map((s) => (<div class="flex-shrink-0 snap-center flex flex-col items-center gap-3 group" data-gsap-shot><div class="tn-phone-frame transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl" style="width: 200px; height: 420px;"><div class="tn-phone-notch"></div><Image src={s.image} alt={s.alt} class="w-full h-full object-cover" loading="lazy" width={400} height={840} /></div><span class="text-xs font-medium" style="color: var(--tn-text-muted);">{s.label}</span></div>))}</div></div></section>
+
+    <!-- DEEP DIVES -->
+    <section class="px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto">{DEEP_DIVES.map((f, idx) => (<div class={`min-h-screen flex flex-col justify-center ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-center gap-12 lg:gap-20 py-12`} data-gsap-deepdive data-gsap-reversed={idx % 2 === 1 ? 'true' : 'false'}><div class="flex-1 max-w-lg" data-gsap-dd-text><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);" data-gsap-dd-tag>{f.tag}</span><h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-base leading-relaxed mb-6" style="color: var(--tn-text-secondary);">{f.desc}</p><ul class="space-y-3">{f.bullets.map((b) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{b}</span></li>))}</ul></div><div class="flex-shrink-0" data-gsap-dd-phone><div class="relative"><div class="tn-phone-glow" style="width: 380px; height: 660px;"></div><div class="tn-phone-frame relative mx-auto"><div class="tn-phone-notch"></div><Image src={f.image} alt={f.imageAlt} class="w-full h-full object-cover" loading="lazy" width={260} height={540} /><div class="tn-phone-reflection"></div></div></div></div></div>))}</div></section>
+
+    <!-- AI CONVERSATION -->
+    <section class="min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="flex flex-col lg:flex-row-reverse items-center gap-14 lg:gap-20" data-gsap-robot><div class="flex-shrink-0 relative" data-gsap-robot-img><div class="relative w-[260px] h-[320px] sm:w-[300px] sm:h-[360px]"><div class="absolute inset-0 rounded-full" style="background: radial-gradient(circle, rgba(255,107,74,0.15), transparent 70%); filter: blur(50px);"></div><Image src={translateRobot} alt="TranslateNow ผู้ช่วยสนทนา AI สำหรับแปลเสียงเรียลไทม์" class="w-full h-full object-contain relative z-10" style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));" width={300} height={360} /></div></div>
+      <div class="flex-1 max-w-lg" data-gsap-robot-text><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);">สนทนา AI เรียลไทม์</span><h2 class="text-3xl sm:text-4xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">พูดตามธรรมชาติ <span class="tn-gradient-text">AI แปลให้ทันที</span></h2><p class="text-base mb-8 leading-relaxed" style="color: var(--tn-text-secondary);">ขับเคลื่อนโดย OpenAI Realtime API ผ่าน WebSocket — แปลเสียงสองทิศทางพร้อมตรวจจับภาษาอัตโนมัติ พูดใน 135+ ภาษา AI ตรวจจับภาษาของคุณ แปลทันที แล้วตอบกลับด้วยเสียง streaming บันทึกเซสชันและส่งออกเป็น .m4a</p>
+        <ul class="space-y-3">{['แปลเสียงสองทิศทางใน 135+ ภาษา', 'ตรวจจับภาษาที่พูดอัตโนมัติ — ไม่ต้องตั้งค่า', 'เสียง AI 7 แบบ: Coral, Alloy, Echo, Fable, Onyx, Nova, Shimmer', 'บันทึกสนทนาและส่งออกเป็นเสียง .m4a พร้อม Pre-Roll', 'Live Activity บนหน้าจอล็อกและ Dynamic Island ระหว่างเซสชัน', 'ป้องกันเสียงสะท้อนและตรวจจับสัญญาณรบกวนเพื่อการแปลที่สะอาด'].map((item) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{item}</span></li>))}</ul></div></div></div></section>
+
+    <!-- WRITING TOOLS -->
+    <section class="py-20 sm:py-24 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>เครื่องมือเขียน AI</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">ปรับแต่งก่อนแปล</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">เครื่องมือเขียน AI 5 แบบปรับข้อความก่อนแปล — แก้ไวยากรณ์ ปรับโทน เปลี่ยนความยาว จัดรูปแบบใหม่ หรือเปลี่ยนสไตล์ ไม่มีตัวแปลตัวอื่นที่มีแบบนี้</p></div><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" data-gsap-writing>{WRITING_TOOLS.map((t) => (<div class="rounded-2xl p-5 h-full text-center transition-all duration-300 hover:-translate-y-1 group cursor-default" style="background: rgba(18,18,28,0.65); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(16px);" data-gsap-writing-card><div class="w-11 h-11 rounded-xl flex items-center justify-center mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, rgba(255,107,74,0.14), rgba(255,143,107,0.06)); border: 1px solid rgba(255,107,74,0.12);"><svg class="w-5 h-5" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg></div><h4 class="text-sm font-bold mb-1" style="color: var(--tn-text-primary); font-family: var(--font-display);">{t.title}</h4><p class="text-xs leading-relaxed" style="color: var(--tn-text-muted);">{t.desc}</p><div class="mt-3 mx-auto h-0.5 w-0 group-hover:w-8 transition-all duration-300 rounded-full" style="background: var(--tn-gradient-coral);"></div></div>))}</div></div></section>
+
+    <!-- PRIVACY & OFFLINE -->
+    <section class="min-h-screen flex flex-col justify-center px-5 sm:px-6 lg:px-8 py-12 relative overflow-hidden" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20"><div class="flex-1 max-w-lg" data-gsap="fade-up"><span class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 block" style="color: var(--tn-coral-fire); font-family: var(--font-display);">ความเป็นส่วนตัว & ออฟไลน์</span><h2 class="text-3xl sm:text-4xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">แปลออฟไลน์ <span class="tn-gradient-text">ไม่มีอะไรออกจากโทรศัพท์</span></h2><p class="text-base mb-8 leading-relaxed" style="color: var(--tn-text-secondary);">ดาวน์โหลดแพ็กภาษาผ่าน WiFi ครั้งเดียว (แพ็กละ 5-50 MB) จากนั้นแปลทำงานบนเครื่องทั้งหมดผ่าน ML Kit — ไม่มีการเรียกเซิร์ฟเวอร์ ไม่มีการส่งข้อมูล ไม่มีการประมวลผลคลาวด์ 59 ภาษาพร้อมใช้ออฟไลน์</p><ul class="space-y-3">{['59 ภาษาพร้อมสำหรับแปล ML Kit บนเครื่อง', 'แพ็กภาษาขนาด 5-50 MB — ดาวน์โหลดครั้งเดียว ใช้ได้ตลอด', 'ไม่มีการส่งข้อมูลในโหมดออฟไลน์ — ประมวลผลบนเครื่องทั้งหมด', 'สลับไปออฟไลน์อัตโนมัติเมื่อขาดการเชื่อมต่อ', 'ดาวน์โหลดทุกภาษาพร้อมกันหรือเลือกทีละภาษา'].map((item) => (<li class="flex items-start gap-3 text-sm" style="color: var(--tn-text-tertiary);"><div class="tn-check-circle mt-0.5"><svg class="w-3 h-3" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span>{item}</span></li>))}</ul></div><div class="flex-shrink-0" data-gsap="fade-up"><div class="relative"><div class="tn-phone-glow" style="width: 380px; height: 660px;"></div><div class="tn-phone-frame relative mx-auto"><div class="tn-phone-notch"></div><Image src={translateSs8} alt="TranslateNow ตั้งค่าแปลออฟไลน์พร้อมแพ็กภาษาดาวน์โหลดได้" class="w-full h-full object-cover" loading="lazy" width={260} height={540} /><div class="tn-phone-reflection"></div></div></div></div></div></div></section>
+
+    <!-- AI INTELLIGENCE -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>ความฉลาด AI</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">AI ที่เข้าใจบริบท น้ำเสียง & วัฒนธรรม</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">GPT-4o ขับเคลื่อนทุกคำแปลด้วยความฉลาดเชิงบริบท — ตัวอย่าง คำพ้อง 9 โทน ถอดอักษร และเสียงระบบประสาท 7 แบบ</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-gsap-card-grid>{AI_FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><h3 class="text-base font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <!-- iOS INTEGRATION -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>รวมเข้ากับแพลตฟอร์ม</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">รวม iOS อย่างลึก — ไม่ใช่แค่แอป</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">วิดเจ็ต Siri ศูนย์ควบคุม Dynamic Island Spotlight ตัวแปลระบบ TranslateNow ถักทอเข้ากับทุกชั้นของ iOS</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-gsap-card-grid>{IOS_FEATURES.map((f) => (<div class="tn-glass-card group" data-gsap="fade-up"><h3 class="text-base font-bold mb-2 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{f.title}</h3><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{f.desc}</p></div>))}</div></div></section>
+
+    <!-- USE CASES -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>กรณีใช้งาน</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">สร้างมาเพื่อชีวิตจริง</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">จากสนามบินถึงห้องเรียน จากห้องประชุมถึงโต๊ะอาหารครอบครัว — การแปลที่ทำงานได้ทุกบริบท</p></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-gsap-card-grid>{USE_CASES.map((uc) => (<div class="tn-glass-card flex items-start gap-4 group" data-gsap="fade-up"><div class="tn-icon-box transition-transform duration-300 group-hover:scale-110"><svg class="w-5 h-5" style="color: var(--tn-soft-coral);" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d={uc.icon} /></svg></div><div><h4 class="text-base font-bold mb-1.5 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">{uc.title}</h4><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{uc.desc}</p></div></div>))}</div></div></section>
+
+    <!-- STATS -->
+    <section class="py-16 px-5 sm:px-6 lg:px-8 relative" style="background: var(--tn-bg-surface);"><div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(255,107,74,0.04) 0%, transparent 60%);"></div><div class="max-w-5xl mx-auto relative z-10"><div class="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="background: var(--tn-bg-border-subtle);" data-gsap-stats>{STATS.map((s) => (<div class="flex flex-col items-center justify-center py-8 px-5 text-center" style="background: rgba(18,18,28,0.8);" data-gsap-stat-item><span class="text-3xl sm:text-4xl font-extrabold tracking-tight" style="color: var(--tn-coral-fire); font-family: var(--font-display);" data-gsap-stat data-gsap-target={s.value} data-gsap-suffix={s.suffix || ''}>0{s.suffix}</span><span class="text-xs mt-2 font-medium" style="color: var(--tn-text-muted);">{s.label}</span></div>))}</div></div></section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-6xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>รีวิว</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">ผู้ใช้ทั่วโลกชื่นชอบ</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">รีวิวจริงจากคนจริงที่ใช้ TranslateNow ทุกวัน</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-gsap-testimonials>{TESTIMONIALS.map((t) => (<div class="tn-glass-card" data-gsap="fade-up"><div class="flex gap-0.5 mb-4">{[...Array(5)].map(() => (<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="var(--tn-coral-fire)" stroke="var(--tn-coral-fire)"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg>))}</div><p class="text-sm leading-relaxed mb-5" style="color: var(--tn-text-tertiary);">„{t.text}"</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold" style="background: var(--tn-coral-bg); color: var(--tn-coral-fire); font-family: var(--font-display);">{t.name.charAt(0)}</div><div><span class="text-sm font-semibold block" style="color: var(--tn-text-primary);">{t.name}</span><span class="text-xs" style="color: var(--tn-text-muted);">{t.role}</span></div></div></div>))}</div></div></section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-gradient-dark);"><div class="max-w-4xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>เปรียบเทียบฟีเจอร์</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">TranslateNow vs Google Translate vs DeepL</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">22 ฟีเจอร์เทียบกัน — ดูว่าตัวแปลธรรมดาขาดอะไร</p></div>
+      <div class="tn-glass-card !p-0 overflow-hidden" style="cursor: default; transform: none !important;" data-gsap-comparison><div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr><th class="text-left py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">ฟีเจอร์</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-coral-fire); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display); background: rgba(255,107,74,0.04);">TranslateNow</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">Google Translate</th><th class="text-center py-4 px-4 font-bold text-xs uppercase tracking-wider" style="color: var(--tn-text-muted); border-bottom: 1px solid var(--tn-bg-border-subtle); font-family: var(--font-display);">DeepL</th></tr></thead><tbody>{COMPARISON.map((r, i) => (<tr style={i < COMPARISON.length - 1 ? `border-bottom: 1px solid var(--tn-bg-border-subtle);` : ''}><td class="py-3.5 px-4 text-sm" style="color: var(--tn-text-secondary);">{r.feature}</td><td class="text-center py-3.5 px-4" style="background: rgba(255,107,74,0.02);">{r.tn === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: var(--tn-coral-bg);"><svg class="w-3.5 h-3.5" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.tn}</span>}</td><td class="text-center py-3.5 px-4">{r.gt === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.05);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-muted);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : r.gt === false ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.03);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-hint);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.gt}</span>}</td><td class="text-center py-3.5 px-4">{r.dl === true ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.05);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-muted);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div></div>) : r.dl === false ? (<div class="flex justify-center"><div class="w-6 h-6 rounded-full flex items-center justify-center" style="background: rgba(255,255,255,0.03);"><svg class="w-3.5 h-3.5" style="color: var(--tn-text-hint);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></div></div>) : <span class="text-xs font-medium" style="color: var(--tn-text-muted);">{r.dl}</span>}</td></tr>))}</tbody></table></div></div></div></section>
+
+    <!-- FAQ -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-primary);"><div class="max-w-3xl mx-auto"><div class="text-center mb-14 md:mb-18" data-gsap-section-header><div class="tn-section-tag" data-gsap="fade-up"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>FAQ</div><h2 class="text-3xl sm:text-4xl lg:text-[44px] font-extrabold mb-4 leading-[1.15] tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);" data-gsap="fade-up">คำถามที่พบบ่อย</h2><p class="text-base sm:text-lg max-w-2xl leading-relaxed mx-auto" style="color: var(--tn-text-secondary);" data-gsap="fade-up">ทุกสิ่งที่คุณต้องรู้เกี่ยวกับ TranslateNow — ฟีเจอร์ ราคา ความเป็นส่วนตัว และการรวม iOS</p></div>
+      <div class="space-y-2.5" data-gsap-faq-list>{FAQ_ITEMS.map((faq) => (<div class="tn-faq-item rounded-xl overflow-hidden transition-all duration-300" style="background: var(--tn-bg-surface); border: 1px solid var(--tn-bg-border-subtle);" data-gsap="fade-up"><button class="tn-faq-btn w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-white/[0.02]"><h3 class="text-sm sm:text-[15px] font-semibold pr-4 leading-snug" style="color: var(--tn-text-primary); font-family: var(--font-display);">{faq.q}</h3><svg class="w-[18px] h-[18px] flex-shrink-0 tn-faq-chevron" style="color: var(--tn-coral-fire);" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button><div class="tn-faq-content"><div class="px-5 pb-5"><p class="text-sm leading-relaxed" style="color: var(--tn-text-secondary);">{faq.a}</p></div></div></div>))}</div></div></section>
+
+    <!-- E-E-A-T -->
+    <section class="py-16 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle);"><div class="max-w-3xl mx-auto text-center" data-gsap="fade-up"><h2 class="text-2xl sm:text-3xl font-extrabold mb-4 tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">สร้างโดย Coachie AI</h2><p class="text-base leading-relaxed mb-4" style="color: var(--tn-text-secondary);">TranslateNow พัฒนาโดย Coachie AI สตูดิโอพัฒนาแอปมือถือที่เชี่ยวชาญด้านแอป AI สำหรับ iOS และ Android ทีมของเราเผยแพร่แอปหลายตัวบน App Store และ Google Play โดยผสาน Machine Learning บนเครื่อง บริการ AI คลาวด์ (OpenAI GPT-4o, ElevenLabs) และการรวมแพลตฟอร์มอย่างลึก (ARKit, Siri, WidgetKit, Live Activities, Jetpack Compose, ML Kit) เพื่อสร้างเครื่องมือที่แก้ปัญหาการสื่อสารจริง</p><p class="text-sm leading-relaxed" style="color: var(--tn-text-muted);">มีคำถามหรือต้องการเป็นพันธมิตร? ติดต่อเราที่ <a href={`mailto:${SUPPORT_EMAIL}`} class="underline transition-colors hover:text-white/60" style="color: var(--tn-soft-coral);">{SUPPORT_EMAIL}</a></p></div></section>
+
+    <!-- FINAL CTA -->
+    <section class="py-24 sm:py-32 px-5 sm:px-6 lg:px-8 text-center relative overflow-hidden" id="download" style="background: var(--tn-bg-primary);" data-gsap-final-cta><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none" style="background: radial-gradient(circle, rgba(255,107,74,0.15) 0%, transparent 60%);" data-gsap-cta-glow></div><div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,107,74,0.2), transparent);"></div><div class="max-w-3xl mx-auto relative z-10"><Image src={translateIcon} alt="ไอคอนแอป TranslateNow" class="w-16 h-16 rounded-2xl mx-auto mb-8" style="box-shadow: 0 8px 32px rgba(255,107,74,0.2), 0 0 0 1px rgba(255,255,255,0.08);" width={192} height={192} data-gsap-cta-icon /><h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5 leading-tight tracking-tight" style="color: var(--tn-text-primary); font-family: var(--font-display);">เริ่มพูดทุกภาษาตั้งแต่วันนี้</h2><p class="text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--tn-text-secondary);">ดาวน์โหลด TranslateNow ฟรีจาก App Store โคลนเสียง แปล AR เอกสาร เครื่องมือเขียน ออฟไลน์ และ 135+ ภาษา</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4" data-gsap-cta-btn><a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" class="tn-coral-btn tn-coral-btn-large">ดาวน์โหลดฟรี<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></a></div></div></section>
+
+    <!-- FOOTER -->
+    <footer class="py-10 px-5 sm:px-6 lg:px-8" style="background: var(--tn-bg-surface); border-top: 1px solid var(--tn-bg-border-subtle);" data-gsap-footer><div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"><a href="/translate-now" class="flex items-center gap-2.5 no-underline group"><Image src={translateIcon} alt="ไอคอน TranslateNow" class="w-8 h-8 rounded-xl object-cover" style="box-shadow: 0 2px 8px rgba(0,0,0,0.3);" width={96} height={96} /><div><span class="font-bold text-sm block" style="color: var(--tn-text-primary); font-family: var(--font-display);">TranslateNow</span><span class="text-xs" style="color: var(--tn-text-muted);">โดย Coachie AI</span></div></a><div class="flex items-center gap-4 text-xs flex-wrap justify-center" style="color: var(--tn-text-muted);"><a href={PRIVACY_URL} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">นโยบายความเป็นส่วนตัว</a><span style="color: var(--tn-bg-border-subtle);">·</span><a href={TERMS_URL} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">ข้อกำหนดการใช้งาน</a><span style="color: var(--tn-bg-border-subtle);">·</span><a href={`mailto:${SUPPORT_EMAIL}`} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">ติดต่อ</a>{LANGUAGE_LINKS.map((link) => (<><span style="color: var(--tn-bg-border-subtle);">·</span><a href={link.href} class="hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">{link.label}</a></>))}</div><div class="flex flex-col items-center md:items-end gap-1"><a href={`mailto:${SUPPORT_EMAIL}`} class="text-xs hover:underline transition-colors hover:text-white/60" style="color: var(--tn-text-muted);">{SUPPORT_EMAIL}</a><span class="text-[11px]" style="color: var(--tn-text-hint);">อัปเดตล่าสุด: มีนาคม 2026</span></div></div></footer>
+  </main>
+
+  <!-- FAQ Override -->
+  <style is:inline>
+    .tn-faq-content { height: auto !important; max-height: 0 !important; overflow: hidden !important; transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease !important; opacity: 0 !important; }
+    .tn-faq-item.faq-active .tn-faq-content { max-height: 2000px !important; opacity: 1 !important; }
+    .tn-faq-item.faq-active .tn-faq-chevron { transform: rotate(180deg); }
+  </style>
+  <script is:inline>
+    window.addEventListener('load', function() {
+      document.querySelectorAll('.tn-faq-content').forEach(function(c) { c.style.removeProperty('height'); c.style.removeProperty('overflow'); });
+      document.querySelectorAll('.tn-faq-btn').forEach(function(oldBtn) {
+        var newBtn = oldBtn.cloneNode(true); oldBtn.parentNode.replaceChild(newBtn, oldBtn);
+        newBtn.addEventListener('click', function(e) {
+          e.preventDefault(); e.stopPropagation();
+          var item = newBtn.closest('.tn-faq-item'); if (!item) return;
+          var wasActive = item.classList.contains('faq-active');
+          document.querySelectorAll('.tn-faq-item').forEach(function(el) { el.classList.remove('faq-active', 'open', 'is-open'); var content = el.querySelector('.tn-faq-content'); if (content) { content.style.removeProperty('height'); content.style.removeProperty('overflow'); } });
+          if (!wasActive) item.classList.add('faq-active');
+        });
+      });
+    });
+  </script>
+</TranslateNowLayout>

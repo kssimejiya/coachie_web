@@ -1,0 +1,285 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
+  noIndex?: boolean;
+  lang?: string;
+  hreflangTags?: { lang: string; href: string }[];
+  jsonLd?: string[];
+  extraHead?: string;
+}
+
+const {
+  title = 'Coachie - AI Coach, Chef & CBT Therapist | Transform Your Wellness Journey',
+  description = 'Revolutionary AI wellness app combining personal training, nutrition coaching & CBT therapy. Photo food tracking, personalized recipes & mental health support. 5K+ success stories. Download free!',
+  canonical = 'https://coachie-ai.com',
+  ogTitle = 'Coachie - AI Coach, Chef & CBT Therapist | #1 Wellness App',
+  ogDescription = 'Join 5K+ users transforming their wellness with AI-powered coaching, personalized recipes & CBT therapy. 5-star rated on App Store!',
+  ogImage = 'https://coachie-ai.com/images/og-image.png',
+  twitterTitle = 'Coachie - AI Coach, Chef & CBT Therapist | Transform Your Life',
+  twitterDescription = 'Revolutionary wellness app with AI coaching, personalized nutrition & CBT therapy. 5.0 star rating from 5K+ users. Download free!',
+  twitterImage = 'https://coachie-ai.com/images/twitter-card.png',
+  noIndex = false,
+  lang = 'en',
+  hreflangTags = [
+    { lang: 'en-US', href: 'https://coachie-ai.com' },
+    { lang: 'en-GB', href: 'https://coachie-ai.com/uk' },
+    { lang: 'x-default', href: 'https://coachie-ai.com' },
+  ],
+  jsonLd = [],
+  extraHead = '',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/ic_main_icon.png" as="image" type="image/png" />
+
+    <!-- Critical CSS for above-the-fold -->
+    <style is:inline>
+      *,*::before,*::after{box-sizing:border-box}
+      body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+      img,video{max-width:100%;height:auto}
+      /* FOUC prevention: hide hero text elements from first paint.
+         GSAP fromTo(autoAlpha:0→1) overrides via inline styles.
+         Hero image NOT hidden — it is the LCP element. */
+      [data-gsap-hero-badge],
+      [data-gsap-hero-title],
+      [data-gsap-hero-sub],
+      [data-gsap-hero-cta],
+      [data-gsap-hero-stat]{opacity:0;visibility:hidden}
+      /* Reduced motion: show immediately (no animation) */
+      @media(prefers-reduced-motion:reduce){
+        [data-gsap-hero-badge],
+        [data-gsap-hero-title],
+        [data-gsap-hero-sub],
+        [data-gsap-hero-cta],
+        [data-gsap-hero-stat]{opacity:1!important;visibility:visible!important}
+      }
+    </style>
+
+    <!-- SEO Meta Tags -->
+    {noIndex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    )}
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <meta name="bingbot" content="index, follow" />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="AI health coach app, holistic wellness app, personal nutrition coach, photo food tracker, AI recipe recommendations, fitness coaching app, CBT therapy app, mental health nutrition, wellness integration, personalized meal plans, mood tracking, emotional eating support, health habit tracker, mind body food connection, AI wellness revolution, calorie counter, macro tracker, white label fitness app, gym app UK, corporate wellness" />
+
+    <meta name="author" content="Coachie Team" />
+    <meta name="publisher" content="Coachie" />
+    <meta name="copyright" content="&copy; 2025 Coachie. All rights reserved." />
+
+    <meta name="language" content="English" />
+    <meta http-equiv="content-language" content="en-US" />
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.country" content="US" />
+    <meta name="geo.placename" content="United States" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="target" content="all" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Coachie" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:alt" content="Coachie App - AI Health Coach, Chef and CBT Therapist" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="en_GB" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@CoachieApp" />
+    <meta name="twitter:creator" content="@CoachieApp" />
+    <meta name="twitter:title" content={twitterTitle} />
+    <meta name="twitter:description" content={twitterDescription} />
+    <meta name="twitter:image" content={twitterImage} />
+    <meta name="twitter:image:alt" content="Coachie App Screenshot showing AI wellness features" />
+
+    <!-- App-Specific Meta Tags -->
+    <meta name="apple-itunes-app" content="app-id=6744700791, app-argument=https://coachie-ai.com" />
+    <meta name="google-play-app" content="app-id=com.cc.caloriecoach" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Coachie" />
+    <meta name="application-name" content="Coachie" />
+    <meta name="msapplication-TileColor" content="#495057" />
+    <meta name="msapplication-TileImage" content="/ic_main_icon.png" />
+    <meta name="theme-color" content="#495057" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Favicon and App Icons -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/ic_main_icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/ic_main_icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/ic_main_icon.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/ic_main_icon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/ic_main_icon.png" />
+    <link rel="mask-icon" href="/ic_main_icon.png" color="#495057" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- HREFLANG TAGS -->
+    {hreflangTags.map(tag => (
+      <link rel="alternate" hreflang={tag.lang} href={tag.href} />
+    ))}
+
+    <!-- DNS prefetch for deferred analytics (preconnect removed since analytics loads after 3.5s) -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.clarity.ms" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+    <!-- JSON-LD Structured Data -->
+    {jsonLd.map(ld => (
+      <script type="application/ld+json" set:html={ld} />
+    ))}
+
+    <Fragment set:html={extraHead} />
+
+  </head>
+  <body class="font-sans text-gray-800 overflow-x-hidden antialiased bg-white">
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <slot />
+
+    <!-- Scroll animation system (deferred) -->
+    <script src="../scripts/scroll-animations.js"></script>
+
+    <!-- GA4 Analytics (deferred until idle) -->
+    <script is:inline>
+      function __loadGA4() {
+        var gs = document.createElement('script');
+        gs.async = true;
+        gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-YTEM11GE2B';
+        document.head.appendChild(gs);
+        gs.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-YTEM11GE2B', {
+            page_title: document.title,
+            page_location: window.location.href,
+            content_group1: 'Wellness Apps',
+            content_group2: 'AI Health',
+            send_page_view: true
+          });
+
+          // Track app download clicks
+          document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (!link) return;
+            if (link.href && link.href.includes('apps.apple.com')) {
+              gtag('event', 'app_download_click', {
+                event_category: 'engagement',
+                event_label: 'iOS App Store',
+                platform: 'ios',
+                app_name: 'coachie'
+              });
+            }
+            if (link.href && link.href.includes('play.google.com')) {
+              gtag('event', 'app_download_click', {
+                event_category: 'engagement',
+                event_label: 'Google Play Store',
+                platform: 'android',
+                app_name: 'coachie'
+              });
+            }
+          });
+
+          // Track scroll depth
+          (function() {
+            var scrollDepths = [25, 50, 75, 100];
+            var triggered = [];
+            window.addEventListener('scroll', function() {
+              var percent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+              scrollDepths.forEach(function(depth) {
+                if (percent >= depth && triggered.indexOf(depth) === -1) {
+                  triggered.push(depth);
+                  gtag('event', 'scroll_depth', {
+                    event_category: 'engagement',
+                    event_label: depth + '%',
+                    value: depth
+                  });
+                }
+              });
+            });
+          })();
+
+          // Track time on page
+          [30, 60, 120, 300].forEach(function(seconds) {
+            setTimeout(function() {
+              gtag('event', 'time_on_page', {
+                event_category: 'engagement',
+                event_label: seconds + ' seconds',
+                value: seconds
+              });
+            }, seconds * 1000);
+          });
+        };
+      }
+      function __loadClarity() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "v2rgwq32a0");
+      }
+      function __deferAnalytics() {
+        __loadGA4();
+        __loadClarity();
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(__deferAnalytics, { timeout: 3500 });
+      } else {
+        setTimeout(__deferAnalytics, 3500);
+      }
+    </script>
+
+    <!-- Noscript Fallback -->
+    <noscript>
+      <div style="padding: 20px; text-align: center; font-family: sans-serif;">
+        <h1>Coachie - AI Coach, Chef &amp; CBT Therapist</h1>
+        <p>Please enable JavaScript to use this application.</p>
+        <p>
+          <a href="https://apps.apple.com/us/app/coachie-coach-chef-cbt/id6744700791">Download on App Store</a> |
+          <a href="https://play.google.com/store/apps/details?id=com.cc.caloriecoach">Download on Google Play</a>
+        </p>
+      </div>
+    </noscript>
+  </body>
+</html>

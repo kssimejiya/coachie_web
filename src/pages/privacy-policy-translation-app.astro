@@ -1,0 +1,177 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Footer from '../components/astro/Footer.astro';
+---
+
+<MainLayout
+  title="Privacy Policy - Translate Now: AI Translator"
+  description="Privacy Policy for Translate Now: AI Translator app. Learn how we collect, use, and protect your personal information."
+  canonical="https://coachie-ai.com/privacy-policy-translation-app"
+  noIndex={false}
+>
+  <main id="main-content" class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
+    <p class="text-lg text-gray-500 mb-8">Translate Now: AI Translator</p>
+    <p class="text-sm text-gray-400 mb-10">Last updated: March 15, 2026</p>
+
+    <div class="prose prose-gray max-w-none space-y-8">
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Welcome to the Privacy Policy for <strong>Translate Now: AI Translator</strong> ("the App," "we," "us," or "our"), developed and operated by <strong>Coachie</strong>. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application on iOS and Android. Please read this Privacy Policy carefully. By using the App, you agree to the collection and use of information in accordance with this policy.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">2. Information We Collect</h2>
+        <h3 class="text-xl font-medium text-gray-800 mb-3">2.1 Information You Provide</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Text input submitted for translation</li>
+          <li>Voice recordings when using the real-time AI voice conversation feature (streamed in real-time via WebSocket and not permanently stored on our servers)</li>
+          <li>Images captured or selected when using the camera/photo translation feature (processed in real-time for text recognition and not permanently stored on our servers)</li>
+          <li>Language preferences, translation model selections, and app settings</li>
+          <li>Feedback and support communications submitted through the in-app feedback feature</li>
+        </ul>
+
+        <h3 class="text-xl font-medium text-gray-800 mb-3 mt-6">2.2 Automatically Collected Information</h3>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Device information (model, operating system version, unique device identifiers)</li>
+          <li>Usage data and analytics events (features used, frequency, duration of sessions)</li>
+          <li>App performance data (crash reports, diagnostics)</li>
+          <li>IP address and general location information (country/region level only)</li>
+          <li>Subscription status and in-app purchase records (managed by Apple App Store or Google Play Store)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">3. How We Use Your Information</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">We use the information we collect to:</p>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Provide, maintain, and improve translation services (text, camera, and voice)</li>
+          <li>Process your translation requests — either on-device or via cloud APIs depending on your settings and the selected translation model</li>
+          <li>Manage your subscription, verify entitlements, and process in-app purchases</li>
+          <li>Configure app features and settings remotely (e.g., feature flags, default configurations)</li>
+          <li>Provide customer support and respond to your inquiries</li>
+          <li>Send you technical notices, updates, and administrative messages</li>
+          <li>Monitor and analyze trends, usage, and activities to improve the App</li>
+          <li>Detect, investigate, and prevent fraudulent transactions and other illegal activities</li>
+          <li>Comply with legal obligations</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">4. On-Device vs. Cloud Processing</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Our App offers two distinct translation modes, each with different data handling:
+        </p>
+        <h3 class="text-xl font-medium text-gray-800 mb-3">4.1 On-Device Translation (Standard / Offline Mode)</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          When using the Standard (on-device) translation model powered by Google ML Kit, your text is processed entirely on your device. No translation content is sent to external servers. Language models are downloaded to your device and translation occurs locally. This mode works without an internet connection once the required language models have been downloaded.
+        </p>
+        <h3 class="text-xl font-medium text-gray-800 mb-3">4.2 Cloud Translation (AI Models)</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          When using AI-powered translation models or the real-time AI voice conversation feature, your text or audio is transmitted to OpenAI's servers for processing. Only the content you submit for translation is shared — no personal information, account data, or device identifiers are included in these requests. OpenAI processes this data in accordance with their own privacy policy and data usage terms.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">5. Data Storage and Security</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+        </p>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Cloud translation data (text and voice) is processed in real-time and is not permanently stored on our servers or on OpenAI's servers beyond the duration needed to complete your request.</li>
+          <li>Camera images used for OCR text extraction are processed in real-time and are not stored on our servers.</li>
+          <li>Your translation history is stored locally on your device for your convenience and is not transmitted to our servers.</li>
+          <li>Offline language models downloaded via Google ML Kit are stored locally on your device.</li>
+          <li>API keys and configuration data are fetched securely via Firebase Remote Config and cached locally.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">6. Third-Party Services</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Our App uses the following third-party services that may collect information:
+        </p>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li><strong>Apple App Store</strong> — For iOS app distribution, in-app subscription purchases, and payment processing</li>
+          <li><strong>Google Play Store</strong> — For Android app distribution, in-app subscription purchases, and payment processing</li>
+          <li><strong>Firebase Analytics</strong> — For usage analytics, event tracking, and app performance monitoring</li>
+          <li><strong>Firebase Remote Config</strong> — For remote feature configuration and app settings management</li>
+          <li><strong>Google ML Kit (Translation)</strong> — For on-device offline translation; language models are downloaded to and processed on your device</li>
+          <li><strong>OpenAI API</strong> — For AI-powered cloud text translation (Chat Completions API) and real-time voice conversation translation (Realtime API)</li>
+        </ul>
+        <p class="text-gray-700 leading-relaxed mt-4">
+          Each of these services operates under its own privacy policy governing how they collect, use, and protect your data. We encourage you to review their respective privacy policies.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">7. Camera and Microphone Access</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          The App requests access to the following device permissions:
+        </p>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li><strong>Camera</strong> — Used for the photo/camera translation feature to capture images containing text for OCR recognition and translation. Images are processed in real-time and are not stored on our servers.</li>
+          <li><strong>Microphone</strong> — Used for the real-time AI voice conversation feature. Audio is streamed in real-time to OpenAI's servers for translation and is not permanently stored.</li>
+          <li><strong>Speech Recognition</strong> — Used for voice input in text translation. Audio is processed for speech-to-text conversion.</li>
+          <li><strong>Notifications</strong> — Used optionally to notify you when offline language model downloads are complete.</li>
+        </ul>
+        <p class="text-gray-700 leading-relaxed mt-4">
+          These permissions are only used for their stated purposes. You can revoke any of these permissions at any time through your device settings.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">8. Subscriptions and Payments</h2>
+        <p class="text-gray-700 leading-relaxed">
+          The App offers auto-renewable subscription plans: a Weekly plan ($9.99/week with a 3-day free trial for eligible users) and a Monthly plan ($29.99/month, no free trial). Subscriptions are processed and managed entirely by Apple (App Store) or Google (Play Store). We do not directly collect, process, or store your payment information, credit card details, or billing address. Subscription status and entitlement verification are handled through the respective platform's purchase APIs. For details on payment data handling, please refer to Apple's or Google's privacy policies.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">9. Children's Privacy</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Our App does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If we discover that a child under 13 has provided us with personal information, we will immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we can take the necessary actions.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">10. Your Rights</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Depending on your jurisdiction, you may have the right to:</p>
+        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+          <li>Access the personal data we hold about you</li>
+          <li>Request correction of inaccurate data</li>
+          <li>Request deletion of your data</li>
+          <li>Object to or restrict processing of your data</li>
+          <li>Data portability</li>
+          <li>Withdraw consent at any time</li>
+        </ul>
+        <p class="text-gray-700 leading-relaxed mt-4">
+          Since translation history is stored locally on your device, you can delete it at any time through the App's settings. To exercise any other rights, please contact us using the details below.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">11. Changes to This Privacy Policy</h2>
+        <p class="text-gray-700 leading-relaxed">
+          We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">12. Contact Us</h2>
+        <p class="text-gray-700 leading-relaxed">
+          If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at:
+        </p>
+        <p class="text-gray-700 mt-2">
+          <strong>Email:</strong>{' '}
+          <a href="mailto:contact@coachie-ai.com" class="text-blue-600 hover:text-blue-800 underline">
+            contact@coachie-ai.com
+          </a>
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</MainLayout>

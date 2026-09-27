@@ -86,8 +86,6 @@ Allow: /privacy-policy-translation-app
 Allow: /privacy-policy-veera
 Allow: /terms-of-use-translation-app
 Allow: /terms-of-use-veera
-Allow: /privacy-policy-pantrypal
-Allow: /terms-of-use-pantrypal
 
 # Allow Google to crawl images
 User-agent: Googlebot-Image

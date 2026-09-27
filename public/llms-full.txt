@@ -188,6 +188,4 @@ TranslateNow offers 22 features Google Translate lacks: voice cloning, AR transl
 - TranslateNow Terms of Service: https://coachie-ai.com/terms-of-use-translation-app
 - Veera Privacy Policy: https://coachie-ai.com/privacy-policy-veera
 - Veera Terms of Use: https://coachie-ai.com/terms-of-use-veera
-- PantryPal Privacy Policy: https://coachie-ai.com/privacy-policy-pantrypal
-- PantryPal Terms of Use: https://coachie-ai.com/terms-of-use-pantrypal
 - Support: contact@coachie-ai.com
